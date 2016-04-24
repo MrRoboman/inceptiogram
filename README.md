@@ -1,4 +1,4 @@
-# FresherNote
+# Inceptiogram
 
 [Heroku link][heroku]
 
