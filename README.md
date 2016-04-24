@@ -15,7 +15,7 @@ Inceptiogram is a web application inspired by Instagram that will be built using
 following, searching users
 - [ ] Hosting on Heroku
 - [ ] CSS styling that is satisfactorily visually appealing
-- [ ] A production README, replacing this README (**NB**: [sample production README](https://github.com/appacademy/sample-project-proposal/blob/master/docs/production_readme.md)
+- [ ] A production README, replacing this README **NB**: [sample production README](https://github.com/appacademy/sample-project-proposal/blob/master/docs/production_readme.md)
 
 ## Product Goals and Priorities
 

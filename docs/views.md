@@ -26,5 +26,5 @@
 [picture-index-item]: ./wireframes/PictureIndexItem.png
 [profile-index]: ./wireframes/ProfileIndex.png
 [profile-index-header]: ./wireframes/ProfileIndexHeader.png
-[users-index]: ./wireframes/Usersindex.png
+[users-index]: ./wireframes/UsersIndex.png
 [show-picture]: ./wireframes/showpicture.png
