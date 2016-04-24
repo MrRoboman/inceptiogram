@@ -1,22 +1,30 @@
 # View Wireframes
 
-## New User
-![new-user]
+## Login
+![login]
 
-## New Session
-![new-session]
+## AppHeader
+![app-header]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## PictureIndexItem
+![picture-index-item]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## ProfileIndex
+![profile-index]
 
-## NotebookForm
-![notebook-form]
+## ProfileIndexHeader
+![profile-index-header]
 
-[new-user]: ./wireframes/new_user.png
-[new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+## UsersIndex
+![users-index]
+
+## ShowPicture
+![show-picture]
+
+[login]: ./wireframes/login.png
+[app-header]: ./wireframes/AppHeader.png
+[picture-index-item]: ./wireframes/PictureIndexItem.png
+[profile-index]: ./wireframes/ProfileIndex.png
+[profile-index-header]: ./wireframes/ProfileIndexHeader.png
+[users-index]: ./wireframes/Usersindex.png
+[show-picture]: ./wireframes/showpicture.png

@@ -1,34 +1,37 @@
 # FresherNote
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Heroku link][heroku]
 
 [heroku]: http://www.herokuapp.com
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+Inceptiogram is a web application inspired by Instagram that will be built using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
 - [ ] New account creation, login, and guest/demo login
 - [ ] Smooth, bug-free navigation
 - [ ] Adequate seed data to demonstrate the site's features
-- [ ] The minimally necessary features for an Evernote-inspired site: note creation and saving, note editing, and notes organized into notebooks
+- [ ] The minimally necessary features for an Instagram-inspired site: viewing, liking, commenting, tagging pictures;
+following, searching users
 - [ ] Hosting on Heroku
 - [ ] CSS styling that is satisfactorily visually appealing
-- [ ] A production README, replacing this README (**NB**: check out the [sample production README](https://github.com/appacademy/sample-project-proposal/blob/master/docs/production_readme.md) -- you'll write this later)
+- [ ] A production README, replacing this README (**NB**: [sample production README](https://github.com/appacademy/sample-project-proposal/blob/master/docs/production_readme.md)
 
 ## Product Goals and Priorities
 
-FresherNote will allow users to do the following:
+Inceptiogram will allow users to do the following:
 
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
 
 - [ ] Create an account (MVP)
 - [ ] Log in / Log out, including as a Guest/Demo User (MVP)
-- [ ] Create, read, edit, and delete notes (MVP)
-- [ ] Organize notes within Notebooks (MVP)
-- [ ] Tag notes with multiple tags (expected feature, but not MVP)
-- [ ] Apply complex styling to notes while editing (expected feature, but not MVP)
+- [ ] View, like, comment on pictures (MVP)
+- [ ] Follow, search users (MVP)
+- [ ] Tag pictures with multiple tags and people (expected feature, but not MVP)
+- [ ] Search by tag (expected feature, but not MVP)
+- [ ] Mosaic view mode (expected feature, but not MVP)
+- [ ] Upload photos (possible feature, but not MVP)
 
 ## Design Docs
 * [View Wireframes][views]
