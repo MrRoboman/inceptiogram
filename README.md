@@ -58,32 +58,30 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] user signup/signin pages
 - [ ] blank landing page after signin
 
-### Phase 2: Notes Model, API, and basic APIUtil (1.5 days)
+### Phase 2: Picture Model, API, and basic APIUtil (1.5 days)
 
-**Objective:** Notes can be created, read, edited and destroyed through
-the API.
+**Objective:** PictureIndex displays most recent pictures
 
-- [ ] create `Note` model
+- [ ] create `Picture` model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for notes (`NotesController`)
-- [ ] jBuilder views for notes
+- [ ] CRUD API for pictures (`PictureController`)
+- [ ] jBuilder views for pictures
 - [ ] setup Webpack & Flux scaffold
 - [ ] setup `APIUtil` to interact with the API
 - [ ] test out API interaction in the console.
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
 
-**Objective:** Notes can be created, read, edited and destroyed with the
-user interface.
+**Objective:** Pictures can be viewed with infinite scroll
 
 - [ ] setup the flux loop with skeleton files
 - [ ] setup React Router
-- implement each note component, building out the flux loop as needed.
-  - [ ] `NotesIndex`
-  - [ ] `NoteIndexItem`
-  - [ ] `NoteForm`
-- [ ] save Notes to the DB when the form loses focus or is left idle
-  after editing.
+- implement each picture component, building out the flux loop as needed.
+  - [ ] `PictureIndex`
+  - [ ] `PictureIndexItem`
+    - [ ] `PictureIndexItemHeader`
+    - [ ] `PictureIndexItemPicture`
+    - [ ] `PictureIndexItemFooter`
 
 ### Phase 4: Start Styling (0.5 days)
 
@@ -93,40 +91,43 @@ user interface.
 - [ ] position elements on the page
 - [ ] add basic colors & styles
 
-### Phase 5: Notebooks (1 day)
+### Phase 5: Comments (0.5 days)
 
-**Objective:** Notes belong to Notebooks, and can be viewed by notebook.
+**Objective:** Build Comment form
 
-- [ ] create `Notebook` model
+- [ ] create `Comment` model
 - build out API, Flux loop, and components for:
-  - [ ] Notebook CRUD
-  - [ ] adding notes requires a notebook
-  - [ ] moving notes to a different notebook
-  - [ ] viewing notes by notebook
+  - [ ] Comment CRUD
+  - [ ] Comment form component added to PictureIndexItemFooter
 - Use CSS to style new views
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook,
-which has its own `Index` view.
+### Phase 6: Likes (0.5 days)
 
-### Phase 6: Tags (1.5 days)
+**Objective:**
 
-**Objective:** Notes can be tagged with multiple tags, and tags are searchable.
-
-- [ ] create `Tag` model and join table
+- [ ] create `Like` model
 - build out API, Flux loop, and components for:
-  - [ ] fetching tags for notebook
-  - [ ] adding tags to notebook
-  - [ ] creating tags while adding to notebooks
-  - [ ] searching notebooks by tag
+  - [ ] fetching Like for Picture
+  - [ ] toggling Like for Picture
+- [ ] add Like to Comment form  
 - [ ] Style new elements
 
-### Phase 7: Allow Complex Styling in Notes (0.5 days)
+### Phase 7: Profile View (1 days)
 
-**objective:** Enable complex styling of notes.
+**objective:** Show Pictures by User
 
-- [ ] Integrate `react-quill` (based on Quill.js).
-- [ ] Use Rails helpers to sanitize HTML before rendering.
-- [ ] Style the new Quill elements.
+- [ ] build ProfileIndex
+- build out API, Flux loop, and components for:
+  - [ ] fetching Pictures of User
+
+### Phase 8: UsersIndex (1 days)
+
+**objective:** Show index of popular Users
+
+- [ ] build UserIndex
+- build out API, Flux loop, and components for:
+  - [ ] fetching popular Users
+- [ ] Style
 
 ### Phase 8: Styling Cleanup and Seeding (1 day)
 
@@ -137,14 +138,14 @@ which has its own `Index` view.
 - [ ] Add modals, transitions, and other styling flourishes.
 
 ### Bonus Features (TBD)
-- [ ] Search through notes for blocks of text
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Set reminders on notes
-- [ ] Changelogs for Notes
-- [ ] Multiple sessions
+- [ ] InceptioView
+  - [ ] Build Canvas element
+  - [ ] Display Picture as mosaic of other pictures
+  - [ ] Zoom into single picture in mosaics
+  - [ ] Picture becomes another mosaic
 
-[phase-one]: ./docs/phases/phase1.md
+<!-- [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
-[phase-five]: ./docs/phases/phase5.md
+[phase-five]: ./docs/phases/phase5.md -->
