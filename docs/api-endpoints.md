@@ -20,34 +20,23 @@
 
 ## JSON API
 
-### Notes
+### Pictures
 
-- `GET /api/notes`
-  - Notes index/search
-  - accepts `tag_name` query param to list notes by tag
-  - accepts pagination params (if I get there)
-- `POST /api/notes`
-- `GET /api/notes/:id`
-- `PATCH /api/notes/:id`
-- `DELETE /api/notes/:id`
+- `GET /api/pictures`
+  - accepts `user_id`, `startIdx` query param to list notes by user and receive a certain number of pics
 
-### Notebooks
+### Users
 
-- `GET /api/notebooks`
-- `POST /api/notebooks`
-- `GET /api/notebooks/:id`
-- `PATCH /api/notebooks/:id`
-- `DELETE /api/notebooks/:id`
-- `GET /api/notebooks/:id/notes`
-  - index of all notes for a notebook
-  - accepts pagination params (if I get there)
+- `GET /api/users`
+- `GET /api/users/:id`
+- `POST /api/users`
 
-### Tags
+### Comments
 
-- A note's tags will be included in the note show template
-- `GET /api/tags`
-  - includes query param for typeahead suggestions
-- `POST /api/notes/:note_id/tags`: add tag to note by name
-  - if note doesn't already exist, it will be created
-- `DELETE /api/notes/:note_id/tags/:tag_name`: remove tag from note by
-  name
+- `GET /api/pictures` (includes comments)
+- `POST /api/pictures/:id/comments`
+
+### Likes
+
+- `GET /api/pictures/:id/like`
+- `POST /api/pictures/:id/like`
