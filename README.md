@@ -129,7 +129,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
   - [ ] fetching popular Users
 - [ ] Style
 
-### Phase 8: Styling Cleanup and Seeding (1 day)
+### Phase 9: Styling Cleanup and Seeding (1 day)
 
 **objective:** Make the site feel more cohesive and awesome.
 
