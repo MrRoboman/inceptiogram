@@ -9,13 +9,14 @@
 Inceptiogram is a web application inspired by Instagram that will be built using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
 - [ ] New account creation, login, and guest/demo login
-- [ ] Smooth, bug-free navigation
-- [ ] Adequate seed data to demonstrate the site's features
-- [ ] The minimally necessary features for an Instagram-inspired site: viewing, liking, commenting, tagging pictures;
-following, searching users
-- [ ] Hosting on Heroku
-- [ ] CSS styling that is satisfactorily visually appealing
-- [ ] A production README, replacing this README **NB**: [sample production README](https://github.com/appacademy/sample-project-proposal/blob/master/docs/production_readme.md)
+- [ ] Three separate view indexes:
+  - [ ] Pictures Index (Shows recently uploaded pictures by users that the current user follows)
+  - [ ] Users Index (Shows popular users and samples of their photos)
+  - [ ] Profile Index (Shows a single user's profile and their pictures)
+- [ ] Users can follow other users
+- [ ] Users can comment on pictures
+- [ ] Users can like pictures
+- [ ] Realtime suggestion Search to find users in the database
 
 ## Product Goals and Priorities
 
