@@ -53,11 +53,13 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 **Objective:** Functioning rails project with Authentication
 
-- [ ] create new project
+- [x] create new project
+- [x] setup Webpack & Flux scaffold
 - [ ] create `User` model
 - [ ] authentication
 - [ ] user signup/signin pages
 - [ ] blank landing page after signin
+- [ ] start basic styling
 
 ### Phase 2: Picture Model, API, and basic APIUtil (1.5 days)
 
@@ -67,9 +69,9 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] seed the database with a small amount of test data
 - [ ] CRUD API for pictures (`PictureController`)
 - [ ] jBuilder views for pictures
-- [ ] setup Webpack & Flux scaffold
 - [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
+- [ ] test out API interaction in the console
+- [ ] basic styling
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
 
@@ -83,16 +85,9 @@ progress. Put an x between the brackets for a checkmark: [x] -->
     - [ ] `PictureIndexItemHeader`
     - [ ] `PictureIndexItemPicture`
     - [ ] `PictureIndexItemFooter`
+- [ ] basic styling
 
-### Phase 4: Start Styling (0.5 days)
-
-**Objective:** Existing pages (including singup/signin) will look good.
-
-- [ ] create a basic style guide
-- [ ] position elements on the page
-- [ ] add basic colors & styles
-
-### Phase 5: Comments (0.5 days)
+### Phase 4: Comments (0.5 days)
 
 **Objective:** Build Comment form
 
@@ -102,7 +97,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
   - [ ] Comment form component added to PictureIndexItemFooter
 - Use CSS to style new views
 
-### Phase 6: Likes (0.5 days)
+### Phase 5: Likes (0.5 days)
 
 **Objective:**
 
@@ -113,7 +108,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] add Like to Comment form  
 - [ ] Style new elements
 
-### Phase 7: Profile View (1 days)
+### Phase 6: Profile View (1 days)
 
 **objective:** Show Pictures by User
 
@@ -121,7 +116,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - build out API, Flux loop, and components for:
   - [ ] fetching Pictures of User
 
-### Phase 8: UsersIndex (1 days)
+### Phase 7: UsersIndex (1 days)
 
 **objective:** Show index of popular Users
 
@@ -130,7 +125,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
   - [ ] fetching popular Users
 - [ ] Style
 
-### Phase 9: Styling Cleanup and Seeding (1 day)
+### Phase 8: Styling Cleanup and Seeding (1 day)
 
 **objective:** Make the site feel more cohesive and awesome.
 
