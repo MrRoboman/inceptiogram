@@ -11,9 +11,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    json = {}
-    json[:username] = current_user.username if current_user
-    render json: json
+    @username = logged_in? ? current_user.username : "";
   end
 
   private
