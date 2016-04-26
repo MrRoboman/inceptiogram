@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: http://www.inceptiogram.com
 
 ## Minimum Viable Product
 
