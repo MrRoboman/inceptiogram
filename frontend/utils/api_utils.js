@@ -6,17 +6,34 @@ module.exports = {
       type: 'GET',
       url: 'api/user',
       dataType: 'json',
+      success: ServerActions.receiveCurrentUser,
+    });
+  },
+  login: function(creds) {
+    $.ajax({
+      type: 'POST',
+      url: 'api/session',
+      dataType: 'json',
+      data: {user: {username: creds.username, password: creds.password}},
       success: ServerActions.receiveCurrentUser
     });
   },
-  login: function() {
-
-  },
   logout: function() {
-
+    $.ajax({
+      type: 'DELETE',
+      url: 'api/session',
+      dataType: 'json',
+      success: ServerActions.receiveCurrentUser
+    });
   },
-  createUser: function() {
-
+  createUser: function(creds) {
+    $.ajax({
+      type: 'POST',
+      url: 'api/user',
+      dataType: 'json',
+      data: {user: {username: creds.username, password: creds.password}},
+      success: ServerActions.receiveCurrentUser
+    });
   }
 
 };
