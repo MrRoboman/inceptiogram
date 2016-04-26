@@ -33,11 +33,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  # gem 'colorize'
+  gem 'colorize'
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  # gem 'quiet_assets'
+  gem 'quiet_assets'
 end
 
 group :development do
@@ -50,5 +50,5 @@ end
 
 group :production do
   gem 'newrelic_rpm'
-  gem'rails_12factor' # errror feedback
+  gem 'rails_12factor' # errror feedback
 end

@@ -78,8 +78,12 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: inceptiogram_production
-  username: inceptiogram
-  password: <%= ENV['INCEPTIOGRAM_DATABASE_PASSWORD'] %>
+
+# https://github.com/appacademy/capstone-project-curriculum/blob/master/readings/heroku-deployment.md
+# Told me to delete `production:` 4/26/16
+
+# production:
+#   <<: *default
+#   database: inceptiogram_production
+#   username: inceptiogram
+#   password: <%= ENV['INCEPTIOGRAM_DATABASE_PASSWORD'] %>
