@@ -1,6 +1,7 @@
 var React = require('react');
 var ClientActions = require('../actions/client_actions');
 var UserStore = require('../stores/user_store');
+var HashHistory = require('react-router').hashHistory;
 
 var Signup = React.createClass({
 
@@ -70,8 +71,9 @@ var Signup = React.createClass({
     }
   },
 
-  gotoLogin: function(){
-
+  gotoLogin: function(e){
+    e.preventDefault();
+    HashHistory.push("login");
   },
 
   render: function() {
@@ -81,6 +83,7 @@ var Signup = React.createClass({
 
     return (
       <div>
+        <h2>Sign Up</h2>
         <form onSubmit={this.submit}>
           <p>Inceptiogram</p>
           <input id="username"
@@ -103,6 +106,7 @@ var Signup = React.createClass({
           <br/>
           <input type="submit" value="submit" disabled={this.submitDisabled()}/>
         </form>
+        <p>Already have an account?</p>
         <button onClick={this.gotoLogin}>Login</button>
         <ul>
           {errors}

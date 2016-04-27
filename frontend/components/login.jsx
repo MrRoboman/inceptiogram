@@ -1,5 +1,6 @@
 var React = require('react');
 var ClientActions = require('../actions/client_actions');
+var HashHistory = require('react-router').hashHistory;
 
 var Login = React.createClass({
   getInitialState: function() {
@@ -19,9 +20,15 @@ var Login = React.createClass({
     this.setState({username: "", password: ""});
   },
 
+  gotoSignup: function(e) {
+    e.preventDefault();
+    HashHistory.push("signup");
+  },
+
   render: function() {
     return (
       <div>
+        <h2>Login</h2>
         <form onSubmit={this.submit}>
           <p>Inceptiogram</p>
           <input type="text"
@@ -36,6 +43,8 @@ var Login = React.createClass({
           <br/>
           <input type="submit" value="submit" />
         </form>
+        <p>Need an account?</p>
+        <button onClick={this.gotoSignup}>Sign Up</button>
       </div>
     );
   }

@@ -14,7 +14,7 @@ var SignupForm = require('./components/signup');
 var App = React.createClass({
 
 	getInitialState: function() {
-		return {currentUser: "blah"};
+		return {currentUser: "Current User: NOBODY!"};
 	},
 
 	componentDidMount: function() {
@@ -41,15 +41,19 @@ var App = React.createClass({
 		);
 	}
 });
-var routes = (
-	<Route path='/' component={App}>
-		<IndexRoute component={SignupForm}/>
-	</Route>
+var router = (
+	<Router history={HashHistory}>
+		<Route path='/' component={App}>
+			<IndexRoute component={LoginForm} />
+			<Route component={SignupForm} path="signup" />
+			<Route component={LoginForm} path="login" />
+		</Route>
+	</Router>
 );
 
 document.addEventListener('DOMContentLoaded', function () {
 	ReactDOM.render(
-	  <Router history={HashHistory} routes={routes} />,
+	  router,
 		document.getElementById('root')
 	);
 });
