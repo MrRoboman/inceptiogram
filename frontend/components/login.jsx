@@ -35,7 +35,8 @@ var Login = React.createClass({
     this.setState({password: e.target.value});
   },
 
-  submit: function() {
+  submit: function(e) {
+    e.preventDefault();
     ClientActions.login(this.state);
     // this.setState({username: "", password: ""});
     // HashHistory.push("pictureindex");

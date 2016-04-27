@@ -46,7 +46,8 @@ var Signup = React.createClass({
     this.setState({retype: e.target.value});
   },
 
-  submit: function() {
+  submit: function(e) {
+    e.preventDefault();
     ClientActions.createUser(this.state);
     // this.setState({password: "", retype: ""});
     // this.usernameInput.select();
