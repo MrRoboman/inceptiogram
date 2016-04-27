@@ -57,6 +57,16 @@ var Login = React.createClass({
     HashHistory.push("signup");
   },
 
+  clickGuest: function(e){
+    e.preventDefault();
+    // debugger;
+    this.setState({username: "Rob", password: "password"});
+    setTimeout(function(){
+      // debugger;
+      this.submit();
+    }.bind(this), 500);
+  },
+
   render: function() {
     var errors = this.state.errors.map(function(error){
       return <li key={error}>{error}</li>;
@@ -78,6 +88,7 @@ var Login = React.createClass({
           <br/>
           <input type="submit" value="submit" disabled={this.submitDisabled()}/>
         </form>
+        <button onClick={this.clickGuest}>Guest</button>
         <p>Need an account?</p>
         <button onClick={this.gotoSignup}>Sign Up</button>
         <ul>
