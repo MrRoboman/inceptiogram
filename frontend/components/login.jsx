@@ -34,7 +34,7 @@ var Login = React.createClass({
                  onChange={this.passwordChange}
                  value={this.state.password}/>
           <br/>
-          <input type="submit" value="submit"/>
+          <input type="submit" value="submit" />
         </form>
       </div>
     );

@@ -8,6 +8,7 @@ var HashHistory = require('react-router').hashHistory;
 var UserStore = require('./stores/user_store');
 var PictureIndex = require('./components/picture_index');
 var LoginForm = require('./components/login');
+var SignupForm = require('./components/signup');
 
 // var App = require('./components/app.jsx');
 var App = React.createClass({
@@ -25,7 +26,8 @@ var App = React.createClass({
 	},
 
 	_onUserStoreChange: function() {
-		var username = UserStore.getCurrentUser().username;
+		var username = "notloggedin";
+		if(UserStore.getCurrentUser()) username = UserStore.getCurrentUser().username;
 		this.setState({currentUser: username});
 	},
 
@@ -41,7 +43,7 @@ var App = React.createClass({
 });
 var routes = (
 	<Route path='/' component={App}>
-		<IndexRoute component={LoginForm}/>
+		<IndexRoute component={SignupForm}/>
 	</Route>
 );
 

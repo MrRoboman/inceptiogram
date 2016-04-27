@@ -32,7 +32,8 @@ module.exports = {
       url: 'api/user',
       dataType: 'json',
       data: {user: {username: creds.username, password: creds.password}},
-      success: ServerActions.receiveCurrentUser
+      success: ServerActions.receiveCurrentUser,
+      error: ServerActions.receiveErrors
     });
   }
 

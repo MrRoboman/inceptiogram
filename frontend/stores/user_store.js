@@ -8,17 +8,21 @@ var _authErrors = [];
 var UserStore = new Store(dispatcher);
 
 UserStore.getCurrentUser = function() {
-  return _currentUser;
+  return _currentUser; //TODO: do I need to copy this?
 };
 
-// UserStore.all = function() {
-//   return Object.assign({}, _users);
-// };
+UserStore.getErrors = function() {
+  return _authErrors.slice();
+};
 
 UserStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case UserConstants.RECEIVED_CURRENT_USER:
       _currentUser = payload.currentUser;
+      this.__emitChange();
+      break;
+    case UserConstants.RECEIVED_ERROR:
+      _authErrors = payload.errors;
       this.__emitChange();
       break;
   }

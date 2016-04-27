@@ -4,14 +4,15 @@ class Api::UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       login!(user)
-      render :show
+      render json: {username: current_user.username}
     else
-      render json: user.errors.full_messages
+      render json: user.errors.full_messages, status: 403
     end
   end
 
   def show
-    @username = logged_in? ? current_user.username : "";
+    username = (logged_in? ? current_user.username : "")
+    render json: {username: username}
   end
 
   private
