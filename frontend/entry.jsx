@@ -46,10 +46,10 @@ var App = React.createClass({
 var router = (
 	<Router history={HashHistory}>
 		<Route path='/' component={App}>
-			<IndexRoute component={LoginForm} />
+			<IndexRoute component={PictureIndex} />
+			<Route component={PictureIndex} path="pictureindex" />
 			<Route component={SignupForm} path="signup" />
 			<Route component={LoginForm} path="login" />
-			<Route component={PictureIndex} path="pictureindex" />
 		</Route>
 	</Router>
 );
