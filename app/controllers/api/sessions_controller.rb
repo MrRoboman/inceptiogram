@@ -11,6 +11,6 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     logout!
-    render json: {}
+    render json: {username: ""}
   end
 end

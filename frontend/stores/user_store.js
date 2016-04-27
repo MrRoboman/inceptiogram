@@ -8,6 +8,7 @@ var _authErrors = [];
 var UserStore = new Store(dispatcher);
 
 UserStore.getCurrentUser = function() {
+  // debugger;
   return _currentUser.slice(); //TODO: do I need to copy this?
 };
 

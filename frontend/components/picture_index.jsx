@@ -17,7 +17,6 @@ module.exports = React.createClass({
   },
 
   onChange: function() {
-    debugger;
     if(UserStore.getCurrentUser() === ""){
       HashHistory.push("login");
     } else{
