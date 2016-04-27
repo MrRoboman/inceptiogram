@@ -5,14 +5,35 @@ var Route = require('react-router').Route;
 var IndexRoute = require('react-router').IndexRoute;
 var HashHistory = require('react-router').hashHistory;
 
+var UserStore = require('./stores/user_store');
 var PictureIndex = require('./components/picture_index');
+var LoginForm = require('./components/login');
 
 // var App = require('./components/app.jsx');
 var App = React.createClass({
+
+	getInitialState: function() {
+		return {currentUser: "blah"};
+	},
+
+	componentDidMount: function() {
+		this.listener = UserStore.addListener(this._onUserStoreChange);
+	},
+
+	componentWillUnmount: function() {
+		this.listener.remove();
+	},
+
+	_onUserStoreChange: function() {
+		var username = UserStore.getCurrentUser().username;
+		this.setState({currentUser: username});
+	},
+
 	render: function() {
+
 		return (
 			<div>
-				<h1>Replace me with a header</h1>
+				<h1>{this.state.currentUser}</h1>
 				{this.props.children}
 			</div>
 		);
@@ -20,7 +41,7 @@ var App = React.createClass({
 });
 var routes = (
 	<Route path='/' component={App}>
-		<IndexRoute component={PictureIndex}/>
+		<IndexRoute component={LoginForm}/>
 	</Route>
 );
 

@@ -7,6 +7,10 @@ var _authErrors = [];
 
 var UserStore = new Store(dispatcher);
 
+UserStore.getCurrentUser = function() {
+  return _currentUser;
+};
+
 // UserStore.all = function() {
 //   return Object.assign({}, _users);
 // };
@@ -15,6 +19,7 @@ UserStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case UserConstants.RECEIVED_CURRENT_USER:
       _currentUser = payload.currentUser;
+      this.__emitChange();
       break;
   }
 };
