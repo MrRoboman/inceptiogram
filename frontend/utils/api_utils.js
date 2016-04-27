@@ -15,7 +15,8 @@ module.exports = {
       url: 'api/session',
       dataType: 'json',
       data: {user: {username: creds.username, password: creds.password}},
-      success: ServerActions.receiveCurrentUser
+      success: ServerActions.receiveCurrentUser,
+      error: ServerActions.receiveErrors
     });
   },
   logout: function() {

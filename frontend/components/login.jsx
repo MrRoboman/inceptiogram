@@ -1,10 +1,31 @@
 var React = require('react');
 var ClientActions = require('../actions/client_actions');
 var HashHistory = require('react-router').hashHistory;
+var UserStore = require('../stores/user_store');
 
 var Login = React.createClass({
   getInitialState: function() {
-    return {username: "", password: ""};
+    return {username: "", password: "", errors: []};
+  },
+
+  componentDidMount: function() {
+    this.listener = UserStore.addListener(this.onChange);
+    ClientActions.fetchCurrentUser();
+  },
+
+  componentWillUnmount: function() {
+    this.listener.remove();
+  },
+
+  onChange: function() {
+    var currentUser = UserStore.getCurrentUser();
+    var errors = UserStore.getErrors();
+    console.log('hey',errors);
+    if(errors.length){
+      this.setState({password: "", errors: errors});
+    }else if(currentUser.length){
+      HashHistory.push('pictureindex');
+    }
   },
 
   usernameChange: function(e) {
@@ -17,8 +38,8 @@ var Login = React.createClass({
 
   submit: function() {
     ClientActions.login(this.state);
-    this.setState({username: "", password: ""});
-    HashHistory.push("pictureindex");
+    // this.setState({username: "", password: ""});
+    // HashHistory.push("pictureindex");
   },
 
 //TODO: set minusernamelength, minPasswordLength as object var
@@ -38,6 +59,9 @@ var Login = React.createClass({
   },
 
   render: function() {
+    var errors = this.state.errors.map(function(error){
+      return <li key={error}>{error}</li>;
+    });
     return (
       <div>
         <h2>Login</h2>
@@ -57,6 +81,9 @@ var Login = React.createClass({
         </form>
         <p>Need an account?</p>
         <button onClick={this.gotoSignup}>Sign Up</button>
+        <ul>
+          {errors}
+        </ul>
       </div>
     );
   }

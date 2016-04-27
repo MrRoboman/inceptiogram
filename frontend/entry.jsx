@@ -11,11 +11,11 @@ var LoginForm = require('./components/login');
 var SignupForm = require('./components/signup');
 var ClientActions = require('./actions/client_actions');
 
-// var App = require('./components/app.jsx');
+var currentUser = "";
 var App = React.createClass({
 
 	getInitialState: function() {
-		return {currentUser: "Current User: NOBODY!"};
+		return {currentUser: ""};
 	},
 
 	componentDidMount: function() {
@@ -31,6 +31,7 @@ var App = React.createClass({
 		var username = "Current User: NOBODY!";
 		if(UserStore.getCurrentUser()) username = UserStore.getCurrentUser();
 		this.setState({currentUser: username});
+		currentUser = username;
 	},
 
 	render: function() {

@@ -24,11 +24,12 @@ var Signup = React.createClass({
   },
 
   _onChange: function() {
+    var currentUser = UserStore.getCurrentUser();
     var errors = UserStore.getErrors();
-    this.setState({errors: errors});
     if(errors.length) {
+      this.setState({errors: errors});
       //TODO: focus on username field, select the previous name that was there
-    }else {
+    }else if(currentUser.length > 0){
       HashHistory.push("pictureindex");
     }
   },
@@ -47,8 +48,8 @@ var Signup = React.createClass({
 
   submit: function() {
     ClientActions.createUser(this.state);
-    this.setState({password: "", retype: ""});
-    this.usernameInput.select();
+    // this.setState({password: "", retype: ""});
+    // this.usernameInput.select();
   },
 
   submitDisabled: function() {
