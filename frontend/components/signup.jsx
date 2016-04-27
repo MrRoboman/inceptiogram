@@ -30,7 +30,7 @@ var Signup = React.createClass({
       this.setState({errors: errors});
       //TODO: focus on username field, select the previous name that was there
     }else if(currentUser.length > 0){
-      HashHistory.push("pictureindex");
+      HashHistory.push("/");
     }
   },
 
@@ -85,10 +85,9 @@ var Signup = React.createClass({
     });
 
     return (
-      <div>
+      <div className="authform">
         <h2>Sign Up</h2>
         <form onSubmit={this.submit}>
-          <p>Inceptiogram</p>
           <input id="username"
                  type="text"
                  placeholder="Username"

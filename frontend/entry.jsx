@@ -42,12 +42,14 @@ var App = React.createClass({
 	render: function() {
 		var logoutButton = "";
 		if(this.state.currentUser !== "Current User: NOBODY!"){
-			logoutButton = <span><button onClick={this.logout}>Logout</button></span>;
+			logoutButton = <button onClick={this.logout}>Logout</button>;
 		}
 		return (
 			<div>
-				<h1>{this.state.currentUser}</h1>
-				{logoutButton}
+				<div className="appnav">
+					{logoutButton}
+					<h1>{this.state.currentUser}</h1>
+				</div>
 				{this.props.children}
 			</div>
 		);

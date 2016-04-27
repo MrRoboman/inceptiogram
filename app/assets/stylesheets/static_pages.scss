@@ -1,3 +1,55 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body, div, h1, h2, button, p, span, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: inherit;
+}
+
+button, input[type="submit"] {
+  margin: 4px;
+  padding: 4px 30px;
+}
+
+input[type="text"], input[type="password"] {
+  border: 1px solid black;
+}
+
+.appnav {
+  width: auto;
+  // height: 50px;
+  background-color: cornflowerblue;
+}
+
+.appnav button{
+  float: right;
+}
+
+.authform {
+  margin: 100px auto;
+  border: 1px solid black;
+  width: 250px;
+  border-radius: 5px;
+  text-align: center;
+  h2 {
+    text-align: left;
+    margin: 4px;
+  }
+  input[type="text"], input[type="password"] {
+    width: 150px;
+    height: 25px;
+    margin: 6px;
+    text-align: left;
+    padding: 4px;
+    font-size: 18px;
+  }
+  input[type="submit"]{
+    width: 150px;
+  }
+  button {
+    width: 150px;
+  }
+}

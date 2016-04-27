@@ -23,7 +23,7 @@ var Login = React.createClass({
     if(errors.length){
       this.setState({password: "", errors: errors});
     }else if(currentUser.length){
-      HashHistory.push('pictureindex');
+      HashHistory.push('/');
     }
   },
 
@@ -72,10 +72,9 @@ var Login = React.createClass({
       return <li key={error}>{error}</li>;
     });
     return (
-      <div>
+      <div className="authform">
         <h2>Login</h2>
         <form onSubmit={this.submit}>
-          <p>Inceptiogram</p>
           <input type="text"
                  placeholder="Username"
                  onChange={this.usernameChange}
