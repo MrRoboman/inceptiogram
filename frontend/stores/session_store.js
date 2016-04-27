@@ -5,18 +5,18 @@ var UserConstants = require('../constants/user_constants');
 var _currentUser = "";
 var _authErrors = [];
 
-var UserStore = new Store(dispatcher);
+var SessionStore = new Store(dispatcher);
 
-UserStore.getCurrentUser = function() {''
+SessionStore.getCurrentUser = function() {''
   return _currentUser.slice(); //TODO: do I need to copy this?
 };
 
-UserStore.getErrors = function() {
+SessionStore.getErrors = function() {
   return _authErrors.slice();
 };
 
 //TODO: stay logged in!
-UserStore.__onDispatch = function(payload) {
+SessionStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case UserConstants.RECEIVED_CURRENT_USER:
       _currentUser = payload.currentUser.username;
@@ -32,6 +32,6 @@ UserStore.__onDispatch = function(payload) {
 };
 
 // for testing (remove for production)
-window.UserStore = UserStore;
+window.SessionStore = SessionStore;
 
-module.exports = UserStore;
+module.exports = SessionStore;

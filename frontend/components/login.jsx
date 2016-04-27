@@ -1,7 +1,7 @@
 var React = require('react');
 var ClientActions = require('../actions/client_actions');
 var HashHistory = require('react-router').hashHistory;
-var UserStore = require('../stores/user_store');
+var SessionStore = require('../stores/session_store');
 
 var Login = React.createClass({
   getInitialState: function() {
@@ -9,7 +9,7 @@ var Login = React.createClass({
   },
 
   componentDidMount: function() {
-    this.listener = UserStore.addListener(this.onChange);
+    this.listener = SessionStore.addListener(this.onChange);
     ClientActions.fetchCurrentUser();
   },
 
@@ -18,8 +18,8 @@ var Login = React.createClass({
   },
 
   onChange: function() {
-    var currentUser = UserStore.getCurrentUser();
-    var errors = UserStore.getErrors();
+    var currentUser = SessionStore.getCurrentUser();
+    var errors = SessionStore.getErrors();
     if(errors.length){
       this.setState({password: "", errors: errors});
     }else if(currentUser.length){

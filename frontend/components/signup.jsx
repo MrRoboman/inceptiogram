@@ -1,6 +1,6 @@
 var React = require('react');
 var ClientActions = require('../actions/client_actions');
-var UserStore = require('../stores/user_store');
+var SessionStore = require('../stores/session_store');
 var HashHistory = require('react-router').hashHistory;
 
 var Signup = React.createClass({
@@ -16,7 +16,7 @@ var Signup = React.createClass({
     this.usernameInput = document.getElementById('username');
     this.passwordInput = document.getElementById('password');
     this.retypeInput = document.getElementById('retype');
-    this.listener = UserStore.addListener(this._onChange);
+    this.listener = SessionStore.addListener(this._onChange);
   },
 
   componentwillUnmount: function() {
@@ -24,8 +24,8 @@ var Signup = React.createClass({
   },
 
   _onChange: function() {
-    var currentUser = UserStore.getCurrentUser();
-    var errors = UserStore.getErrors();
+    var currentUser = SessionStore.getCurrentUser();
+    var errors = SessionStore.getErrors();
     if(errors.length) {
       this.setState({errors: errors});
       //TODO: focus on username field, select the previous name that was there

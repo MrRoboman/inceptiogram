@@ -5,7 +5,7 @@ var Route = require('react-router').Route;
 var IndexRoute = require('react-router').IndexRoute;
 var HashHistory = require('react-router').hashHistory;
 
-var UserStore = require('./stores/user_store');
+var SessionStore = require('./stores/session_store');
 var PictureIndex = require('./components/picture_index');
 var LoginForm = require('./components/login');
 var SignupForm = require('./components/signup');
@@ -19,7 +19,7 @@ var App = React.createClass({
 	},
 
 	componentDidMount: function() {
-		this.listener = UserStore.addListener(this._onUserStoreChange);
+		this.listener = SessionStore.addListener(this._onSessionStoreChange);
 		ClientActions.fetchCurrentUser();
 	},
 
@@ -27,9 +27,9 @@ var App = React.createClass({
 		this.listener.remove();
 	},
 
-	_onUserStoreChange: function() {
+	_onSessionStoreChange: function() {
 		var username = "Current User: NOBODY!";
-		if(UserStore.getCurrentUser()) username = UserStore.getCurrentUser();
+		if(SessionStore.getCurrentUser()) username = SessionStore.getCurrentUser();
 		this.setState({currentUser: username});
 		currentUser = username;
 	},
