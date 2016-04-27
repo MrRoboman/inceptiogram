@@ -47,6 +47,7 @@ var Signup = React.createClass({
     ClientActions.createUser(this.state);
     this.setState({password: "", retype: ""});
     this.usernameInput.select();
+    HashHistory.push("pictureindex");
   },
 
   submitDisabled: function() {

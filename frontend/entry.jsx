@@ -9,6 +9,7 @@ var UserStore = require('./stores/user_store');
 var PictureIndex = require('./components/picture_index');
 var LoginForm = require('./components/login');
 var SignupForm = require('./components/signup');
+var ClientActions = require('./actions/client_actions');
 
 // var App = require('./components/app.jsx');
 var App = React.createClass({
@@ -19,6 +20,7 @@ var App = React.createClass({
 
 	componentDidMount: function() {
 		this.listener = UserStore.addListener(this._onUserStoreChange);
+		ClientActions.fetchCurrentUser();
 	},
 
 	componentWillUnmount: function() {
@@ -26,8 +28,8 @@ var App = React.createClass({
 	},
 
 	_onUserStoreChange: function() {
-		var username = "notloggedin";
-		if(UserStore.getCurrentUser()) username = UserStore.getCurrentUser().username;
+		var username = "Current User: NOBODY!";
+		if(UserStore.getCurrentUser()) username = UserStore.getCurrentUser();
 		this.setState({currentUser: username});
 	},
 
@@ -47,6 +49,7 @@ var router = (
 			<IndexRoute component={LoginForm} />
 			<Route component={SignupForm} path="signup" />
 			<Route component={LoginForm} path="login" />
+			<Route component={PictureIndex} path="pictureindex" />
 		</Route>
 	</Router>
 );

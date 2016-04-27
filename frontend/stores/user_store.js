@@ -2,13 +2,13 @@ var Store = require('flux/utils').Store;
 var dispatcher = require('../dispatcher/dispatcher');
 var UserConstants = require('../constants/user_constants');
 
-var _currentUser = null;
+var _currentUser = "";
 var _authErrors = [];
 
 var UserStore = new Store(dispatcher);
 
 UserStore.getCurrentUser = function() {
-  return _currentUser; //TODO: do I need to copy this?
+  return _currentUser.slice(); //TODO: do I need to copy this?
 };
 
 UserStore.getErrors = function() {
@@ -18,7 +18,8 @@ UserStore.getErrors = function() {
 UserStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case UserConstants.RECEIVED_CURRENT_USER:
-      _currentUser = payload.currentUser;
+      _currentUser = payload.currentUser.username;
+      debugger;
       this.__emitChange();
       break;
     case UserConstants.RECEIVED_ERROR:

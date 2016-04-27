@@ -4,7 +4,7 @@ var HashHistory = require('react-router').hashHistory;
 
 var Login = React.createClass({
   getInitialState: function() {
-    return {username: "", password: ""};
+    return {username: "Rob", password: "password"};
   },
 
   usernameChange: function(e) {
@@ -18,6 +18,18 @@ var Login = React.createClass({
   submit: function() {
     ClientActions.login(this.state);
     this.setState({username: "", password: ""});
+    HashHistory.push("pictureindex");
+  },
+
+//TODO: set minusernamelength, minPasswordLength as object var
+//TODO: there is a possible bug: when I didnt use this disable function and submitted I would be logged in for a sec
+// then the name would change back to not logged in.
+  submitDisabled: function() {
+    return (
+      !(this.state.username.length > 0 &&
+        this.state.password.length > 0
+       )
+    );
   },
 
   gotoSignup: function(e) {
@@ -41,7 +53,7 @@ var Login = React.createClass({
                  onChange={this.passwordChange}
                  value={this.state.password}/>
           <br/>
-          <input type="submit" value="submit" />
+          <input type="submit" value="submit" disabled={this.submitDisabled()}/>
         </form>
         <p>Need an account?</p>
         <button onClick={this.gotoSignup}>Sign Up</button>
