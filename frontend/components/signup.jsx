@@ -28,6 +28,8 @@ var Signup = React.createClass({
     this.setState({errors: errors});
     if(errors.length) {
       //TODO: focus on username field, select the previous name that was there
+    }else {
+      HashHistory.push("pictureindex");
     }
   },
 
@@ -47,7 +49,6 @@ var Signup = React.createClass({
     ClientActions.createUser(this.state);
     this.setState({password: "", retype: ""});
     this.usernameInput.select();
-    HashHistory.push("pictureindex");
   },
 
   submitDisabled: function() {

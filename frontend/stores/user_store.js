@@ -15,11 +15,12 @@ UserStore.getErrors = function() {
   return _authErrors.slice();
 };
 
+//TODO: stay logged in!
 UserStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case UserConstants.RECEIVED_CURRENT_USER:
       _currentUser = payload.currentUser.username;
-      debugger;
+      // debugger;
       this.__emitChange();
       break;
     case UserConstants.RECEIVED_ERROR:

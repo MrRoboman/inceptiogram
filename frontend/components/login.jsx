@@ -4,7 +4,7 @@ var HashHistory = require('react-router').hashHistory;
 
 var Login = React.createClass({
   getInitialState: function() {
-    return {username: "Rob", password: "password"};
+    return {username: "", password: ""};
   },
 
   usernameChange: function(e) {
