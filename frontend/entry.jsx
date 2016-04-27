@@ -34,11 +34,20 @@ var App = React.createClass({
 		currentUser = username;
 	},
 
-	render: function() {
+	logout: function(e) {
+		e.preventDefault();
+		ClientActions.logout();
+	},
 
+	render: function() {
+		var logoutButton = "";
+		if(this.state.currentUser !== "Current User: NOBODY!"){
+			logoutButton = <span><button onClick={this.logout}>Logout</button></span>;
+		}
 		return (
 			<div>
 				<h1>{this.state.currentUser}</h1>
+				{logoutButton}
 				{this.props.children}
 			</div>
 		);

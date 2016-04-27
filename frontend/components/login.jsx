@@ -20,7 +20,6 @@ var Login = React.createClass({
   onChange: function() {
     var currentUser = UserStore.getCurrentUser();
     var errors = UserStore.getErrors();
-    console.log('hey',errors);
     if(errors.length){
       this.setState({password: "", errors: errors});
     }else if(currentUser.length){

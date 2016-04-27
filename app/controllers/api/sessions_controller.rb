@@ -5,7 +5,7 @@ class Api::SessionsController < ApplicationController
       login!(user)
       render json: {username: current_user.username}
     else
-      render json: {username: "", error: ["Invalid Credentials"]}, status: 403
+      render json: {username: "", error: ["Bad username or password"]}, status: 403
     end
   end
 

@@ -12,7 +12,6 @@ UserStore.getCurrentUser = function() {''
 };
 
 UserStore.getErrors = function() {
-  // debugger;
   return _authErrors.slice();
 };
 
@@ -21,11 +20,10 @@ UserStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case UserConstants.RECEIVED_CURRENT_USER:
       _currentUser = payload.currentUser.username;
-      // debugger;
+      _authErrors = [];
       this.__emitChange();
       break;
     case UserConstants.RECEIVED_ERROR:
-    // debugger;
       _currentUser = payload.errors.username;
       _authErrors = payload.errors.error;
       this.__emitChange();
