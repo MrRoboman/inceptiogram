@@ -1,5 +1,6 @@
 var Dispatcher = require('../dispatcher/dispatcher.js');
 var UserConstants = require('../constants/user_constants.js');
+var pictureConstants = require('../constants/picture_constants');
 
 var ServerActions = {
   receiveCurrentUser: function(currentUser) {
@@ -12,6 +13,12 @@ var ServerActions = {
     Dispatcher.dispatch({
       actionType: UserConstants.RECEIVED_ERROR,
       errors: errors.responseJSON
+    });
+  },
+  receivePictures: function(pictures) {
+    Dispatcher.dispatch({
+      actionType: pictureConstants.RECEIVED_PICTURES,
+      pictures: pictures
     });
   }
 };

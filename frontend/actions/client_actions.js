@@ -4,7 +4,9 @@ var ClientActions = {
   fetchCurrentUser: ApiUtil.fetchCurrentUser,
   login: ApiUtil.login,
   logout: ApiUtil.logout,
-  createUser: ApiUtil.createUser
+  createUser: ApiUtil.createUser,
+
+  fetchPictures: ApiUtil.fetchPictures
 };
 
 window.CA = ClientActions;

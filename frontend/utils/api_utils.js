@@ -36,6 +36,16 @@ module.exports = {
       success: ServerActions.receiveCurrentUser,
       error: ServerActions.receiveErrors
     });
+  },
+
+
+  fetchPictures: function() {
+    $.ajax({
+      type: 'GET',
+      url: 'api/pictures',
+      dataType: 'json',
+      success: ServerActions.receivePictures
+    });
   }
 
 };

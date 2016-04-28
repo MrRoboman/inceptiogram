@@ -1,16 +1,30 @@
 var React = require('react');
+var pictureStore = require('../stores/picture_store');
 
-var Picture_index_item = React.createClass({
-  getInitialState: function() {
-    return {};
-  },
+var PictureIndexItem = React.createClass({
+  // getInitialState: function() {
+  //   return {};
+  // },
+
+  // componentDidMount: function() {
+  //   this.listener = pictureStore.addListener(this.onChange);
+  // },
+  //
+  // componentWillUnmount: function() {
+  //   this.listener.remove();
+  // },
+  //
+  // onChange: function() {
+  //
+  // },
+
   render: function() {
     return (
       <div>
-        //Put stuff here
+        <img src={this.props.picture.url}/>
       </div>
     );
   }
 });
 
-module.exports = Picture_index_item;
+module.exports = PictureIndexItem;
