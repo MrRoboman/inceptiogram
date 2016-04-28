@@ -9,7 +9,7 @@
 Inceptiogram is a web application inspired by Instagram that will be built using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
 - [x] New account creation, login
-- [ ] guest/demo login
+- [x] guest/demo login
 - [ ] Three separate view indexes:
   - [ ] Pictures Index (Shows recently uploaded pictures by users that the current user follows)
   - [ ] Users Index (Shows popular users and samples of their photos)
@@ -26,8 +26,8 @@ Inceptiogram will allow users to do the following:
 <!-- This is a Markdown checklist. Use it to keep track of your
 progress. Put an x between the brackets for a checkmark: [x] -->
 
-- [ ] Create an account (MVP)
-- [ ] Log in / Log out, including as a Guest/Demo User (MVP)
+- [x] Create an account (MVP)
+- [x] Log in / Log out, including as a Guest/Demo User (MVP)
 - [ ] View, like, comment on pictures (MVP)
 - [ ] Follow, search users (MVP)
 - [ ] Tag pictures with multiple tags and people (expected feature, but not MVP)
@@ -60,7 +60,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [x] authentication
 - [x] user signup/signin pages
 - [x] blank landing page after signin
-- [ ] start basic styling
+- [x] start basic styling
 
 ### Phase 2: Picture Model, API, and basic APIUtil (1.5 days)
 
