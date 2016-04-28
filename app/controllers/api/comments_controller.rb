@@ -3,7 +3,8 @@ class Api::CommentsController < ApplicationController
     comment = Comment.new(comment_params)
     comment.user_id = current_user.id
     if comment.save
-      @picture = comment.picture
+      @picture = Picture.includes(:owner, comments: [:author])
+                        .find_by_id(comment.picture_id)
       render :create
     else
       debugger
