@@ -1,6 +1,5 @@
 class Api::PicturesController < ApplicationController
   def index
-    @pictures = Picture.all
-    render json: @pictures
+    @pictures = Picture.includes(:owner).all
   end
 end
