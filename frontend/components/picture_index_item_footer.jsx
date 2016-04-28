@@ -13,8 +13,6 @@ var PictureIndexItemFooter = React.createClass({
 
   onSubmit: function(e) {
     e.preventDefault();
-    console.log("COMMENT");
-    console.log(this.state.formText);
     ClientActions.createComment({pictureId: this.props.picture.id,
                                  body: this.state.formText});
     this.setState({formText: ""});

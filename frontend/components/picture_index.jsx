@@ -29,10 +29,7 @@ module.exports = React.createClass({
     if(SessionStore.getCurrentUser() === ""){
       HashHistory.push("login");
     } else{
-      //fetch pictures of this users followees
       this.setState({pictures: PictureStore.getPictures()});
-
-      // console.log(PictureStore.getPictures());
     }
   },
 
