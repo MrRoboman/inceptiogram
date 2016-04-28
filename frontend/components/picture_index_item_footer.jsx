@@ -18,6 +18,18 @@ var PictureIndexItemFooter = React.createClass({
     this.setState({formText: ""});
   },
 
+  likeString: function(){
+    var len = this.props.picture.likes.length;
+    var likes = this.props.picture.likes.map(function(like, idx){
+      if(idx === len - 1){
+        return <span key={like.id}><a href="#">{like.username}</a></span>;
+      }else {
+        return <span key={like.id}><a href="#">{like.username}</a>, </span>;
+      }
+    });
+    return <span>{likes} like this</span>;
+  },
+
   render: function() {
     var comments = this.props.picture.comments.map(function(comment){
       return (<li key={comment.id}>
@@ -27,7 +39,7 @@ var PictureIndexItemFooter = React.createClass({
     });
     return (
       <div>
-        <span></span>
+        <span>{this.likeString()}</span>
         <h4>Comments</h4>
         <ul>
           {comments}
