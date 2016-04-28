@@ -1,5 +1,5 @@
 class Api::PicturesController < ApplicationController
   def index
-    @pictures = Picture.includes(:owner, comments: [:author]).all
+    @pictures = Picture.all_with_deets
   end
 end

@@ -13,8 +13,7 @@ class Api::LikesController < ApplicationController
     # save it if it does not exists
     like = Like.new(args)
     if like.save
-      @picture = Picture.includes(:owner, likes: [:user], comments: [:author])
-                        .find_by_id(like.picture_id)
+      @picture = Picture.find_with_deets(like.picture_id)
       render :create
     else
       debugger

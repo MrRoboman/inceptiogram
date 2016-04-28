@@ -4,8 +4,11 @@ class Picture < ActiveRecord::Base
   has_many :comments
   has_many :likes
 
+  def self.all_with_deets
+    self.includes(:owner, likes: [:user], comments: [:author]).all
+  end
+
   def self.find_with_deets(id)
-    self.includes(:owner, likes: [:user], comments: [:author])
-        .find_by_id(id)
+    self.includes(:owner, likes: [:user], comments: [:author]).find_by_id(id)
   end
 end
