@@ -46,6 +46,16 @@ module.exports = {
       dataType: 'json',
       success: ServerActions.receivePictures
     });
+  },
+
+  createComment: function(data) {
+    $.ajax({
+      type: 'POST',
+      url: 'api/comments',
+      dataType: 'json',
+      data: {comment: {picture_id: data.pictureId, body: data.body}},
+      success: ServerActions.receiveSinglePicture
+    });
   }
 
 };

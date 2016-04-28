@@ -3,24 +3,26 @@ var ClientActions = require('../actions/client_actions');
 var SessionStore = require('../stores/session_store');
 var HashHistory = require('react-router').hashHistory;
 var PictureIndexItem = require('./picture_index_item');
-var pictureStore = require('../stores/picture_store');
+var PictureStore = require('../stores/picture_store');
 
 var React = require('react');
 
 module.exports = React.createClass({
 
   getInitialState: function() {
-    return {pictures: pictureStore.getPictures()};
+    return {pictures: PictureStore.getPictures()};
   },
 
   componentDidMount: function() {
-    this.listener = SessionStore.addListener(this.onChange);
+    this.sessionListener = SessionStore.addListener(this.onChange);
+    this.pictureListener = PictureStore.addListener(this.onChange);
     ClientActions.fetchCurrentUser();
     ClientActions.fetchPictures();
   },
 
   componentWillUnmount: function() {
-    this.listener.remove();
+    this.sessionListener.remove();
+    this.pictureListener.remove();
   },
 
   onChange: function() {
@@ -28,7 +30,9 @@ module.exports = React.createClass({
       HashHistory.push("login");
     } else{
       //fetch pictures of this users followees
-      this.setState({pictures: pictureStore.getPictures()});
+      this.setState({pictures: PictureStore.getPictures()});
+
+      // console.log(PictureStore.getPictures());
     }
   },
 

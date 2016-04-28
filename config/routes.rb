@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 		resource :session, only: [:create, :destroy]
 
 		resources :pictures, only: [:index]
+		resources :comments, only: [:create]
+		# resources :pictures, only: [:create] do
+		# 	resources :comments, only: [:create]
+		# end
 	end
 
 end

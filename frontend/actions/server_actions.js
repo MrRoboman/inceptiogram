@@ -15,12 +15,28 @@ var ServerActions = {
       errors: errors.responseJSON
     });
   },
+
+
   receivePictures: function(pictures) {
     Dispatcher.dispatch({
       actionType: pictureConstants.RECEIVED_PICTURES,
       pictures: pictures
     });
+  },
+
+  receiveSinglePicture: function(picture) {
+    Dispatcher.dispatch({
+      actionType: pictureConstants.RECEIVED_SINGLE_PICTURE,
+      picture: picture
+    });
   }
+  // ,
+  // receiveComment: function(comment) {
+  //   Dispatcher.dispatch({
+  //     actionType: pictureConstants.RECEIVED_PICTURES,
+  //     pictures: pictures
+  //   });
+  // }
 };
 
 module.exports = ServerActions;

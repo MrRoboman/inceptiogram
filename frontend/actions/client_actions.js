@@ -6,7 +6,9 @@ var ClientActions = {
   logout: ApiUtil.logout,
   createUser: ApiUtil.createUser,
 
-  fetchPictures: ApiUtil.fetchPictures
+  fetchPictures: ApiUtil.fetchPictures,
+
+  createComment: ApiUtil.createComment
 };
 
 window.CA = ClientActions;

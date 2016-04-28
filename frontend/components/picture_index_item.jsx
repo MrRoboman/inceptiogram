@@ -10,7 +10,7 @@ var PictureIndexItem = React.createClass({
       <div>
         <PictureIndexItemHeader username={this.props.picture.owner} />
         <img src={this.props.picture.url}/>
-        <PictureIndexItemFooter comments={this.props.picture.comments} />
+        <PictureIndexItemFooter picture={this.props.picture} />
       </div>
     );
   }
