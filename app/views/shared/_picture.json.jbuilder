@@ -1,6 +1,7 @@
 json.id picture.id
 json.url picture.url
 json.owner picture.owner.username
+json.liking picture.liked_by?(current_user)
 json.likes picture.likes do |like|
   json.id like.id
   json.username like.user.username

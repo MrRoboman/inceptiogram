@@ -31,6 +31,7 @@ var PictureIndexItemFooter = React.createClass({
   },
 
   render: function() {
+    var liking = this.props.picture.liking ? "unlike" : "like";
     var comments = this.props.picture.comments.map(function(comment){
       return (<li key={comment.id}>
                 <a href="#">{comment.author} </a>{comment.body}
@@ -44,6 +45,7 @@ var PictureIndexItemFooter = React.createClass({
         <ul>
           {comments}
         </ul>
+        <button>{liking}</button>
         <form onSubmit={this.onSubmit}>
           <input type="text"
                  placeholder="Add a comment..."

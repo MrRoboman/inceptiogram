@@ -11,4 +11,8 @@ class Picture < ActiveRecord::Base
   def self.find_with_deets(id)
     self.includes(:owner, likes: [:user], comments: [:author]).find_by_id(id)
   end
+
+  def liked_by?(user)
+    likes.find_by_user_id(user.id) ? true : false
+  end
 end
