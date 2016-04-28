@@ -56,6 +56,16 @@ module.exports = {
       data: {comment: {picture_id: data.pictureId, body: data.body}},
       success: ServerActions.receiveSinglePicture
     });
+  },
+
+  createLike: function(data) {
+    $.ajax({
+      type: 'POST',
+      url: 'api/likes',
+      dataType: 'json',
+      data: {like: {picture_id: data.pictureId}},
+      success: ServerActions.receiveSinglePicture
+    });
   }
 
 };

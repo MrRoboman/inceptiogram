@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :pictures
   has_many :comments
+  has_many :likes
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

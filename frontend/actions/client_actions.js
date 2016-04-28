@@ -8,7 +8,8 @@ var ClientActions = {
 
   fetchPictures: ApiUtil.fetchPictures,
 
-  createComment: ApiUtil.createComment
+  createComment: ApiUtil.createComment,
+  createLike: ApiUtil.createLike
 };
 
 window.CA = ClientActions;

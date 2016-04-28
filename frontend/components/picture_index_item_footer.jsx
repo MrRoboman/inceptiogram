@@ -27,6 +27,7 @@ var PictureIndexItemFooter = React.createClass({
     });
     return (
       <div>
+        <span></span>
         <h4>Comments</h4>
         <ul>
           {comments}
