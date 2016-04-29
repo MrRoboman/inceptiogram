@@ -14,6 +14,7 @@ html, body, div, h1, h2, h3, button, p, span, input, img, a, ul, li {
   font-family: 'Josefin Sans', sans-serif;
   text-decoration: none;
   list-style: none;
+  overflow: inherit;
 }
 
 button, input[type="submit"] {
@@ -54,11 +55,9 @@ html, body {
 }
 
 body {
-//   background: url("http://d3ec71zsp1ok15.cloudfront.net/assets/content/staff-pics/RyanHall-156da2c53e72f43f75a5b75b23e293fa.jpg") no-repeat center bottom;
-//   background-size: cover;
-background-image: url("http://d3ec71zsp1ok15.cloudfront.net/assets/content/staff-pics/RyanHall-156da2c53e72f43f75a5b75b23e293fa.jpg");
-background-repeat: no-repeat;
-background-size: cover;
+// background-image: url("http://d3ec71zsp1ok15.cloudfront.net/assets/content/staff-pics/RyanHall-156da2c53e72f43f75a5b75b23e293fa.jpg");
+// background-repeat: no-repeat;
+// background-size: cover;
 }
 
 .app {
@@ -115,6 +114,9 @@ background-size: cover;
   background: white;
   width: 640px;
   margin: 50px auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   .header {
     border: 1px solid $border-color;
     border-bottom: 0;
