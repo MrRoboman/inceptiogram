@@ -49,10 +49,20 @@ a:hover {
 a:active {
 }
 
+html, body {
+  min-height: 100%;
+}
 
+body {
+//   background: url("http://d3ec71zsp1ok15.cloudfront.net/assets/content/staff-pics/RyanHall-156da2c53e72f43f75a5b75b23e293fa.jpg") no-repeat center bottom;
+//   background-size: cover;
+background-image: url("http://d3ec71zsp1ok15.cloudfront.net/assets/content/staff-pics/RyanHall-156da2c53e72f43f75a5b75b23e293fa.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+}
 
 .app {
-  background-color: #f9f9ff;
+  // background-color: #f9f9ff;
 }
 
 .appnav {
@@ -70,13 +80,15 @@ a:active {
 
 .authform {
   padding: 40px;
-  margin: 100px auto;
-  border: 1px solid black;
+  float: right;
+  left: 50px;
+  margin-top: 100px;
+  // border: 1px solid black;
   width: 250px;
   border-radius: 5px;
   text-align: center;
   h2 {
-    text-align: left;
+    // text-align: left;
     margin-left: -20px;
     margin-top: -20px;
     margin-bottom: 20px;
