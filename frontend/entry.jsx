@@ -6,9 +6,12 @@ var IndexRoute = require('react-router').IndexRoute;
 var HashHistory = require('react-router').hashHistory;
 
 var SessionStore = require('./stores/session_store');
+
 var PictureIndex = require('./components/picture_index');
 var LoginForm = require('./components/login');
 var SignupForm = require('./components/signup');
+var ProfileIndex = require('./components/profile_index');
+
 var ClientActions = require('./actions/client_actions');
 
 var currentUser = "";
@@ -59,7 +62,7 @@ var App = React.createClass({
 var router = (
 	<Router history={HashHistory}>
 		<Route path='/' component={App}>
-			<IndexRoute component={PictureIndex} />
+			<IndexRoute component={ProfileIndex} />
 			<Route component={PictureIndex} path="pictureindex" />
 			<Route component={SignupForm} path="signup" />
 			<Route component={LoginForm} path="login" />

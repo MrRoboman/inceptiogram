@@ -66,6 +66,15 @@ module.exports = {
       data: {like: {picture_id: data}},
       success: ServerActions.receiveSinglePicture
     });
+  },
+
+  fetchProfiles: function(profiles) {
+    $.ajax({
+      type: 'GET',
+      url: 'api/profiles',
+      dataType: 'json',
+      success: ServerActions.receiveProfiles
+    });
   }
 
 };

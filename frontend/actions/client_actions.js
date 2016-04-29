@@ -9,7 +9,9 @@ var ClientActions = {
   fetchPictures: ApiUtil.fetchPictures,
 
   createComment: ApiUtil.createComment,
-  createLike: ApiUtil.createLike
+  createLike: ApiUtil.createLike,
+
+  fetchProfiles: ApiUtil.fetchProfiles
 };
 
 window.CA = ClientActions;
