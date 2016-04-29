@@ -42,11 +42,21 @@ var App = React.createClass({
 		ClientActions.logout();
 	},
 
+	gotoProfiles: function(e) {
+		e.preventDefault();
+		HashHistory.push('profileindex');
+	},
+
 	render: function() {
 		var topleft = "Inceptiogram"; //Using this var to remember that I had {this.state.currentUser}
 		var logoutButton = "";
 		if(this.state.currentUser !== "Current User: NOBODY!"){
-			logoutButton = <button onClick={this.logout}>Logout</button>;
+			logoutButton = (
+				<div>
+					<button onClick={this.gotoProfiles}>Profiles</button>
+					<button onClick={this.logout}>Logout</button>
+				</div>
+			);
 		}
 		return (
 			<div className="app">
@@ -62,8 +72,9 @@ var App = React.createClass({
 var router = (
 	<Router history={HashHistory}>
 		<Route path='/' component={App}>
-			<IndexRoute component={ProfileIndex} />
+			<IndexRoute component={PictureIndex} />
 			<Route component={PictureIndex} path="pictureindex" />
+			<Route component={ProfileIndex} path="profileindex" />
 			<Route component={SignupForm} path="signup" />
 			<Route component={LoginForm} path="login" />
 		</Route>
