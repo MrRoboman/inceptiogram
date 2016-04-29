@@ -1,17 +1,17 @@
 var Dispatcher = require('../dispatcher/dispatcher.js');
-var UserConstants = require('../constants/user_constants.js');
+var SessionConstants = require('../constants/session_constants.js');
 var pictureConstants = require('../constants/picture_constants');
 
 var ServerActions = {
   receiveCurrentUser: function(currentUser) {
     Dispatcher.dispatch({
-      actionType: UserConstants.RECEIVED_CURRENT_USER,
+      actionType: SessionConstants.RECEIVED_CURRENT_USER,
       currentUser: currentUser
     });
   },
   receiveErrors: function(errors) {
     Dispatcher.dispatch({
-      actionType: UserConstants.RECEIVED_ERROR,
+      actionType: SessionConstants.RECEIVED_ERROR,
       errors: errors.responseJSON
     });
   },
