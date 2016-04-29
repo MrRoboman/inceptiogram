@@ -2,12 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html, body, div, h1, h2, button, p, span, input {
+
+$border-color: #ddd;
+
+
+html, body, div, h1, h2, h3, button, p, span, input, img, a, ul, li {
   margin: 0;
   padding: 0;
   border: 0;
   text-align: inherit;
-  font-family: sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  text-decoration: none;
+  list-style: none;
 }
 
 button, input[type="submit"] {
@@ -19,17 +25,51 @@ input[type="text"], input[type="password"] {
   border: 1px solid black;
 }
 
-.appnav {
-  width: auto;
-  // height: 50px;
-  background-color: cornflowerblue;
+img {
+  width: 640px;
+  height: 640px;
 }
 
-.appnav button{
-  float: right;
+a {
+  font-weight: bold;
 }
+
+a:link {
+  color: #0074D9;
+}
+
+a:visited {
+  color: #0074D9;
+}
+
+a:hover {
+  color: #001f3f;
+}
+
+a:active {
+}
+
+
+
+.app {
+  background-color: #f9f9ff;
+}
+
+.appnav {
+  padding: 25px;
+  height: 25px;
+  border-bottom: 1px solid $border-color;
+  button {
+    float: right;
+  }
+}
+
+// .appnav button{
+//   float: right;
+// }
 
 .authform {
+  padding: 40px;
   margin: 100px auto;
   border: 1px solid black;
   width: 250px;
@@ -37,7 +77,9 @@ input[type="text"], input[type="password"] {
   text-align: center;
   h2 {
     text-align: left;
-    margin: 4px;
+    margin-left: -20px;
+    margin-top: -20px;
+    margin-bottom: 20px;
   }
   input[type="text"], input[type="password"] {
     width: 150px;
@@ -48,9 +90,41 @@ input[type="text"], input[type="password"] {
     font-size: 18px;
   }
   input[type="submit"]{
-    width: 150px;
+    width: 160px;
+    font-size: 18px;
   }
   button {
-    width: 150px;
+    width: 160px;
+    font-size: 18px;
+  }
+}
+
+.item {
+  background: white;
+  width: 640px;
+  margin: 50px auto;
+  .header {
+    border: 1px solid $border-color;
+    border-bottom: 0;
+    border-radius: 2px;
+    padding: 20px;
+  }
+  .footer {
+    border: 1px solid $border-color;
+    border-top: 0;
+    padding: 20px;
+    border-radius: 2px;
+    .comment-form {
+      display: flex;
+      .comments {
+        margin-top: 16px;
+      }
+      .comment-text-field {
+        font-size: 20px;
+        padding: 4px;
+        width: 500px;
+        border: 0;
+      }
+    }
   }
 }

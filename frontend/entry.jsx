@@ -40,15 +40,16 @@ var App = React.createClass({
 	},
 
 	render: function() {
+		var topleft = "Inceptiogram"; //Using this var to remember that I had {this.state.currentUser}
 		var logoutButton = "";
 		if(this.state.currentUser !== "Current User: NOBODY!"){
 			logoutButton = <button onClick={this.logout}>Logout</button>;
 		}
 		return (
-			<div>
+			<div className="app">
 				<div className="appnav">
 					{logoutButton}
-					<h1>{this.state.currentUser}</h1>
+					<h1>{topleft}</h1>
 				</div>
 				{this.props.children}
 			</div>

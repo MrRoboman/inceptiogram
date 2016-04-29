@@ -44,19 +44,21 @@ var PictureIndexItemFooter = React.createClass({
              );
     });
     return (
-      <div>
+      <div className="footer">
         <span>{this.likeString()}</span>
-        <h4>Comments</h4>
-        <ul>
+        <ul className="comments">
           {comments}
         </ul>
-        <button onClick={this.clickLikeButton}>{liking}</button>
-        <form onSubmit={this.onSubmit}>
-          <input type="text"
-                 placeholder="Add a comment..."
-                 onChange={this.onFormTextChange}
-                 value={this.state.formText}/>
-        </form>
+          <div className="comment-form">
+            <button onClick={this.clickLikeButton}>{liking}</button>
+            <form onSubmit={this.onSubmit}>
+              <input className="comment-text-field"
+                     type="text"
+                     placeholder="Add a comment..."
+                     onChange={this.onFormTextChange}
+                     value={this.state.formText}/>
+            </form>
+        </div>
       </div>
     );
   }

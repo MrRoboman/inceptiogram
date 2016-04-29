@@ -6,8 +6,8 @@ var PictureIndexItemHeader = React.createClass({
   },
   render: function() {
     return (
-      <div>
-        <span>{this.props.username}</span>
+      <div className="header">
+        <span><a href="#">{this.props.username}</a></span>
       </div>
     );
   }
