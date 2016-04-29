@@ -1,4 +1,5 @@
 var React = require('react');
+var FollowButton = require('./follow_button');
 
 var IndexItemHeader = React.createClass({
 
@@ -7,8 +8,8 @@ var IndexItemHeader = React.createClass({
     var flwBtn = "";
     return (
       <div>
-        <span><a href="#">{this.props.username}</a></span>
-        {flwBtn}
+        <span><a href="#">{this.props.profile.username}</a></span>
+        <FollowButton display={this.props.showFlwBtn} />
       </div>
     );
   }
