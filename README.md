@@ -28,7 +28,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 - [x] Create an account (MVP)
 - [x] Log in / Log out, including as a Guest/Demo User (MVP)
-- [ ] View, like, comment on pictures (MVP)
+- [x] View, like, comment on pictures (MVP)
 - [ ] Follow, search users (MVP)
 - [ ] Tag pictures with multiple tags and people (expected feature, but not MVP)
 - [ ] Search by tag (expected feature, but not MVP)
@@ -66,47 +66,47 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 **Objective:** PictureIndex displays most recent pictures
 
-- [ ] create `Picture` model
-- [ ] seed the database with a small amount of test data
-- [ ] CRUD API for pictures (`PictureController`)
-- [ ] jBuilder views for pictures
-- [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console
+- [x] create `Picture` model
+- [x] seed the database with a small amount of test data
+- [x] CRUD API for pictures (`PictureController`)
+- [x] jBuilder views for pictures
+- [x] setup `APIUtil` to interact with the API
+- [x] test out API interaction in the console
 - [ ] basic styling
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
 
 **Objective:** Pictures can be viewed with infinite scroll
 
-- [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
+- [x] setup the flux loop with skeleton files
+- [x] setup React Router
 - implement each picture component, building out the flux loop as needed.
-  - [ ] `PictureIndex`
-  - [ ] `PictureIndexItem`
-    - [ ] `PictureIndexItemHeader`
-    - [ ] `PictureIndexItemPicture`
-    - [ ] `PictureIndexItemFooter`
+  - [x] `PictureIndex`
+  - [x] `PictureIndexItem`
+    - [x] `PictureIndexItemHeader`
+    - [x] `PictureIndexItemPicture`
+    - [x] `PictureIndexItemFooter`
 - [ ] basic styling
 
 ### Phase 4: Comments (0.5 days)
 
 **Objective:** Build Comment form
 
-- [ ] create `Comment` model
+- [x] create `Comment` model
 - build out API, Flux loop, and components for:
-  - [ ] Comment CRUD
-  - [ ] Comment form component added to PictureIndexItemFooter
-- Use CSS to style new views
+  - [x] Comment CRUD
+  - [x] Comment form component added to PictureIndexItemFooter
+- [ ] Use CSS to style new views
 
 ### Phase 5: Likes (0.5 days)
 
 **Objective:**
 
-- [ ] create `Like` model
-- build out API, Flux loop, and components for:
-  - [ ] fetching Like for Picture
-  - [ ] toggling Like for Picture
-- [ ] add Like to Comment form  
+- [x] create `Like` model
+- [x] build out API, Flux loop, and components for:
+  - [x] fetching Like for Picture
+  - [x] toggling Like for Picture
+- [x] add Like to Comment form  
 - [ ] Style new elements
 
 ### Phase 6: Profile View (1 days)
