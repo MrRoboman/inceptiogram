@@ -72,7 +72,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [x] jBuilder views for pictures
 - [x] setup `APIUtil` to interact with the API
 - [x] test out API interaction in the console
-- [ ] basic styling
+- [x] basic styling
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
 
@@ -86,7 +86,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
     - [x] `PictureIndexItemHeader`
     - [x] `PictureIndexItemPicture`
     - [x] `PictureIndexItemFooter`
-- [ ] basic styling
+- [x] basic styling
 
 ### Phase 4: Comments (0.5 days)
 
@@ -107,7 +107,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
   - [x] fetching Like for Picture
   - [x] toggling Like for Picture
 - [x] add Like to Comment form  
-- [ ] Style new elements
+- [x] Style new elements
 
 ### Phase 6: Profile View (1 days)
 
