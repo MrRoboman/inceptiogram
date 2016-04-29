@@ -63,7 +63,7 @@ module.exports = {
       type: 'POST',
       url: 'api/likes',
       dataType: 'json',
-      data: {like: {picture_id: data.pictureId}},
+      data: {like: {picture_id: data}},
       success: ServerActions.receiveSinglePicture
     });
   }

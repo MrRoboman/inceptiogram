@@ -8,6 +8,8 @@ class Api::LikesController < ApplicationController
     # destroy the like if it exists
     if like
       like.destroy
+      @picture = Picture.find_with_deets(like.picture_id)
+      return
     end
 
     # save it if it does not exists

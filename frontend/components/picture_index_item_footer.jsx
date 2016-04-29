@@ -11,6 +11,11 @@ var PictureIndexItemFooter = React.createClass({
     this.setState({formText: e.target.value});
   },
 
+  clickLikeButton: function(e) {
+    e.preventDefault();
+    ClientActions.createLike(this.props.picture.id);
+  },
+
   onSubmit: function(e) {
     e.preventDefault();
     ClientActions.createComment({pictureId: this.props.picture.id,
@@ -45,7 +50,7 @@ var PictureIndexItemFooter = React.createClass({
         <ul>
           {comments}
         </ul>
-        <button>{liking}</button>
+        <button onClick={this.clickLikeButton}>{liking}</button>
         <form onSubmit={this.onSubmit}>
           <input type="text"
                  placeholder="Add a comment..."
