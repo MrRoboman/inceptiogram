@@ -11,6 +11,7 @@ var PictureIndex = require('./components/picture_index');
 var LoginForm = require('./components/login');
 var SignupForm = require('./components/signup');
 var ProfileIndex = require('./components/profile_index');
+var Profile = require('./components/profile');
 
 var ClientActions = require('./actions/client_actions');
 
@@ -75,6 +76,7 @@ var router = (
 			<IndexRoute component={PictureIndex} />
 			<Route component={PictureIndex} path="pictureindex" />
 			<Route component={ProfileIndex} path="profileindex" />
+			<Route component={Profile} path="profile" />
 			<Route component={SignupForm} path="signup" />
 			<Route component={LoginForm} path="login" />
 		</Route>
