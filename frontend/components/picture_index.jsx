@@ -1,4 +1,5 @@
 //Picture Index
+var CurrentUserMixin = require('../mixins/current_user_mixin');
 var ClientActions = require('../actions/client_actions');
 var SessionStore = require('../stores/session_store');
 var HashHistory = require('react-router').hashHistory;
@@ -9,28 +10,30 @@ var React = require('react');
 
 module.exports = React.createClass({
 
+  mixins: [CurrentUserMixin],
+
   getInitialState: function() {
     return {pictures: PictureStore.getPictures()};
   },
 
   componentDidMount: function() {
-    this.sessionListener = SessionStore.addListener(this.onChange);
+    // this.sessionListener = SessionStore.addListener(this.onChange);
     this.pictureListener = PictureStore.addListener(this.onChange);
-    ClientActions.fetchCurrentUser();
+    // ClientActions.fetchCurrentUser();
     ClientActions.fetchPictures();
   },
 
   componentWillUnmount: function() {
-    this.sessionListener.remove();
+    // this.sessionListener.remove();
     this.pictureListener.remove();
   },
 
   onChange: function() {
-    if(SessionStore.getCurrentUser() === ""){
-      HashHistory.push("login");
-    } else{
+    // if(SessionStore.getCurrentUser() === ""){
+    //   HashHistory.push("login");
+    // } else{
       this.setState({pictures: PictureStore.getPictures()});
-    }
+    // }
   },
 
   render: function() {

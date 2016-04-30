@@ -2,8 +2,11 @@ var React = require('react');
 var ProfileStore = require('../stores/profile_store');
 var ClientActions = require('../actions/client_actions');
 var ProfileIndexItem = require('./profile_index_item');
+var CurrentUserMixin = require('../mixins/current_user_mixin');
 
 var ProfileIndex = React.createClass({
+  mixins: [CurrentUserMixin],
+  
   getInitialState: function() {
     return {profiles: ProfileStore.all()};
   },

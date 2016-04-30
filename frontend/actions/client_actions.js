@@ -1,7 +1,11 @@
 var ApiUtil = require('../utils/api_utils.js');
+var SessionStore = require('../stores/session_store');
 
 var ClientActions = {
-  fetchCurrentUser: ApiUtil.fetchCurrentUser,
+  fetchCurrentUser: function() {
+    ApiUtil.fetchCurrentUser();
+    SessionStore.fetchSent(true);
+  },
   login: ApiUtil.login,
   logout: ApiUtil.logout,
   createUser: ApiUtil.createUser,
