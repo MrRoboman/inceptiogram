@@ -42,6 +42,8 @@ class User < ActiveRecord::Base
   end
 
   def followed_by?(current_user)
+    # TODO FOR POSTMAN DELETE
+    return !Follow.find_by(follower_id: 1, leader_id: self.id).nil? if current_user.nil?
     !Follow.find_by(follower_id: current_user.id, leader_id: self.id).nil?
   end
 
