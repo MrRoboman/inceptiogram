@@ -41,6 +41,7 @@ var PictureIndexItemFooter = React.createClass({
     var comments = this.props.picture.comments.map(function(comment){
       return (<li key={comment.id}>
                 {linkToProfile(comment.author)}
+                {" " + comment.body}
               </li>
              );
     });
