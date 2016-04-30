@@ -1,13 +1,46 @@
 var React = require('react');
+var ProfileStore = require('../stores/profile_store');
+var IndexItemHeader = require('./index_item_header');
+var ClientActions = require('../actions/client_actions');
 
 var Profile = React.createClass({
   getInitialState: function() {
-    return {};
+    return {profile: null};
   },
+
+  componentDidMount: function() {
+    this.listener = ProfileStore.addListener(this.onChange);
+    ClientActions.fetchSingleProfile(this.props.params.id);
+  },
+
+  componentWillUnmount: function() {
+    this.listener.remove();
+  },
+
+  onChange: function() {
+    this.setState({profile: ProfileStore.getShowProfile()});
+  },
+
   render: function() {
+    var content = <span>Loading...</span>;
+
+    if(this.state.profile){
+      var pics = this.state.profile.pictures.map(function(pic){
+        return <img key={pic.id} className="profile-pics" src={pic.url}/>;
+      });
+      content = (
+        <div>
+          <IndexItemHeader profile={this.state.profile} showFlwBtn={true}/>
+          <div>
+            {pics}
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div>
-        I'm a profile! {this.props.params.id}
+        {content}
       </div>
     );
   }

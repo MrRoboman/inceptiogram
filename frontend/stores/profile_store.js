@@ -3,6 +3,7 @@ var dispatcher = require('../dispatcher/dispatcher');
 var ProfileConstants = require('../constants/profile_constants');
 
 var _profiles = [];
+var _showProfile = {};
 
 var ProfileStore = new Store(dispatcher);
 
@@ -20,6 +21,10 @@ var updateProfile = function(profile) {
   _profiles.push(profile);
 };
 
+ProfileStore.getShowProfile = function(){
+  return _showProfile;
+};
+
 ProfileStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case ProfileConstants.RECEIVED_PROFILES:
@@ -27,6 +32,7 @@ ProfileStore.__onDispatch = function(payload) {
       break;
     case ProfileConstants.RECEIVED_SINGLE_PROFILE:
       updateProfile(payload.profile);
+      _showProfile = payload.profile;
       break;
   }
   this.__emitChange();

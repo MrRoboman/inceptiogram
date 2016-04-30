@@ -76,7 +76,7 @@ var router = (
 			<IndexRoute component={PictureIndex} />
 			<Route component={PictureIndex} path="pictureindex" />
 			<Route component={ProfileIndex} path="profileindex" />
-			<Route component={Profile} path="profile" />
+			<Route component={Profile} path="profile/:id" />
 			<Route component={SignupForm} path="signup" />
 			<Route component={LoginForm} path="login" />
 		</Route>

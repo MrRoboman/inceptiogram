@@ -85,6 +85,15 @@ module.exports = {
       dataType: 'json',
       success: ServerActions.receiveProfiles
     });
+  },
+
+  fetchSingleProfile: function(id) {
+    $.ajax({
+      type: 'GET',
+      url: 'api/profiles/' + id,
+      dataType: 'json',
+      success: ServerActions.receiveSingleProfile
+    });
   }
 
 };

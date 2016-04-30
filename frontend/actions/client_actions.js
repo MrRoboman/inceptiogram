@@ -12,7 +12,8 @@ var ClientActions = {
   createLike: ApiUtil.createLike,
   createFollow: ApiUtil.createFollow,
 
-  fetchProfiles: ApiUtil.fetchProfiles
+  fetchProfiles: ApiUtil.fetchProfiles,
+  fetchSingleProfile: ApiUtil.fetchSingleProfile
 };
 
 window.CA = ClientActions;
