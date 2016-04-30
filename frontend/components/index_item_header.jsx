@@ -1,5 +1,5 @@
 var React = require('react');
-var Link = require('react-router').Link;
+var linkToProfile = require('../utils/helper').linkToProfile;
 var FollowButton = require('./follow_button');
 
 var IndexItemHeader = React.createClass({
@@ -9,7 +9,7 @@ var IndexItemHeader = React.createClass({
     var flwBtn = "";
     return (
       <div>
-        <Link to={"profile/"+this.props.profile.id}>{this.props.profile.username}</Link>
+        {linkToProfile(this.props.profile)}
         <FollowButton display={this.props.showFlwBtn}
                       profile={this.props.profile}/>
       </div>

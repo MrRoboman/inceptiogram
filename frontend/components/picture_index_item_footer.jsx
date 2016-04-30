@@ -1,5 +1,5 @@
 var React = require('react');
-var Link = require('react-router').Link;
+var linkToProfile = require('../utils/helper').linkToProfile;
 var ClientActions = require('../actions/client_actions');
 
 var PictureIndexItemFooter = React.createClass({
@@ -28,9 +28,9 @@ var PictureIndexItemFooter = React.createClass({
     var len = this.props.picture.likes.length;
     var likes = this.props.picture.likes.map(function(like, idx){
       if(idx === len - 1){
-        return <span key={like.id}><Link to={"profile/"+like.user.id}>{like.user.username}</Link></span>;
+        return <span key={like.id}>{linkToProfile(like.user)}</span>;
       }else {
-        return <span key={like.id}><Link to={"profile/"+like.user.id}>{like.user.username}</Link>, </span>;
+        return <span key={like.id}>{linkToProfile(like.user)}, </span>;
       }
     });
     return <span>{likes} like this</span>;
@@ -40,7 +40,7 @@ var PictureIndexItemFooter = React.createClass({
     var liking = this.props.picture.liking ? "unlike" : "like";
     var comments = this.props.picture.comments.map(function(comment){
       return (<li key={comment.id}>
-                <Link to={"profile/"+comment.author.id}>{comment.author.username}</Link>
+                {linkToProfile(comment.author)}
               </li>
              );
     });
