@@ -43,6 +43,11 @@ var App = React.createClass({
 		ClientActions.logout();
 	},
 
+	gotoPictures: function(e) {
+		e.preventDefault();
+		HashHistory.push('pictureindex');
+	},
+
 	gotoProfiles: function(e) {
 		e.preventDefault();
 		HashHistory.push('profileindex');
@@ -54,8 +59,9 @@ var App = React.createClass({
 		if(this.state.currentUser !== "Current User: NOBODY!"){
 			logoutButton = (
 				<div>
-					<button onClick={this.gotoProfiles}>Profiles</button>
 					<button onClick={this.logout}>Logout</button>
+					<button onClick={this.gotoProfiles}>Profiles</button>
+					<button onClick={this.gotoPictures}>Pictures</button>
 				</div>
 			);
 		}

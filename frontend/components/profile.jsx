@@ -8,7 +8,7 @@ var Profile = React.createClass({
   mixins: [CurrentUserMixin],
 
   getInitialState: function() {
-    return {profile: null};
+    return {profile: {}};
   },
 
   componentDidMount: function() {
@@ -27,7 +27,7 @@ var Profile = React.createClass({
   render: function() {
     var content = <span>Loading...</span>;
 
-    if(this.state.profile){
+    if(this.state.profile.pictures){
       var pics = this.state.profile.pictures.map(function(pic){
         return <img key={pic.id} className="profile-pics" src={pic.url}/>;
       });
