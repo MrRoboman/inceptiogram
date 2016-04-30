@@ -7,7 +7,10 @@ json.owner do
 end
 json.likes picture.likes do |like|
   json.id like.id
-  json.username like.user.username
+  json.user do
+    json.id like.user.id
+    json.username like.user.username
+  end
 end
 json.comments picture.comments do |comment|
   json.id comment.id

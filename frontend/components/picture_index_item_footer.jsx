@@ -28,9 +28,9 @@ var PictureIndexItemFooter = React.createClass({
     var len = this.props.picture.likes.length;
     var likes = this.props.picture.likes.map(function(like, idx){
       if(idx === len - 1){
-        return <span key={like.id}><a href="#">{like.username}</a></span>;
+        return <span key={like.id}><Link to={"profile/"+like.user.id}>{like.user.username}</Link></span>;
       }else {
-        return <span key={like.id}><a href="#">{like.username}</a>, </span>;
+        return <span key={like.id}><Link to={"profile/"+like.user.id}>{like.user.username}</Link>, </span>;
       }
     });
     return <span>{likes} like this</span>;
