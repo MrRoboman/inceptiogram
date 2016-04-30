@@ -1,15 +1,14 @@
 var React = require('react');
-var Link = require('react-router').Link;
 var FollowButton = require('./follow_button');
 
-var IndexItemHeader = React.createClass({
+var ProfileHeader = React.createClass({
 
   render: function() {
     // var flwBtn = this.props.flwBtn ? <FollowButton/> : "";
     var flwBtn = "";
     return (
       <div>
-        <Link to={"profile/"+this.props.profile.id}>{this.props.profile.username}</Link>
+        <span>{this.props.profile.username}</span>
         <FollowButton display={this.props.showFlwBtn}
                       profile={this.props.profile}/>
       </div>
@@ -17,4 +16,4 @@ var IndexItemHeader = React.createClass({
   }
 });
 
-module.exports = IndexItemHeader;
+module.exports = ProfileHeader;

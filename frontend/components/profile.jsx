@@ -1,6 +1,6 @@
 var React = require('react');
 var ProfileStore = require('../stores/profile_store');
-var IndexItemHeader = require('./index_item_header');
+var ProfileHeader = require('./profile_header');
 var ClientActions = require('../actions/client_actions');
 
 var Profile = React.createClass({
@@ -30,7 +30,7 @@ var Profile = React.createClass({
       });
       content = (
         <div>
-          <IndexItemHeader profile={this.state.profile} showFlwBtn={true}/>
+          <ProfileHeader profile={this.state.profile} showFlwBtn={true}/>
           <div>
             {pics}
           </div>

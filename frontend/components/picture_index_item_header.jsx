@@ -1,4 +1,5 @@
 var React = require('react');
+var Link = require('react-router').Link;
 
 var PictureIndexItemHeader = React.createClass({
   getInitialState: function() {
@@ -7,7 +8,7 @@ var PictureIndexItemHeader = React.createClass({
   render: function() {
     return (
       <div className="header">
-        <span><a href="#">{this.props.username}</a></span>
+        <Link to={"profile/"+this.props.owner.id}>{this.props.owner.username}</Link>
       </div>
     );
   }

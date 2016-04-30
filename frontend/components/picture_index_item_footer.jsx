@@ -1,4 +1,5 @@
 var React = require('react');
+var Link = require('react-router').Link;
 var ClientActions = require('../actions/client_actions');
 
 var PictureIndexItemFooter = React.createClass({
@@ -39,7 +40,7 @@ var PictureIndexItemFooter = React.createClass({
     var liking = this.props.picture.liking ? "unlike" : "like";
     var comments = this.props.picture.comments.map(function(comment){
       return (<li key={comment.id}>
-                <a href="#">{comment.author} </a>{comment.body}
+                <Link to={"profile/"+comment.author.id}>{comment.author.username}</Link>
               </li>
              );
     });

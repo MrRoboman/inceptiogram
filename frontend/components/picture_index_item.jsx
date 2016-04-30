@@ -8,7 +8,7 @@ var PictureIndexItem = React.createClass({
   render: function() {
     return (
       <div className="item">
-        <PictureIndexItemHeader username={this.props.picture.owner} />
+        <PictureIndexItemHeader owner={this.props.picture.owner} />
         <img src={this.props.picture.url}/>
         <PictureIndexItemFooter picture={this.props.picture} />
       </div>
