@@ -6,8 +6,9 @@ var FollowButton = React.createClass({
   },
   render: function() {
     var btn = "";
+    var btnTxt = this.props.following ? "Unfollow" : "Follow";
     if(this.props.display){
-      btn = <button>Follow</button>;
+      btn = <button>{btnTxt}</button>;
     }
     return (
       <div>

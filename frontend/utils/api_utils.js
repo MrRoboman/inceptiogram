@@ -68,6 +68,16 @@ module.exports = {
     });
   },
 
+  createFollow: function(data) {
+    $.ajax({
+      type: 'POST',
+      url: 'api/follows',
+      dataType: 'json',
+      data: {follow: {picture_id: data}},
+      success: ServerActions.receiveSingleProfile
+    });
+  },
+
   fetchProfiles: function(profiles) {
     $.ajax({
       type: 'GET',

@@ -1,10 +1,5 @@
 json.array! @profiles do |profile|
-  json.id profile.id
-  json.username profile.username
-  json.pictures profile.pictures do |pic|
-    json.id pic.id
-    json.url pic.url
-  end
+  json.partial! 'shared/profile', profile: profile
 end
 
 # json.array! @profiles do |profile|

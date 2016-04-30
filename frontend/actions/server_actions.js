@@ -38,6 +38,13 @@ var ServerActions = {
       actionType: ProfileConstants.RECEIVED_PROFILES,
       profiles: profiles
     });
+  },
+
+  receiveSingleProfile: function(profile) {
+    Dispatcher.dispatch({
+      actionType: ProfileConstants.RECEIVED_SINGLE_PROFILE,
+      profile: profile
+    });
   }
   // ,
   // receiveComment: function(comment) {
