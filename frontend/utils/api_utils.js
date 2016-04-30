@@ -73,7 +73,7 @@ module.exports = {
       type: 'POST',
       url: 'api/follows',
       dataType: 'json',
-      data: {follow: {picture_id: data}},
+      data: {follow: {user_id: data}},
       success: ServerActions.receiveSingleProfile
     });
   },

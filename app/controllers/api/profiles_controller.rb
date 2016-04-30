@@ -1,6 +1,6 @@
 class Api::ProfilesController < ApplicationController
   def index
-    @profiles = User.includes(:pictures).all
+    @profiles = User.all_with_deets
   end
 
   def show

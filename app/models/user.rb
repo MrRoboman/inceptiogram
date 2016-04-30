@@ -17,8 +17,12 @@ class User < ActiveRecord::Base
   has_many :leader_joins, foreign_key: :leader_id, class_name: :Follow
   has_many :followers, through: :leader_joins, source: :follower
 
-  def self.find_with_deets(id)
+  def self.all_with_deets
+    User.includes(:pictures, :followers).all
+  end
 
+  def self.find_with_deets(id)
+    User.includes(:pictures, :followers).find(id);
   end
 
   def self.find_by_credentials(username, password)

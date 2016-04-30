@@ -10,6 +10,7 @@ var ClientActions = {
 
   createComment: ApiUtil.createComment,
   createLike: ApiUtil.createLike,
+  createFollow: ApiUtil.createFollow,
 
   fetchProfiles: ApiUtil.fetchProfiles
 };

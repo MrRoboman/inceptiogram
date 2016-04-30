@@ -6,14 +6,14 @@ class Api::FollowsController < ApplicationController
     # destroy the follow if it exists
     if follow
       follow.destroy
-      @picture = Picture.find_with_deets(follow.picture_id)
+      @profile = User.find_with_deets(follow.leader_id)
       return
     end
 
     # save it if it does not exists
     follow = Follow.new(args)
     if follow.save
-      @picture = Picture.find_with_deets(follow.picture_id)
+      @profile = User.find_with_deets(follow.leader_id)
     else
       debugger
     end

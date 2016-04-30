@@ -10,7 +10,7 @@ var IndexItemHeader = React.createClass({
       <div>
         <span><a href="#">{this.props.profile.username}</a></span>
         <FollowButton display={this.props.showFlwBtn}
-                      following={this.props.profile.following}/>
+                      profile={this.props.profile}/>
       </div>
     );
   }
