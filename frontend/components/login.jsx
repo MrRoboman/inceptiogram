@@ -88,10 +88,12 @@ var Login = React.createClass({
                        password: demoPass.slice(0, statePass.length + 1)});
       }
       else {
-        ClientActions.login(this.state);
         clearInterval(this.interval);
+        setTimeout(function() {
+          ClientActions.login(this.state);
+        }.bind(this), 200);
       }
-    }.bind(this), 150);
+    }.bind(this), 100);
   },
 
   render: function() {
@@ -116,9 +118,10 @@ var Login = React.createClass({
           <br/>
           <input type="submit" value="submit" disabled={this.submitDisabled()}/>
         </form>
-        <button onClick={this.clickGuest}>Guest</button>
-        <p>Need an account?</p>
-        <button onClick={this.gotoSignup}>Sign Up</button>
+        <button className="bottom-margin" onClick={this.clickGuest}>Guest</button>
+        <div className="auth-flip">
+          <span>Need an account? <a onClick={this.gotoSignup}>Sign Up</a></span>
+        </div>
         <ul>
           {errors}
         </ul>

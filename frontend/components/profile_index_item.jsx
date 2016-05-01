@@ -14,11 +14,9 @@ var ProfileIndexItem = React.createClass({
     return (
       <div className="profile-index-item">
         <IndexItemHeader profile={this.props.profile} showFlwBtn={true}/>
-        <div className="profile-index-item-pics">
-          <ul>
+          <ul className="profile-index-item-pics">
             {pics}
           </ul>
-        </div>
       </div>
     );
   }

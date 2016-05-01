@@ -12,9 +12,11 @@ var FollowButton = React.createClass({
 
   render: function() {
     var btn = "";
-    var btnTxt = this.props.profile.following ? "Unfollow" : "Follow";
+    var btnTxt = this.props.profile.following ? "FOLLOWING" : "FOLLOW";
+    var className = "follow-button";
+    className += this.props.profile.following ? " following" : " follow";
     if(this.props.display){
-      btn = <button onClick={this.createFollow}>{btnTxt}</button>;
+      btn = <button className={className} onClick={this.createFollow}>{btnTxt}</button>;
     }
     return (
       <div>

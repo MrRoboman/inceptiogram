@@ -115,8 +115,11 @@ var Signup = React.createClass({
           <br/>
           <input type="submit" value="submit" disabled={this.submitDisabled()}/>
         </form>
-        <p>Already have an account?</p>
-        <button onClick={this.gotoLogin}>Login</button>
+        <div className="auth-flip">
+          <p>Have an account? <a onClick={this.gotoLogin}>Log In</a></p>
+
+
+        </div>
         <ul>
           {errors}
         </ul>

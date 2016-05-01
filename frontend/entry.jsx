@@ -62,6 +62,8 @@ var App = React.createClass({
 					<button onClick={this.logout}>Logout</button>
 					<button onClick={this.gotoProfiles}>Profiles</button>
 					<button onClick={this.gotoPictures}>Pictures</button>
+					<i className="icon-map-marker"></i>
+					<i className="fa fa fa-check-square" aria-hidden="true"></i>
 				</div>
 			);
 		}

@@ -6,7 +6,7 @@ var CurrentUserMixin = require('../mixins/current_user_mixin');
 
 var ProfileIndex = React.createClass({
   mixins: [CurrentUserMixin],
-  
+
   getInitialState: function() {
     return {profiles: ProfileStore.all()};
   },
@@ -30,7 +30,7 @@ var ProfileIndex = React.createClass({
     });
 
     return (
-      <div>
+      <div className="profile-index">
         <ul>
         {profileIndexItems}
         </ul>

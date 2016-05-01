@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
   has_many :leader_joins, foreign_key: :leader_id, class_name: :Follow
   has_many :followers, through: :leader_joins, source: :follower
 
-  def self.all_with_deets
-    User.includes(:pictures, :followers).all
+  def self.all_with_deets(current_user)
+    User.includes(:pictures, :followers).where.not(id: current_user.id)
   end
 
   def self.find_with_deets(id)

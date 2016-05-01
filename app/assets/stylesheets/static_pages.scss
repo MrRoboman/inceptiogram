@@ -4,6 +4,9 @@
 
 
 $border-color: #ddd;
+$link-blue: #0074D9;
+$link-hover-blue: #001f3f;
+$follow-green: rgb(71, 132, 30);
 
 
 html, body, div, h1, h2, h3, button, p, span, input, img, a, ul, li {
@@ -15,6 +18,10 @@ html, body, div, h1, h2, h3, button, p, span, input, img, a, ul, li {
   text-decoration: none;
   list-style: none;
   overflow: inherit;
+}
+
+a:hover {
+  cursor: pointer;
 }
 
 input:focus, button:focus {
@@ -54,6 +61,33 @@ a:hover {
 a:active {
 }
 
+.follow-button {
+  background-color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.follow-button.follow{
+  border: 1px solid $link-blue;
+  color: $link-blue;
+  padding: 6px 20px 4px;
+}
+
+.follow-button.following {
+  border: 1px solid $follow-green;
+  color: white;
+  background-color: $follow-green;
+  padding: 6px 10px 4px;
+
+}
+
+.follow-button:hover {
+  border-color: $link-hover-blue;
+  color: $link-hover-blue;
+  cursor: pointer;
+}
+
 html, body {
   min-height: 100%;
 }
@@ -72,6 +106,9 @@ body {
   padding: 25px;
   height: 25px;
   border-bottom: 1px solid $border-color;
+  h1 {
+    font-family: 'Montez', cursive;
+  }
   button {
     float: right;
   }
@@ -83,15 +120,15 @@ body {
 
 .authform {
   padding: 40px;
-  float: right;
   left: 50px;
-  margin-top: 100px;
-  // border: 1px solid black;
-  width: 250px;
+  margin: 100px auto;
+  border: 1px solid black;
+  width: 200px;
+  height: 260px;
   border-radius: 5px;
   text-align: center;
   h2 {
-    // text-align: left;
+    text-align: left;
     margin-left: -20px;
     margin-top: -20px;
     margin-bottom: 20px;
@@ -99,19 +136,31 @@ body {
   input[type="text"], input[type="password"] {
     width: 150px;
     height: 25px;
-    margin: 6px;
+    margin: 0;
     text-align: left;
     padding: 4px;
     font-size: 18px;
+    border: 0;
+  }
+  input[type="password"] {
+    border-top: 1px solid $border-color;
   }
   input[type="submit"]{
     width: 160px;
     font-size: 18px;
+    margin-top: 30px;
   }
+  // #retype {
+  //   border-top: 1px solid $border-color;
+  // }
   button {
     width: 160px;
     font-size: 18px;
   }
+}
+
+.auth-flip {
+  padding-top: 40px;
 }
 
 .item {
@@ -147,14 +196,48 @@ body {
   }
 }
 
-.profile-index-item {
-  background: cornflowerblue;
-  max-width: 562px;
-  margin: 50px auto;
+.profile-index {
+  margin-top: 50px;
 }
 
+.profile-index-item {
+  // background: cornflowerblue;
+  max-width: 600px;
+  height: 290px;
+  margin: 0 auto;
+  border: 1px solid $border-color;
+  border-bottom: 0;
+}
+
+.profile-index-item:last-child {
+  border-bottom: 1px solid $border-color;
+}
+
+.index-item-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 20px 35px;
+  // background-color: orange;
+  .pic-and-name {
+    display: flex;
+    justify-content: space-between;
+    img {
+      width: 50px;
+      height: 50px;
+      margin-right: 20px;
+    }
+    .name {
+      margin-top: 10px;
+    }
+  }
+}
+
+
+
 .profile-index-item-pics {
-  background: green;
+  // background: green;
+  display: flex;
+  justify-content: center;
   .picture-preview{
     max-width: 185.328px;
     max-height: 185.328px;

@@ -8,8 +8,11 @@ var IndexItemHeader = React.createClass({
     // var flwBtn = this.props.flwBtn ? <FollowButton/> : "";
     var flwBtn = "";
     return (
-      <div>
-        {linkToProfile(this.props.profile)}
+      <div className="index-item-header">
+        <div className="pic-and-name">
+          <img src="http://astrologia.ge/wp-content/uploads/2015/12/rr.jpg"/>
+          <span className="name">{linkToProfile(this.props.profile)}</span>
+        </div>
         <FollowButton display={this.props.showFlwBtn}
                       profile={this.props.profile}/>
       </div>
