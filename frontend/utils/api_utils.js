@@ -94,6 +94,25 @@ module.exports = {
       dataType: 'json',
       success: ServerActions.receiveSingleProfile
     });
+  },
+
+  uploadImages: function(images) {
+    var params = {picture: {}};
+    images.forEach(function(img, idx) {
+      params.picture[idx.toString()] = img.url;
+    });
+    $.ajax ({
+      type: 'POST',
+      url: 'api/pictures',
+      dataType: 'json',
+      data: params,
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
   }
 
 };

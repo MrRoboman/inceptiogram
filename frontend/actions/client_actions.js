@@ -17,7 +17,9 @@ var ClientActions = {
   createFollow: ApiUtil.createFollow,
 
   fetchProfiles: ApiUtil.fetchProfiles,
-  fetchSingleProfile: ApiUtil.fetchSingleProfile
+  fetchSingleProfile: ApiUtil.fetchSingleProfile,
+
+  uploadImages: ApiUtil.uploadImages
 };
 
 window.CA = ClientActions;

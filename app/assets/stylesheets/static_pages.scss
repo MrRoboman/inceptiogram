@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+
 $border-color: #ddd;
 $link-blue: #0074D9;
 $link-hover-blue: #001f3f;
@@ -103,6 +105,7 @@ body {
 }
 
 .appnav {
+  // display: none;
   padding: 25px;
   height: 25px;
   border-bottom: 1px solid $border-color;
@@ -124,7 +127,9 @@ body {
   margin: 100px auto;
   border: 1px solid black;
   width: 200px;
+  // width: auto;
   height: 260px;
+  // height: auto;
   border-radius: 5px;
   text-align: center;
   h2 {
@@ -248,4 +253,49 @@ body {
 .profile-pics {
   width: 200px;
   height: 200px;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 320px;
+	height: 480px;
+  background: green;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	// position: relative;;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
 }
