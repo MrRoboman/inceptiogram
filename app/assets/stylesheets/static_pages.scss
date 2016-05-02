@@ -32,6 +32,12 @@ html, body, div, h1, h2, h3, button, p, span, input, img, a, ul, li {
   cursor: pointer;
 }
 
+.center {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+}
+
 .gray {
   color: #aaa;
 }

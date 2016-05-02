@@ -25,7 +25,7 @@ var Profile = React.createClass({
   },
 
   render: function() {
-    var content = <span>Loading...</span>;
+    var content = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>
 
     if(this.state.profile.pictures){
       var pics = this.state.profile.pictures.map(function(pic){

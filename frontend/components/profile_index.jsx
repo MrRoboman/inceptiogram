@@ -8,7 +8,7 @@ var ProfileIndex = React.createClass({
   mixins: [CurrentUserMixin],
 
   getInitialState: function() {
-    return {profiles: ProfileStore.all()};
+    return {profiles: []};
   },
 
   componentDidMount: function() {

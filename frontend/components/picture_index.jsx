@@ -13,7 +13,7 @@ module.exports = React.createClass({
   mixins: [CurrentUserMixin],
 
   getInitialState: function() {
-    return {pictures: PictureStore.getPictures()};
+    return {pictures: []};
   },
 
   componentDidMount: function() {

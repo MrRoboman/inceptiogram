@@ -4,8 +4,7 @@ var FollowButton = require('./follow_button');
 var ProfileHeader = React.createClass({
 
   render: function() {
-    // var flwBtn = this.props.flwBtn ? <FollowButton/> : "";
-    var flwBtn = "";
+    
     return (
       <div className="profile-header">
         <span>{this.props.profile.username}</span>
