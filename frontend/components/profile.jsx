@@ -29,7 +29,7 @@ var Profile = React.createClass({
 
     if(this.state.profile.pictures){
       var pics = this.state.profile.pictures.map(function(pic){
-        return <img key={pic.id} className="profile-pics" src={pic.url}/>;
+        return <div className="overlay"><img key={pic.id} className="profile-pics" src={pic.url}/></div>;
       });
       content = (
         <div className="profile">
