@@ -8,7 +8,8 @@
 $border-color: #ddd;
 $link-blue: #0074D9;
 $link-hover-blue: #001f3f;
-$follow-green: rgb(71, 132, 30);
+$follow-green: #66bd2b;
+$follow-hover-green: #47841e;
 
 
 html, body, div, h1, h2, h3, button, p, span, input, img, a, ul, li {
@@ -84,15 +85,21 @@ a:active {
 
 }
 
-.follow-button:hover {
+.follow-button.follow:hover {
   border-color: $link-hover-blue;
   color: $link-hover-blue;
   cursor: pointer;
 }
 
-html, body {
-  min-height: 100%;
+.follow-button.following:hover {
+  background-color: $follow-hover-green;
+  color: #fff;
+  cursor: pointer;
 }
+
+// html, body {
+//   min-height: 100%;
+// }
 
 body {
 // background-image: url("http://d3ec71zsp1ok15.cloudfront.net/assets/content/staff-pics/RyanHall-156da2c53e72f43f75a5b75b23e293fa.jpg");
@@ -237,6 +244,31 @@ body {
   }
 }
 
+.profile {
+  max-width: 950px;
+  margin: 50px auto;
+  // background: yellow;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-pics {
+  display: flex;
+  justify-content: space-between;
+  max-width: auto;
+  margin: 10px auto;
+  // background: purple;
+  // padding: 0 4px;
+}
+
+.profile-pics img {
+  width: 300px;
+  height: 300px;
+  margin: 0;
+}
 
 
 .profile-index-item-pics {
@@ -248,11 +280,6 @@ body {
     max-height: 185.328px;
     margin: 1px;
   }
-}
-
-.profile-pics {
-  width: 200px;
-  height: 200px;
 }
 
 /* entire container, keeps perspective */

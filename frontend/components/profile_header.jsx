@@ -7,7 +7,7 @@ var ProfileHeader = React.createClass({
     // var flwBtn = this.props.flwBtn ? <FollowButton/> : "";
     var flwBtn = "";
     return (
-      <div>
+      <div className="profile-header">
         <span>{this.props.profile.username}</span>
         <FollowButton display={this.props.showFlwBtn}
                       profile={this.props.profile}/>

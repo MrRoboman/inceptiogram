@@ -32,9 +32,9 @@ var Profile = React.createClass({
         return <img key={pic.id} className="profile-pics" src={pic.url}/>;
       });
       content = (
-        <div>
+        <div className="profile">
           <ProfileHeader profile={this.state.profile} showFlwBtn={true}/>
-          <div>
+          <div className="profile-pics">
             {pics}
           </div>
         </div>
