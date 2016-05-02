@@ -1,6 +1,7 @@
 var React = require('react');
 var linkToProfile = require('../utils/helper').linkToProfile;
 var ClientActions = require('../actions/client_actions');
+var LikeButton = require('./like_button');
 
 var PictureIndexItemFooter = React.createClass({
 
@@ -10,11 +11,6 @@ var PictureIndexItemFooter = React.createClass({
 
   onFormTextChange: function(e) {
     this.setState({formText: e.target.value});
-  },
-
-  clickLikeButton: function(e) {
-    e.preventDefault();
-    ClientActions.createLike(this.props.picture.id);
   },
 
   onSubmit: function(e) {
@@ -52,7 +48,7 @@ var PictureIndexItemFooter = React.createClass({
           {comments}
         </ul>
           <div className="comment-form">
-            <button onClick={this.clickLikeButton}>{liking}</button>
+            <LikeButton picture={this.props.picture}/>
             <form onSubmit={this.onSubmit}>
               <input className="comment-text-field"
                      type="text"

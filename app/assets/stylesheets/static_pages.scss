@@ -28,6 +28,18 @@ html, body, div, h1, h2, h3, button, p, span, input, img, a, ul, li {
   color: $instagram-blue;
 }
 
+.fa:hover {
+  cursor: pointer;
+}
+
+.gray {
+  color: #aaa;
+}
+
+.red {
+  color: red;
+}
+
 a:hover {
   cursor: pointer;
 }
@@ -228,10 +240,15 @@ body {
     }
     .comment-form {
       display: flex;
-      padding-top: 16px;
+      padding: 16px;
+      padding-bottom: 0;
+      margin-top: 20px;
+      border-top: 1px solid $border-color;
       .comment-text-field {
         font-size: 20px;
         padding: 4px;
+        padding-top: 8px;
+        padding-left: 12px;
         width: 500px;
         border: 0;
       }
