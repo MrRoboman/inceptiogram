@@ -70,21 +70,11 @@ var App = React.createClass({
 		if(this.state.currentUser !== "Current User: NOBODY!"){
 			logoutButton = (
 				<div className="nav-buttons">
-					<button onClick={this.logout}>Logout</button>
-					<button onClick={this.gotoProfiles}>Profiles</button>
-					<button onClick={this.gotoPictures}>Pictures</button>
-					<button onClick={this.upload}>Upload</button>
 					<div className="icon">
-						<i className="fa fa-cloud-upload fa-2x"></i>
+						<i onClick={this.gotoProfiles} className="fa fa-users fa-2x"></i>
 					</div>
 					<div className="icon">
-						<i onClick={this.gotoPictures} className="fa fa-picture-o fa-2x"></i>
-					</div>
-					<div className="icon">
-						<i className="fa fa-users fa-2x"></i>
-					</div>
-					<div className="icon">
-						<i className="fa fa-user fa-2x"></i>
+						<i onClick={this.logout} className="fa fa-envira fa-2x" alt="Get it? Leave!"></i>
 					</div>
 				</div>
 			);
@@ -92,8 +82,10 @@ var App = React.createClass({
 		return (
 			<div className="app">
 				<div className="appnav">
-					{logoutButton}
-					<h1>{topleft}</h1>
+					<div className="appnav-inner-container">
+						<h1 onClick={this.gotoPictures}>{topleft}</h1>
+						{logoutButton}
+					</div>
 				</div>
 				{this.props.children}
 			</div>
@@ -119,3 +111,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		document.getElementById('root')
 	);
 });
+
+
+
+// <div className="icon">
+// 	<i onClick={this.upload} className="fa fa-cloud-upload fa-2x"></i>
+// </div>

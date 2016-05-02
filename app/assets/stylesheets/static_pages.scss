@@ -10,6 +10,7 @@ $link-blue: #0074D9;
 $link-hover-blue: #001f3f;
 $follow-green: #66bd2b;
 $follow-hover-green: #47841e;
+$instagram-blue: #125688;
 
 
 html, body, div, h1, h2, h3, button, p, span, input, img, a, ul, li {
@@ -112,20 +113,37 @@ body {
 }
 
 .appnav {
-  // display: none;
-  padding: 25px;
-  height: 25px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 80px;
   border-bottom: 1px solid $border-color;
+  padding-top: 20px;
+}
+
+.appnav-inner-container {
+  display: flex;
+  justify-content: space-between;
+  width: 950px;
+  margin: 0 auto;
   h1 {
     font-family: 'Montez', cursive;
+    font-size: 36px;
+    color: $instagram-blue;
   }
-  button {
-    float: right;
+  h1:hover {
+    cursor: pointer;
+  }
+  .icon {
+    padding-top: 12px;
   }
 }
 
 .nav-buttons {
   display: flex;
+  justify-content: space-between;
+  width: 103px;
+  // background: yellow;
 }
 
 .icon:hover {
