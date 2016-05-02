@@ -124,6 +124,14 @@ body {
   }
 }
 
+.nav-buttons {
+  display: flex;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
 // .appnav button{
 //   float: right;
 // }

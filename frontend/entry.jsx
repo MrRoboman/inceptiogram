@@ -69,11 +69,23 @@ var App = React.createClass({
 		var logoutButton = "";
 		if(this.state.currentUser !== "Current User: NOBODY!"){
 			logoutButton = (
-				<div>
+				<div className="nav-buttons">
 					<button onClick={this.logout}>Logout</button>
 					<button onClick={this.gotoProfiles}>Profiles</button>
 					<button onClick={this.gotoPictures}>Pictures</button>
 					<button onClick={this.upload}>Upload</button>
+					<div className="icon">
+						<i className="fa fa-cloud-upload fa-2x"></i>
+					</div>
+					<div className="icon">
+						<i onClick={this.gotoPictures} className="fa fa-picture-o fa-2x"></i>
+					</div>
+					<div className="icon">
+						<i className="fa fa-users fa-2x"></i>
+					</div>
+					<div className="icon">
+						<i className="fa fa-user fa-2x"></i>
+					</div>
 				</div>
 			);
 		}
