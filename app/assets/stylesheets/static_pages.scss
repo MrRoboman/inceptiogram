@@ -24,6 +24,10 @@ html, body, div, h1, h2, h3, button, p, span, input, img, a, ul, li {
   overflow: inherit;
 }
 
+.fa {
+  color: $instagram-blue;
+}
+
 a:hover {
   cursor: pointer;
 }

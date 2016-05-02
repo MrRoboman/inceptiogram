@@ -74,7 +74,7 @@ var App = React.createClass({
 						<i onClick={this.gotoProfiles} className="fa fa-users fa-2x"></i>
 					</div>
 					<div className="icon">
-						<i onClick={this.logout} className="fa fa-envira fa-2x" alt="Get it? Leave!"></i>
+						<i onClick={this.logout} className="fa fa-user fa-2x" alt="Get it? Leave!"></i>
 					</div>
 				</div>
 			);
