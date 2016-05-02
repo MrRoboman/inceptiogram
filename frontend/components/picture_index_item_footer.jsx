@@ -22,14 +22,25 @@ var PictureIndexItemFooter = React.createClass({
 
   likeString: function(){
     var len = this.props.picture.likes.length;
+    var likePhrase = "like";
+    var and = "";
+
+    if(len === 0) {
+      return <span>Nobody likes this</span>;
+    } else if (len === 1) {
+      likePhrase = "likes";
+    } else {
+      and = "and ";
+    }
+
     var likes = this.props.picture.likes.map(function(like, idx){
       if(idx === len - 1){
-        return <span key={like.id}>{linkToProfile(like.user)}</span>;
+        return <span key={like.id}>{and}{linkToProfile(like.user)}</span>;
       }else {
         return <span key={like.id}>{linkToProfile(like.user)}, </span>;
       }
     });
-    return <span>{likes} like this</span>;
+    return <span>{likes} {likePhrase} this</span>;
   },
 
   render: function() {
@@ -43,10 +54,13 @@ var PictureIndexItemFooter = React.createClass({
     });
     return (
       <div className="footer">
+
         <span>{this.likeString()}</span>
+
         <ul className="comments">
           {comments}
         </ul>
+
           <div className="comment-form">
             <LikeButton picture={this.props.picture}/>
             <form onSubmit={this.onSubmit}>
