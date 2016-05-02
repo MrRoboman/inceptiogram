@@ -4,6 +4,7 @@ var Router = require('react-router').Router;
 var Route = require('react-router').Route;
 var IndexRoute = require('react-router').IndexRoute;
 var HashHistory = require('react-router').hashHistory;
+var linkToProfile = require('./utils/helper').linkToProfile;
 
 var SessionStore = require('./stores/session_store');
 
@@ -53,6 +54,10 @@ var App = React.createClass({
 		HashHistory.push('profileindex');
 	},
 
+	gotoCurrentUserProfile: function() {
+		HashHistory.push('profile/' + SessionStore.getCurrentUserId());
+	},
+
 	upload: function(e) {
 		e.preventDefault();
 		cloudinary.openUploadWidget(
@@ -74,7 +79,7 @@ var App = React.createClass({
 						<i onClick={this.gotoProfiles} className="fa fa-users fa-2x"></i>
 					</div>
 					<div className="icon">
-						<i onClick={this.logout} className="fa fa-user fa-2x" alt="Get it? Leave!"></i>
+						<i onClick={this.gotoCurrentUserProfile} className="fa fa-user fa-2x" alt="Get it? Leave!"></i>
 					</div>
 				</div>
 			);

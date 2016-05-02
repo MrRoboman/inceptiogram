@@ -5,6 +5,7 @@ var SessionConstants = require('../constants/session_constants');
 var _fetchSent = false;
 var _fetchReceived = false;
 var _currentUser = "";
+var _currentUserId = -1;
 var _authErrors = [];
 
 var SessionStore = new Store(dispatcher);
@@ -28,6 +29,10 @@ SessionStore.getCurrentUser = function() {
   return _currentUser.slice(); //TODO: do I need to copy this?
 };
 
+SessionStore.getCurrentUserId = function() {
+  return _currentUserId;
+};
+
 SessionStore.getErrors = function() {
   return _authErrors.slice();
 };
@@ -38,6 +43,7 @@ SessionStore.__onDispatch = function(payload) {
     case SessionConstants.RECEIVED_CURRENT_USER:
       _fetchReceived = true;
       _currentUser = payload.currentUser.username;
+      _currentUserId = payload.currentUser.id;
       _authErrors = [];
       this.__emitChange();
       break;

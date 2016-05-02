@@ -4,7 +4,8 @@ var ClientActions = require('../actions/client_actions');
 
 var CurrentUserMixin = {
   getInitialState: function() {
-    return {currentUser: SessionStore.getCurrentUser()};
+    return {currentUser: SessionStore.getCurrentUser(),
+            currentUserId: SessionStore.getCurrentUserId()};
   },
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.onSessionChange);

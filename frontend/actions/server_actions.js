@@ -1,5 +1,4 @@
 var Dispatcher = require('../dispatcher/dispatcher.js');
-var Dispatcher = require('../dispatcher/dispatcher.js');
 var SessionConstants = require('../constants/session_constants.js');
 var pictureConstants = require('../constants/picture_constants');
 var ProfileConstants = require('../constants/profile_constants');
