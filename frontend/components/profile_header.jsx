@@ -4,14 +4,9 @@ var LogoutButton = require('./logout_button');
 
 var ProfileHeader = React.createClass({
 
-  // componentDidReceiveProps: function() {
-  //   console.log(this.props);
-  // },
-
   render: function() {
     var button = <FollowButton display={this.props.showFlwBtn}
                   profile={this.props.profile}/>;
-                console.log(this.props.isCurrentUser);
 
     if(this.props.isCurrentUser) {
       button = <LogoutButton/>;
