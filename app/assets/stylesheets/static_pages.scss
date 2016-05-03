@@ -290,6 +290,7 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   height: 290px;
   border: 1px solid $border-color;
   border-bottom: 0;
+  padding-bottom: 12px;
 }
 
 .profile-index-item:last-child {
@@ -377,7 +378,7 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   .picture-preview{
     max-width: 185.328px;
     max-height: 185.328px;
-    margin: 1px;
+    margin: 0 3px;
   }
 }
 
