@@ -1,5 +1,6 @@
 var React = require('react');
 var linkToProfile = require('../utils/helper').linkToProfile;
+var imgTag = require('../utils/helper').imgTag;
 
 var PictureIndexItemHeader = React.createClass({
   getInitialState: function() {
@@ -8,6 +9,7 @@ var PictureIndexItemHeader = React.createClass({
   render: function() {
     return (
       <div className="header">
+        {imgTag('qdoiqtyte3olcbv4sutm', {circle: {width: 60, height: 60}})}
         {linkToProfile(this.props.owner)}
       </div>
     );
