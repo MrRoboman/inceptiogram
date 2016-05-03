@@ -307,6 +307,22 @@ body {
 .profile-header {
   display: flex;
   justify-content: space-between;
+  padding: 0 0 0 100px;
+  img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+.profile-header-pic-username {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.profile-header-username {
+  font-size: 48px;
+  padding-top: 30px;
 }
 
 .profile-pics {

@@ -1,5 +1,7 @@
 var ApiUtil = require('../utils/api_utils.js');
 var SessionStore = require('../stores/session_store');
+var Dispatcher = require('../dispatcher/dispatcher');
+var ProfileConstants = require('../constants/profile_constants');
 
 var ClientActions = {
   fetchCurrentUser: function() {
@@ -17,7 +19,12 @@ var ClientActions = {
   createFollow: ApiUtil.createFollow,
 
   fetchProfiles: ApiUtil.fetchProfiles,
-  fetchSingleProfile: ApiUtil.fetchSingleProfile,
+  fetchSingleProfile: function(id) {
+    ApiUtil.fetchSingleProfile(id);
+    Dispatcher.dispatch({
+      actionType: ProfileConstants.CLEAR_SINGLE_PROFILE
+    });
+  },
 
   uploadImages: ApiUtil.uploadImages
 };

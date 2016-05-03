@@ -24,7 +24,16 @@ var Profile = React.createClass({
     this.setState({profile: ProfileStore.getShowProfile()});
   },
 
+  isCurrentUser: function() {
+    return SessionStore.getCurrentUserId() == this.props.params.id;
+  },
+
+  componentWillReceiveProps: function() {
+    ClientActions.fetchSingleProfile(this.props.params.id);
+  },
+
   render: function() {
+    this.isCurrentUser();
     var content = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>
 
     if(this.state.profile.pictures){
@@ -33,7 +42,9 @@ var Profile = React.createClass({
       });
       content = (
         <div className="profile">
-          <ProfileHeader profile={this.state.profile} showFlwBtn={true}/>
+          <ProfileHeader profile={this.state.profile}
+                         showFlwBtn={true}
+                         isCurrentUser={this.isCurrentUser()}/>
           <div className="profile-pics">
             {pics}
           </div>

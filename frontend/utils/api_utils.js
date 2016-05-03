@@ -88,6 +88,7 @@ module.exports = {
   },
 
   fetchSingleProfile: function(id) {
+    // debugger;
     $.ajax({
       type: 'GET',
       url: 'api/profiles/' + id,

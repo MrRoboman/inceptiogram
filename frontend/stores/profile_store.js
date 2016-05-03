@@ -26,16 +26,21 @@ ProfileStore.getShowProfile = function(){
 };
 
 ProfileStore.__onDispatch = function(payload) {
+  // debugger;
   switch(payload.actionType) {
     case ProfileConstants.RECEIVED_PROFILES:
       _profiles = payload.profiles;
+      this.__emitChange();
       break;
     case ProfileConstants.RECEIVED_SINGLE_PROFILE:
       updateProfile(payload.profile);
       _showProfile = payload.profile;
+      this.__emitChange();
+      break;
+    case ProfileConstants.CLEAR_SINGLE_PROFILE:
+      _showProfile = {};
       break;
   }
-  this.__emitChange();
 };
 
 // for testing (remove for production)
