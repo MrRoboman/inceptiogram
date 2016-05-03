@@ -10,14 +10,13 @@ Inceptiogram is a web application inspired by Instagram that will be built using
 
 - [x] New account creation, login
 - [x] guest/demo login
-- [ ] Three separate view indexes:
-  - [ ] Pictures Index (Shows recently uploaded pictures by users that the current user follows)
-  - [ ] Users Index (Shows popular users and samples of their photos)
-  - [ ] Profile Index (Shows a single user's profile and their pictures)
-- [ ] Users can follow other users
-- [ ] Users can comment on pictures
-- [ ] Users can like pictures
-- [ ] Realtime suggestion Search to find users in the database
+- [x] Three separate view indexes:
+  - [x] Pictures Index (Shows recently uploaded pictures by users that the current user follows)
+  - [x] Users Index (Shows popular users and samples of their photos)
+  - [x] Profile Index (Shows a single user's profile and their pictures)
+- [x] Users can follow other users
+- [x] Users can comment on pictures
+- [x] Users can like pictures
 
 ## Product Goals and Priorities
 
@@ -29,11 +28,11 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [x] Create an account (MVP)
 - [x] Log in / Log out, including as a Guest/Demo User (MVP)
 - [x] View, like, comment on pictures (MVP)
-- [ ] Follow, search users (MVP)
+- [x] Follow users (MVP)
+- [x] Upload photos (possible feature, but not MVP)
+- [ ] Mosaic view mode (Most important non MVP feature!)
 - [ ] Tag pictures with multiple tags and people (expected feature, but not MVP)
 - [ ] Search by tag (expected feature, but not MVP)
-- [ ] Mosaic view mode (expected feature, but not MVP)
-- [ ] Upload photos (possible feature, but not MVP)
 
 ## Design Docs
 * [View Wireframes][views]
@@ -96,7 +95,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - build out API, Flux loop, and components for:
   - [x] Comment CRUD
   - [x] Comment form component added to PictureIndexItemFooter
-- [ ] Use CSS to style new views
+- [x] Use CSS to style new views
 
 ### Phase 5: Likes (0.5 days)
 
@@ -113,7 +112,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 **objective:** Show Pictures by User
 
-- [ ] build ProfileIndex
+- [x] build ProfileIndex
 - build out API, Flux loop, and components for:
   - [ ] fetching Pictures of User
 
@@ -121,10 +120,10 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 **objective:** Show index of popular Users
 
-- [ ] build UserIndex
+- [x] build UserIndex
 - build out API, Flux loop, and components for:
   - [ ] fetching popular Users
-- [ ] Style
+- [x] Style
 
 ### Phase 8: Styling Cleanup and Seeding (1 day)
 
