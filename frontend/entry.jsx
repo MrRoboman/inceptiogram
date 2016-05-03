@@ -16,6 +16,8 @@ var Profile = require('./components/profile');
 
 var ClientActions = require('./actions/client_actions');
 
+var imgTag = require('./utils/helper').imgTag;
+
 var currentUser = "";
 var App = React.createClass({
 
