@@ -26,7 +26,7 @@ var PictureIndexItemFooter = React.createClass({
     var and = "";
 
     if(len === 0) {
-      return <span>Nobody likes this</span>;
+      return <span></span>;
     } else if (len === 1) {
       likePhrase = "likes";
     } else {

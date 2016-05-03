@@ -10,7 +10,7 @@ var PictureIndexItemHeader = React.createClass({
     return (
       <div className="header">
         {imgTag('qdoiqtyte3olcbv4sutm', {circle: {width: 60, height: 60}})}
-        {linkToProfile(this.props.owner)}
+        <span>{linkToProfile(this.props.owner)}</span>
       </div>
     );
   }

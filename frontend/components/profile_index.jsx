@@ -31,9 +31,7 @@ var ProfileIndex = React.createClass({
 
     return (
       <div className="profile-index">
-        <ul>
         {profileIndexItems}
-        </ul>
       </div>
     );
   }
