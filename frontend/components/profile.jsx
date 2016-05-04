@@ -16,8 +16,8 @@ var Profile = React.createClass({
     this.setState({modalOpen: false});
   },
 
-  openModal: function() {
-    this.setState({modalOpen: true});
+  openModal: function(e) {
+    this.setState({modalOpen: true, modalPicId: e.currentTarget.id});
   },
 
   componentDidMount: function() {
@@ -41,20 +41,25 @@ var Profile = React.createClass({
     ClientActions.fetchSingleProfile(this.props.params.id);
   },
 
+//Get pics at 640x640 and scale. Then just use the pic in the modal
   render: function() {
-    this.isCurrentUser();
+
     var content = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>
 
     if(this.state.profile.pictures){
       var pics = this.state.profile.pictures.map(function(pic){
-        return <div key={pic.id} className="overlay"><img className="profile-pics" src={pic.url}/></div>;
-      });
+        return (
+          <div key={pic.id} id={pic.id} className="overlay profile-pics" onClick={this.openModal}>
+            <img src={pic.url} />
+          </div>
+        );
+      }.bind(this));
 
       content = (
         <div className="profile">
 
           <button onClick={this.openModal}>Open</button>
-          <InceptionModal modalOpen={this.state.modalOpen} closeModal={this.closeModal}/>
+          <InceptionModal modalOpen={this.state.modalOpen} picId={this.state.modalPicId} closeModal={this.closeModal}/>
 
           <ProfileHeader profile={this.state.profile}
                          showFlwBtn={true}
