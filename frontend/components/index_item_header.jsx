@@ -11,7 +11,7 @@ var IndexItemHeader = React.createClass({
     return (
       <div className="index-item-header">
         <div className="pic-and-name">
-          {imgTag('qdoiqtyte3olcbv4sutm', {circle: {width: 60, height: 60}})}
+          {imgTag('falcon_hmlgcs', {circle: {width: 60, height: 60}})}
           <span className="name">{linkToProfile(this.props.profile)}</span>
         </div>
         <FollowButton display={this.props.showFlwBtn}

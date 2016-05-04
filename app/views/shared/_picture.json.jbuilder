@@ -1,5 +1,6 @@
 json.id picture.id
 json.url picture.url
+json.public_id picture.public_id
 json.liking picture.liked_by?(current_user)
 json.owner do
   json.id picture.owner.id
