@@ -1,6 +1,7 @@
 var React = require('react');
 var Modal = require('react-modal');
 var imgTag = require('../utils/helper').imgTag;
+var ProfileStore = require('../stores/profile_store');
 
 // var IndexItemHeader = require('./index-item-header');
 
@@ -14,7 +15,10 @@ var InceptionModal = React.createClass({
   },
 
   render: function() {
-    console.log(this.state.picId);
+    var img = "";
+    if(this.state.picId) {
+      img = <img src={ProfileStore.getShowProfilePic(this.state.picId).url} />;
+    }
     return (
       <div>
         <Modal
@@ -23,9 +27,9 @@ var InceptionModal = React.createClass({
           style={this.style}>
 
           <div className="modal-image">
-            {imgTag('qdoiqtyte3olcbv4sutm')}
+            {img}
           </div>
-          
+
         </Modal>
       </div>
     );
@@ -45,3 +49,5 @@ var InceptionModal = React.createClass({
 });
 
 module.exports = InceptionModal;
+
+// {imgTag('qdoiqtyte3olcbv4sutm')}

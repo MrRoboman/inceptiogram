@@ -58,7 +58,6 @@ var Profile = React.createClass({
       content = (
         <div className="profile">
 
-          <button onClick={this.openModal}>Open</button>
           <InceptionModal modalOpen={this.state.modalOpen} picId={this.state.modalPicId} closeModal={this.closeModal}/>
 
           <ProfileHeader profile={this.state.profile}
