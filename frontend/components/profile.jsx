@@ -3,12 +3,21 @@ var ProfileStore = require('../stores/profile_store');
 var ProfileHeader = require('./profile_header');
 var ClientActions = require('../actions/client_actions');
 var CurrentUserMixin = require('../mixins/current_user_mixin');
+var InceptionModal = require('./Inception_modal');
 
 var Profile = React.createClass({
   mixins: [CurrentUserMixin],
 
   getInitialState: function() {
-    return {profile: {}};
+    return {profile: {}, modalOpen: false};
+  },
+
+  closeModal: function() {
+    this.setState({modalOpen: false});
+  },
+
+  openModal: function() {
+    this.setState({modalOpen: true});
   },
 
   componentDidMount: function() {
@@ -40,8 +49,13 @@ var Profile = React.createClass({
       var pics = this.state.profile.pictures.map(function(pic){
         return <div key={pic.id} className="overlay"><img className="profile-pics" src={pic.url}/></div>;
       });
+
       content = (
         <div className="profile">
+
+          <button onClick={this.openModal}>Open</button>
+          <InceptionModal modalOpen={this.state.modalOpen} closeModal={this.closeModal}/>
+
           <ProfileHeader profile={this.state.profile}
                          showFlwBtn={true}
                          isCurrentUser={this.isCurrentUser()}/>

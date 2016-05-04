@@ -17,6 +17,7 @@ var Profile = require('./components/profile');
 var ClientActions = require('./actions/client_actions');
 
 var imgTag = require('./utils/helper').imgTag;
+var Modal = require("react-modal");
 
 var currentUser = "";
 var App = React.createClass({
@@ -113,6 +114,7 @@ var router = (
 );
 
 document.addEventListener('DOMContentLoaded', function () {
+	Modal.setAppElement(document.body);
 	ReactDOM.render(
 	  router,
 		document.getElementById('root')

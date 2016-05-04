@@ -1,0 +1,42 @@
+var React = require('react');
+var Modal = require('react-modal');
+var imgTag = require('../utils/helper').imgTag;
+
+var InceptionModal = React.createClass({
+  getInitialState: function() {
+    return {modalOpen: this.props.modalOpen};
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    this.setState({modalOpen: nextProps.modalOpen});
+  },
+
+  render: function() {
+    return (
+      <div>
+        <Modal
+          isOpen={this.state.modalOpen}
+          onRequestClose={this.props.closeModal}
+          style={this.style}>
+          <div className="modal-image">
+            {imgTag('qdoiqtyte3olcbv4sutm')}
+          </div>
+        </Modal>
+      </div>
+    );
+  },
+
+  style: {
+    content: {
+      width: '1000',
+      height: '640',
+      padding: '0',
+      margin: '100px auto',
+      position: 'absolute',
+      overflow: 'hidden'
+
+    }
+  }
+});
+
+module.exports = InceptionModal;
