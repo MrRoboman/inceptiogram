@@ -122,7 +122,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+window.up = function() {
+	cloudinary.openUploadWidget(
+		window.cloudinary_options,
+		function(error, images){
+			if(error === null){
+				ClientActions.uploadImages(images);
+			}
+	});
+};
 // <div className="icon">
 // 	<i onClick={this.upload} className="fa fa-cloud-upload fa-2x"></i>
 // </div>

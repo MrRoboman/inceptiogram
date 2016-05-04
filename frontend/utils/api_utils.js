@@ -100,7 +100,7 @@ module.exports = {
   uploadImages: function(images) {
     var params = {picture: {}};
     images.forEach(function(img, idx) {
-      params.picture[idx.toString()] = img.url;
+      params.picture[idx.toString()] = {url: img.url, public_id: img.public_id};
     });
     $.ajax ({
       type: 'POST',
