@@ -3,7 +3,7 @@ var ProfileStore = require('../stores/profile_store');
 var ProfileHeader = require('./profile_header');
 var ClientActions = require('../actions/client_actions');
 var CurrentUserMixin = require('../mixins/current_user_mixin');
-var InceptionModal = require('./Inception_modal');
+var InceptionModal = require('./inception_modal');
 
 var Profile = React.createClass({
   mixins: [CurrentUserMixin],
