@@ -7,11 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 usernames = [
-  "Rob Kayson"
+  "Rob Kayson",
   "Shrek"
 ]
 password = "asdfasdf"
 
 usernames.each do |username|
-  User.create!(username: username, password: password)
+  user = User.create!(username: username, password: password)
 end
