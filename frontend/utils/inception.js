@@ -1,15 +1,15 @@
 
 
-var Inception = function(canvas) {
-  this.canvas = canvas;
-  this.ctx = canvas.getContext('2d');
+var Inception = function() {
+  // this.canvas = canvas;
+  // this.ctx = canvas.getContext('2d');
 
-  this.resize();
+  // this.resize();
   window.onresize = function() {
     this.resize();
   }.bind(this);
 
-  this.zoomSeconds = 1;
+  this.zoomSeconds = 2;
   this.scale = 1;
 
   this.superAlpha = .33;
@@ -20,7 +20,7 @@ var Inception = function(canvas) {
 
   this.canClick = true;
 
-  window.requestAnimationFrame(this.update.bind(this));
+  // window.requestAnimationFrame(this.update.bind(this));
 };
 
 Inception.prototype = {
@@ -232,6 +232,21 @@ Inception.prototype = {
       //TODO this is for testing
       this.grid.subImages.push(img);
     }
+    window.requestAnimationFrame(this.update.bind(this));
+  },
+
+  loadCanvas: function() {
+    this.canvas = document.getElementById('canvas');
+    this.ctx = this.canvas.getContext('2d');
+
+    this.resize();
+    window.onresize = function() {
+      this.resize();
+    }.bind(this);
+
+    this.canvas.addEventListener('click', function(e) {
+      this.click(e.clientX, e.clientY);
+    }.bind(this));
   },
 
   //loads each image as it loads
@@ -240,11 +255,16 @@ Inception.prototype = {
   },
 
   update: function() {
-    this.clear();
+    if(this.canvas) {
+      this.clear();
 
-    this.drawMainFrameImage();
-    this.drawAllGridImages();
-    this.drawAllSubImages();
+      this.drawMainFrameImage();
+      this.drawAllGridImages();
+      this.drawAllSubImages();
+    }
+    else {
+      this.loadCanvas();
+    }
 
     window.requestAnimationFrame(this.update.bind(this));
   }
