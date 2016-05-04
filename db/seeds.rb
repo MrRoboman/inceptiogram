@@ -10,7 +10,6 @@ usernames = [
   "Rob Kayson"
   "Shrek"
 ]
-
 password = "asdfasdf"
 
 usernames.each do |username|

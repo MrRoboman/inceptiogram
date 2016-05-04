@@ -6,8 +6,8 @@ var SessionStore = require('../stores/session_store');
 var Login = React.createClass({
 
   demo: {
-    username: "Rob",
-    password: "password"
+    username: "Rob Kayson",
+    password: "asdfasdf"
   },
 
   getInitialState: function() {
