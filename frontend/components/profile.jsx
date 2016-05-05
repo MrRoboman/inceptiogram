@@ -1,5 +1,6 @@
 var React = require('react');
 var ProfileStore = require('../stores/profile_store');
+var PictureStore = require('../stores/picture_store');
 var ProfileHeader = require('./profile_header');
 var ClientActions = require('../actions/client_actions');
 var CurrentUserMixin = require('../mixins/current_user_mixin');
@@ -66,6 +67,7 @@ var Profile = React.createClass({
           <div className="profile-pics">
             {pics}
           </div>
+
         </div>
       );
     }

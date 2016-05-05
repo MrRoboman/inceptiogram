@@ -7,6 +7,7 @@ var ModalComments = React.createClass({
   },
 
   likeString: function(){
+    if(this.props.likes === undefined) return <span></span>;
     var len = this.props.likes.length;
     var likePhrase = "like";
     var and = "";
@@ -31,14 +32,19 @@ var ModalComments = React.createClass({
   },
 
   render: function() {
-
-    var comments = this.props.comments.map(function(comment){
-      return (<li key={comment.id}>
-                {linkToProfile(comment.author)}
-                {" " + comment.body}
-              </li>
-             );
-    });
+    var comments;
+    if(this.props.comments){
+      comments = this.props.comments.map(function(comment){
+        return (<li key={comment.id}>
+                  {linkToProfile(comment.author)}
+                  {" " + comment.body}
+                </li>
+               );
+      });
+    }
+    else {
+      comments = [];
+    }
 
     return (
       <div className="modal-comments">

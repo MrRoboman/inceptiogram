@@ -6,15 +6,29 @@ var ModalHeader = require('./modal_header');
 var PictureIndexItemFooter = require('./picture_index_item_footer');
 var ModalComments = require('./modal_comments');
 var ModalForm = require('./modal_form');
+var PictureStore = require('../stores/picture_store');
 
 // var IndexItemHeader = require('./index-item-header');
 
 var InceptionModal = React.createClass({
   getInitialState: function() {
-    return {modalOpen: this.props.modalOpen, picId: this.props.picId};
+    return {modalOpen: this.props.modalOpen, picId: this.props.picId, likes: this.props.likes, comments: this.props.comments};
+  },
+
+  componentDidMount: function() {
+    this.listener = PictureStore.addListener(this.onChange);
+  },
+
+  onChange: function(){
+    var pic = PictureStore.getSinglePicture();
+    debugger;
+    var likes = pic.likes;
+    var comments = pic.comments;
+    this.setState({likes: likes, comments: comments});
   },
 
   componentWillReceiveProps: function(nextProps) {
+    // debugger;
     this.setState({modalOpen: nextProps.modalOpen, picId: nextProps.picId});
   },
 
@@ -42,7 +56,7 @@ var InceptionModal = React.createClass({
 
             <div className="modal-deets">
               <ModalHeader profile={profile} />
-              <ModalComments likes={pic.likes} comments={pic.comments}/>
+              <ModalComments likes={this.state.likes} comments={this.state.comments}/>
               <ModalForm picture={pic} />
             </div>
           </div>
