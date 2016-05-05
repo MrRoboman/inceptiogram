@@ -444,13 +444,18 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 }
 
 .modal-deets {
+  display: flex;
+  flex-direction: column;
+  // flex-wrap: wrap;
+  // justify-content: center;
   width: 260px;
-  background: green;
 }
 
 .modal-header {
   width: 260px;
-  padding: 20px;
+  height: 70px;
+  padding-top: 20px;
+  padding-left: 20px;
   .pic-and-name{
     display: flex;
     img {
@@ -462,6 +467,14 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
       padding: 16px;
     }
   }
+}
+
+.modal-comments {
+  width: 260px;
+  height: 480px;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  // background: orange;
 }
 
 .pic-index-pic {
