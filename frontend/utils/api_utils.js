@@ -48,6 +48,15 @@ module.exports = {
     });
   },
 
+  fetchSinglePicture: function(id) {
+    $.ajax({
+      type: 'GET',
+      url: 'api/pictures/' + id,
+      dataType: 'json',
+      success: ServerActions.receiveSinglePicture
+    });
+  },
+
   createComment: function(data) {
     $.ajax({
       type: 'POST',

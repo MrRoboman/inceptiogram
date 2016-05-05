@@ -38,13 +38,18 @@ PictureStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case PictureConstants.RECEIVED_PICTURES:
       _pictures = payload.pictures;
+      this.__emitChange();
       break;
     case PictureConstants.RECEIVED_SINGLE_PICTURE:
       insertPicture(payload.picture);
       _singlePicture = payload.picture;
+      this.__emitChange();
+      break;
+    case PictureConstants.CLEAR_SINGLE_PICTURE:
+      _singlePicture = {};
       break;
   }
-  this.__emitChange();
+
 };
 
 // for testing (remove for production)

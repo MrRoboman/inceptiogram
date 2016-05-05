@@ -18,6 +18,7 @@ var Profile = React.createClass({
   },
 
   openModal: function(e) {
+    ClientActions.fetchSinglePicture(e.currentTarget.id);
     this.setState({modalOpen: true, modalPicId: e.currentTarget.id});
   },
 

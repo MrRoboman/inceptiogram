@@ -12,16 +12,19 @@ var PictureStore = require('../stores/picture_store');
 
 var InceptionModal = React.createClass({
   getInitialState: function() {
-    return {modalOpen: this.props.modalOpen, picId: this.props.picId, likes: this.props.likes, comments: this.props.comments};
+    return {modalOpen: this.props.modalOpen, picId: this.props.picId};
   },
 
   componentDidMount: function() {
     this.listener = PictureStore.addListener(this.onChange);
   },
 
+  componentWillUnmount: function() {
+    this.listener.remove();
+  },
+
   onChange: function(){
     var pic = PictureStore.getSinglePicture();
-    debugger;
     var likes = pic.likes;
     var comments = pic.comments;
     this.setState({likes: likes, comments: comments});
