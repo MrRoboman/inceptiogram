@@ -31,9 +31,21 @@ var ModalComments = React.createClass({
   },
 
   render: function() {
+
+    var comments = this.props.comments.map(function(comment){
+      return (<li key={comment.id}>
+                {linkToProfile(comment.author)}
+                {" " + comment.body}
+              </li>
+             );
+    });
+
     return (
       <div className="modal-comments">
-        <span>{this.likeString()}</span>
+        <span className="likes">{this.likeString()}</span>
+        <ul className="comments">
+          {comments}
+        </ul>
       </div>
     );
   }

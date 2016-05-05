@@ -41,7 +41,7 @@ var InceptionModal = React.createClass({
 
             <div className="modal-deets">
               <ModalHeader profile={profile} />
-              <ModalComments likes={pic.likes}/>
+              <ModalComments likes={pic.likes} comments={pic.comments}/>
             </div>
           </div>
 
@@ -52,7 +52,7 @@ var InceptionModal = React.createClass({
 
   style: {
     content: {
-      width: '900',
+      width: '1000',
       height: '640',
       padding: '0',
       margin: '100px auto',
