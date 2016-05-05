@@ -44,6 +44,7 @@ SessionStore.__onDispatch = function(payload) {
       _fetchReceived = true;
       _currentUser = payload.currentUser.username;
       _currentUserId = payload.currentUser.id;
+      // debugger;
       _authErrors = [];
       this.__emitChange();
       break;

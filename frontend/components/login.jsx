@@ -122,7 +122,7 @@ var Login = React.createClass({
         <div className="auth-flip">
           <span>Need an account? <a onClick={this.gotoSignup}>Sign Up</a></span>
         </div>
-        <ul>
+        <ul className="red">
           {errors}
         </ul>
       </div>

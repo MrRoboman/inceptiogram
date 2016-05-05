@@ -25,7 +25,7 @@ var Signup = React.createClass({
     }
   },
 
-  componentwillUnmount: function() {
+  componentWillUnmount: function() {
     this.listener.remove();
   },
 
@@ -123,7 +123,7 @@ var Signup = React.createClass({
         <ul>
           {errors}
         </ul>
-        <ul>
+        <ul className="red">
           {this.passwordHelper()}
         </ul>
       </div>
