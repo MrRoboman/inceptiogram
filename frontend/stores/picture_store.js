@@ -23,6 +23,7 @@ PictureStore.getPictures = function() {
 PictureStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case PictureConstants.RECEIVED_PICTURES:
+    // debugger;
       _pictures = payload.pictures;
       break;
     case PictureConstants.RECEIVED_SINGLE_PICTURE:

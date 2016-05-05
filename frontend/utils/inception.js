@@ -1,4 +1,4 @@
-
+var AllTimePicStore = require('../stores/all_time_pic_store');
 
 var Inception = function() {
   // this.canvas = canvas;
@@ -20,6 +20,8 @@ var Inception = function() {
 
   this.canClick = true;
 
+  this.initPics();
+
   // window.requestAnimationFrame(this.update.bind(this));
 };
 
@@ -31,13 +33,39 @@ Inception.prototype = {
   },
 
   grid: {
-    rows: 10,
-    cols: 10,
+    rows: 20,
+    cols: 20,
     getTotalCells: function() {
       return this.rows * this.cols;
     },
     images: [],
     subImages: []
+  },
+
+  initPics: function() {
+    //do a fetch for pic index if number is fewer than ten
+    this.pics = AllTimePicStore.all();
+    var keys = Object.keys(this.pics);
+    keys.forEach(function(key){
+      var img = new Image();
+      img.src = this.pics[key].url;
+      this.pics[key].img = img;
+    }.bind(this));
+    this.buildMap();
+    this.imgMap = this.subImgMap;
+    this.buildMap(); // doing it twice to fill both imgMap and subImgMap
+  },
+
+  buildMap: function(){
+    this.subImgMap = [];
+    var keys = Object.keys(this.pics);
+    var len = keys.length;
+    var totalCells = this.grid.getTotalCells();
+    for(var i = 0; i < totalCells; i++){
+      var r = Math.floor(Math.random()*len);
+      var key = keys[r];
+      this.subImgMap.push(this.pics[key]);
+    }
   },
 
   resize: function() {
@@ -56,6 +84,8 @@ Inception.prototype = {
     console.log(this.selectedCell);
     var x = this.getCellX(X);
     var y = this.getCellY(Y);
+
+    this.buildMap();
 
     this.zoomIn(x, y);
     this.canClick = false;
@@ -87,6 +117,10 @@ Inception.prototype = {
 
     this.offsetX = 0;
     this.offsetY = 0;
+
+    this.mainFrame.image = this.imgMap[this.selectedCell].img;
+    // this.buildMap();
+    this.imgMap = this.subImgMap;
 
     this.canClick = true;
   },
@@ -158,7 +192,7 @@ Inception.prototype = {
     if(!(this.selectedCell >= 0)) return;
     var totalCells = this.grid.getTotalCells();
     for(var i = 0; i < totalCells; i++){
-      this.drawSubImage(this.selectedCell, i, this.grid.images[0]);
+      this.drawSubImage(this.selectedCell, i, this.subImgMap[i].img);
     }
   },
 
@@ -173,9 +207,14 @@ Inception.prototype = {
   },
 
   drawAllGridImages: function() {
-    for(var i = 0; i < this.grid.images.length; i++){
+    // for(var i = 0; i < this.grid.images.length; i++){
+    //   this.ctx.globalAlpha = this.superAlpha;
+    //   this.drawGridImage(i, this.grid.images[i]);
+    //   this.ctx.globalAlpha = 1;
+    // }
+    for(var i = 0; i < this.imgMap.length; i++){
       this.ctx.globalAlpha = this.superAlpha;
-      this.drawGridImage(i, this.grid.images[i]);
+      this.drawGridImage(i, this.imgMap[i].img);
       this.ctx.globalAlpha = 1;
     }
   },
@@ -222,18 +261,20 @@ Inception.prototype = {
   },
 
   loadGridImages: function(url) {
-    var totalCells = this.grid.getTotalCells();
-    this.grid.images = [];
-    for(var i = 0; i < totalCells; i++){
-      var img = new Image();
-      this.mainFrame.image = img;
-      img.idx = i;
-      img.src = url;
-      img.onload = this.onload.bind(this);
-      this.grid.images.push(img);
-      //TODO this is for testing
-      // this.grid.subImages.push(img);
-    }
+    var img = new Image();
+    img.src = url;
+    this.mainFrame.image = img;
+    // var totalCells = this.grid.getTotalCells();
+    // this.grid.images = [];
+    // for(var i = 0; i < totalCells; i++){
+    //   var img = new Image();
+    //   img.idx = i;
+    //   img.src = url;
+    //   img.onload = this.onload.bind(this);
+    //   this.grid.images.push(img);
+    //   //TODO this is for testing
+    //   // this.grid.subImages.push(img);
+    // }
 
     window.requestAnimationFrame(this.update.bind(this));
   },
