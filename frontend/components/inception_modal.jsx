@@ -16,21 +16,23 @@ var InceptionModal = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
+    if(!nextProps.modalOpen){
+      this.inception.unloadCanvas();
+    }
     this.setState({modalOpen: nextProps.modalOpen, picId: nextProps.picId});
   },
 
   render: function() {
     var img = "";
-    if(this.state.picId) {
-      img = <img src={ProfileStore.getShowProfilePic(this.state.picId).url} />;
-    }
+    // if(this.state.picId) {
+    //   img = <img src={ProfileStore.getShowProfilePic(this.state.picId).url} />;
+    // }
     if(this.state.picId){
-      img = <canvas className="canvas"></canvas>;
-      this.inception.loadGridImages('http://res.cloudinary.com/dxhizunmp/image/upload/v1462384608/zgotfkct0u49dr2bvdad.png');
+      this.inception.loadGridImages(this.props.picUrl);
     }
 
     return (
-      <div>
+      <div id='modal-container'>
 
         <Modal
           isOpen={this.state.modalOpen}

@@ -31,8 +31,8 @@ Inception.prototype = {
   },
 
   grid: {
-    rows: 20,
-    cols: 20,
+    rows: 10,
+    cols: 10,
     getTotalCells: function() {
       return this.rows * this.cols;
     },
@@ -53,6 +53,7 @@ Inception.prototype = {
     if(!this.canClick || this.clickOutOfBounds(X, Y)) return;
 
     this.selectedCell = this.getIndex(X,Y);
+    console.log(this.selectedCell);
     var x = this.getCellX(X);
     var y = this.getCellY(Y);
 
@@ -222,6 +223,7 @@ Inception.prototype = {
 
   loadGridImages: function(url) {
     var totalCells = this.grid.getTotalCells();
+    this.grid.images = [];
     for(var i = 0; i < totalCells; i++){
       var img = new Image();
       this.mainFrame.image = img;
@@ -230,12 +232,14 @@ Inception.prototype = {
       img.onload = this.onload.bind(this);
       this.grid.images.push(img);
       //TODO this is for testing
-      this.grid.subImages.push(img);
+      // this.grid.subImages.push(img);
     }
+
     window.requestAnimationFrame(this.update.bind(this));
   },
 
   loadCanvas: function() {
+    this.modalContainer = document.getElementById('modal-container');
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
 
@@ -244,9 +248,22 @@ Inception.prototype = {
       this.resize();
     }.bind(this);
 
+    //TODO hard coding coords bad
     this.canvas.addEventListener('click', function(e) {
-      this.click(e.clientX, e.clientY);
+      var x = e.clientX - this.modalContainer.offsetLeft + 26;
+      var y = e.clientY - this.modalContainer.offsetTop - 11;
+      // var offsetX = (window.innerWidth - 1000) / 2;
+      // var x = e.clientX - offsetX;
+      // var offsetY
+      console.log(x,y);
+      this.click(x, y);
     }.bind(this));
+
+    this.canvasRunning = true;
+  },
+
+  unloadCanvas: function() {
+    this.canvasRunning = false;
   },
 
   //loads each image as it loads
@@ -266,7 +283,11 @@ Inception.prototype = {
       this.loadCanvas();
     }
 
-    window.requestAnimationFrame(this.update.bind(this));
+    if(this.canvasRunning){
+      window.requestAnimationFrame(this.update.bind(this));
+    } else {
+      this.canvas = null;
+    }
   }
 };
 
