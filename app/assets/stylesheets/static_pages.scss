@@ -434,9 +434,34 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 //   overflow: hidden;
 // }
 
-.modal-image img{
-  width: 640px;
-  height: 640px;
+.modal-components{
+  display: flex;
+  justify-content: space-between;
+  img{
+    width: 640px;
+    height: 640px;
+  }
+}
+
+.modal-deets {
+  width: 260px;
+  background: green;
+}
+
+.modal-header {
+  width: 260px;
+  padding: 20px;
+  .pic-and-name{
+    display: flex;
+    img {
+      width: 60px;
+      height: 60px;
+      // margin-right: 20px;
+    }
+    .name {
+      padding: 16px;
+    }
+  }
 }
 
 .pic-index-pic {

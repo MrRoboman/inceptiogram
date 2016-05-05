@@ -9,13 +9,11 @@ var ModalHeader = React.createClass({
     // var flwBtn = this.props.flwBtn ? <FollowButton/> : "";
     var flwBtn = "";
     return (
-      <div className="index-item-header">
+      <div className="modal-header">
         <div className="pic-and-name">
           {imgTag('falcon_hmlgcs', {circle: {width: 60, height: 60}})}
           <span className="name">{linkToProfile(this.props.profile)}</span>
         </div>
-        <FollowButton display={this.props.showFlwBtn}
-                      profile={this.props.profile}/>
       </div>
     );
   }
