@@ -5,6 +5,7 @@ var ProfileStore = require('../stores/profile_store');
 var ModalHeader = require('./modal_header');
 var PictureIndexItemFooter = require('./picture_index_item_footer');
 var ModalComments = require('./modal_comments');
+var ModalForm = require('./modal_form');
 
 // var IndexItemHeader = require('./index-item-header');
 
@@ -42,6 +43,7 @@ var InceptionModal = React.createClass({
             <div className="modal-deets">
               <ModalHeader profile={profile} />
               <ModalComments likes={pic.likes} comments={pic.comments}/>
+              <ModalForm picture={pic} />
             </div>
           </div>
 
