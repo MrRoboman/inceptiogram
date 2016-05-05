@@ -4,7 +4,6 @@ class Api::UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       login!(user)
-      debugger;
       render json: {username: user.username}
     else
       render json: user.errors.full_messages, status: 403

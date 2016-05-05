@@ -6,7 +6,8 @@ class Api::CommentsController < ApplicationController
       @picture = Picture.find_with_deets(comment.picture_id)
       render :create
     else
-      debugger
+
+      
     end
   end
 

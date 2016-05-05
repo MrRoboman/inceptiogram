@@ -18,7 +18,8 @@ class Api::LikesController < ApplicationController
       @picture = Picture.find_with_deets(like.picture_id)
       render :create
     else
-      debugger
+
+      
     end
   end
 

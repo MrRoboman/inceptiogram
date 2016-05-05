@@ -15,7 +15,8 @@ class Api::FollowsController < ApplicationController
     if follow.save
       @profile = User.find_with_deets(follow.leader_id)
     else
-      debugger
+
+      
     end
   end
 end
