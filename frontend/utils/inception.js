@@ -1,5 +1,4 @@
-var PictureStore = require('../stores/picture_store');
-var ProfileStore = require('../stores/profile_store');
+
 
 var Inception = function() {
   // this.canvas = canvas;
@@ -222,16 +221,6 @@ Inception.prototype = {
     this.mainFrame.image = img;
   },
 
-  getRandomPicture: function() {
-    var pics = [];
-    var pic;
-    pic = PictureStore.getRandomPicture();
-    if(pic) pics.push(pic);
-    pic = ProfileStore.getRandomPicture();
-    if(pic) pics.push(pic);
-    return pics[Math.floor(Math.random() * pics.length)];
-  },
-
   loadGridImages: function(url) {
     var totalCells = this.grid.getTotalCells();
     this.grid.images = [];
@@ -239,7 +228,7 @@ Inception.prototype = {
       var img = new Image();
       this.mainFrame.image = img;
       img.idx = i;
-      img.src = this.getRandomPicture().url;
+      img.src = url;
       img.onload = this.onload.bind(this);
       this.grid.images.push(img);
       //TODO this is for testing
