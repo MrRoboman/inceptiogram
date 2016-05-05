@@ -88,12 +88,20 @@ module.exports = {
   },
 
   fetchSingleProfile: function(id) {
-    // debugger;
     $.ajax({
       type: 'GET',
       url: 'api/profiles/' + id,
       dataType: 'json',
       success: ServerActions.receiveSingleProfile
+    });
+  },
+
+  fetchSinglePicture: function(id) {
+    $.ajax({
+      type: 'GET',
+      url: 'api/pictures/' + id,
+      dataType: 'json',
+      success: ServerActions.receiveSinglePicture
     });
   },
 

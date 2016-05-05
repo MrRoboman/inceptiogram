@@ -2,17 +2,20 @@ var React = require('react');
 var Modal = require('react-modal');
 var imgTag = require('../utils/helper').imgTag;
 var ProfileStore = require('../stores/profile_store');
+var PictureStore = require('../stores/picture_store');
 var Inception = require('../utils/inception');
+var ModalDeets = require('./modal_deets');
 
 // var IndexItemHeader = require('./index-item-header');
 
 var InceptionModal = React.createClass({
   getInitialState: function() {
-    return {modalOpen: this.props.modalOpen, picId: this.props.picId};
+    return {modalOpen: this.props.modalOpen, picId: this.props.picId, currentPicture: {}};
   },
 
   componentDidMount: function() {
-    this.inception = new Inception();
+    this.inception = new Inception(this.props.onModalChange);
+    this.listener = PictureStore.addListener(this.onChange);
   },
 
   componentWillReceiveProps: function(nextProps) {
@@ -20,6 +23,14 @@ var InceptionModal = React.createClass({
       this.inception.unloadCanvas();
     }
     this.setState({modalOpen: nextProps.modalOpen, picId: nextProps.picId});
+  },
+
+  componentWillUnmount: function() {
+    this.listener.remove();
+  },
+
+  onChange: function() {
+    this.setState({currentPicture: PictureStore.getSinglePicture()});
   },
 
   render: function() {
@@ -39,9 +50,9 @@ var InceptionModal = React.createClass({
           onRequestClose={this.props.closeModal}
           style={this.style}>
 
-          <div className="modal-image" ref="canvas">
-            <canvas id="canvas"></canvas>
-          </div>
+          <canvas id="canvas"></canvas>
+
+
 
         </Modal>
 
@@ -65,3 +76,6 @@ var InceptionModal = React.createClass({
 module.exports = InceptionModal;
 
 // {imgTag('qdoiqtyte3olcbv4sutm')}
+// <div className="modal-deets">
+//   {username}
+// </div>

@@ -1,4 +1,6 @@
 var AllTimePicStore = require('../stores/all_time_pic_store');
+var ClientActions = require('../actions/client_actions');
+var PictureStore = require('../stores/picture_store');
 
 var Inception = function() {
   // this.canvas = canvas;
@@ -80,8 +82,11 @@ Inception.prototype = {
   click: function(X, Y){
     if(!this.canClick || this.clickOutOfBounds(X, Y)) return;
 
+
+
     this.selectedCell = this.getIndex(X,Y);
-    console.log(this.selectedCell);
+    ClientActions.fetchSinglePicture(this.imgMap[this.selectedCell].id);
+
     var x = this.getCellX(X);
     var y = this.getCellY(Y);
 
@@ -275,7 +280,7 @@ Inception.prototype = {
     //   //TODO this is for testing
     //   // this.grid.subImages.push(img);
     // }
-
+    this.listener = PictureStore.addListener(this.onChange);
     window.requestAnimationFrame(this.update.bind(this));
   },
 
@@ -296,7 +301,6 @@ Inception.prototype = {
       // var offsetX = (window.innerWidth - 1000) / 2;
       // var x = e.clientX - offsetX;
       // var offsetY
-      console.log(x,y);
       this.click(x, y);
     }.bind(this));
 
