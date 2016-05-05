@@ -5,7 +5,8 @@ class Picture < ActiveRecord::Base
   has_many :likes
 
   def self.all_with_deets(current_user)
-    self.includes(:owner, likes: [:user], comments: [:author]).where.not(owner: current_user)
+    leader_ids = current_user.leaders.map(&:id)
+    self.includes(:owner, likes: [:user], comments: [:author]).where(user_id: leader_ids)
   end
 
   def self.find_with_deets(id)
