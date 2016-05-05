@@ -3,7 +3,6 @@ var dispatcher = require('../dispatcher/dispatcher');
 var PictureConstants = require('../constants/picture_constants');
 
 var _pictures = [];
-var _singlePicture = {};
 
 var PictureStore = new Store(dispatcher);
 
@@ -21,10 +20,6 @@ PictureStore.getPictures = function() {
   return _pictures.slice();
 };
 
-PictureStore.getSinglePicture = function() {
-  return _singlePicture;
-};
-
 PictureStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case PictureConstants.RECEIVED_PICTURES:
@@ -32,7 +27,6 @@ PictureStore.__onDispatch = function(payload) {
       break;
     case PictureConstants.RECEIVED_SINGLE_PICTURE:
       insertPicture(payload.picture);
-      _singlePicture = payload.picture;
       break;
   }
   this.__emitChange();

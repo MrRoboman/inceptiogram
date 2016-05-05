@@ -13,7 +13,6 @@ var ClientActions = {
   createUser: ApiUtil.createUser,
 
   fetchPictures: ApiUtil.fetchPictures,
-  fetchSinglePicture: ApiUtil.fetchSinglePicture,
 
   createComment: ApiUtil.createComment,
   createLike: ApiUtil.createLike,

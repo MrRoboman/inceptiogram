@@ -434,26 +434,12 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 //   overflow: hidden;
 // }
 
-
-
-.canvas {
+.modal-image img{
   width: 640px;
   height: 640px;
-  background: green;
 }
 
 .pic-index-pic {
   width: 640px;
   height: 640px;
-}
-
-.modal-container {
-  display: flex;
-}
-
-.modal-deets {
- width: 200px;
- height: 200px;
- background: green;
- float: right;
 }

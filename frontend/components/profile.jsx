@@ -9,15 +9,15 @@ var Profile = React.createClass({
   mixins: [CurrentUserMixin],
 
   getInitialState: function() {
-    return {profile: {}, modalOpen: false, modalPicId: null};
+    return {profile: {}, modalOpen: false};
   },
 
   closeModal: function() {
-    this.setState({modalOpen: false, modalPicId: null});
+    this.setState({modalOpen: false});
   },
 
   openModal: function(e) {
-    this.setState({modalOpen: true, modalPicId: e.currentTarget.id, picUrl: ProfileStore.getShowProfilePic(e.currentTarget.id).url});
+    this.setState({modalOpen: true, modalPicId: e.currentTarget.id});
   },
 
   componentDidMount: function() {
@@ -58,10 +58,7 @@ var Profile = React.createClass({
       content = (
         <div className="profile">
 
-          <InceptionModal modalOpen={this.state.modalOpen}
-                          picId={this.state.modalPicId}
-                          picUrl={this.state.picUrl}
-                          closeModal={this.closeModal}/>
+          <InceptionModal modalOpen={this.state.modalOpen} picId={this.state.modalPicId} closeModal={this.closeModal}/>
 
           <ProfileHeader profile={this.state.profile}
                          showFlwBtn={true}

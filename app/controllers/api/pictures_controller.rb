@@ -16,8 +16,4 @@ class Api::PicturesController < ApplicationController
     p p_ids
     render json: {success: @success}
   end
-
-  def show
-    @picture = Picture.find(params[:id])
-  end
 end
