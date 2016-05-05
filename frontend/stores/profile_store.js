@@ -5,6 +5,7 @@ var ProfileConstants = require('../constants/profile_constants');
 var _profiles = [];
 var _showProfile = {};
 var _showProfilePics = {};
+var _pictures = {};
 
 var ProfileStore = new Store(dispatcher);
 
@@ -31,10 +32,21 @@ var updateShowProfilePics = function() {
   for(var i = 0; i < pics.length; i++){
     _showProfilePics[pics[i].id] = pics[i];
   }
+  var keys = Object.keys(_showProfilePics);
+  keys.forEach(function(key){
+    _pictures[key] = _showProfilePics[key];
+  });
+
 };
 
 ProfileStore.getShowProfilePic = function(id) {
   return _showProfilePics[id];
+};
+
+ProfileStore.getRandomPicture = function() {
+  var keys = Object.keys(_pictures);
+  var r = Math.floor(Math.random() * keys.length);
+  return _pictures[keys[r]];
 };
 
 ProfileStore.__onDispatch = function(payload) {
