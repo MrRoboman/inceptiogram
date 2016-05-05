@@ -5,7 +5,6 @@ class Picture < ActiveRecord::Base
   has_many :likes
 
   def self.all_with_deets(current_user)
-    debugger
     self.includes(:owner, likes: [:user], comments: [:author]).where.not(owner: current_user)
   end
 
