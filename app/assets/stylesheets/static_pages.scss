@@ -351,6 +351,7 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 .profile-pics {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   max-width: auto;
   margin: 30px auto;
   // background: purple;
