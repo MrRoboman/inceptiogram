@@ -152,7 +152,7 @@ body {
 
 .appnav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   box-sizing: border-box;
   height: 80px;
   border-bottom: 1px solid $border-color;
@@ -166,7 +166,6 @@ body {
   display: flex;
   justify-content: space-between;
   width: 950px;
-  margin: 0 auto;
   h1 {
     font-family: 'Montez', cursive;
     font-size: 36px;
