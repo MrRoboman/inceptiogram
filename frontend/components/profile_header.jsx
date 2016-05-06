@@ -19,7 +19,10 @@ var ProfileHeader = React.createClass({
           {imgTag('falcon_hmlgcs', {circle: {width: 180, height: 180}})}
           <span className="profile-header-username">{this.props.profile.username}</span>
         </div>
-        {button}
+        <div className="profile-header-right">
+          <i className="fa fa-cloud-upload fa-5x"></i>
+          {button}
+        </div>
       </div>
     );
   }

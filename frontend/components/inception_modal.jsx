@@ -43,7 +43,7 @@ var InceptionModal = React.createClass({
     var liking = false;
     if(this.state.modalOpen) {
       pic = ProfileStore.getShowProfilePic(this.state.picId);
-      img = <img src={pic.url} />;
+      img = imgTag(pic.public_id, {scale: {width: 640, height: 640}});
       profile = {id: pic.owner.id, username: pic.owner.username};
       liking = pic.liking;
     }

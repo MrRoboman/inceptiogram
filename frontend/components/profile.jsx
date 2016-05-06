@@ -5,6 +5,7 @@ var ProfileHeader = require('./profile_header');
 var ClientActions = require('../actions/client_actions');
 var CurrentUserMixin = require('../mixins/current_user_mixin');
 var InceptionModal = require('./inception_modal');
+var imgTag = require('../utils/helper').imgTag;
 
 var Profile = React.createClass({
   mixins: [CurrentUserMixin],
@@ -48,13 +49,13 @@ var Profile = React.createClass({
 
     var content = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>;
 
-    var pics = <div className="missing-content-message">{"Upload some photos!"}</div>;
-      // debugger;
+    var pics = "";
+
     if(this.state.profile.pictures && this.state.profile.pictures.length > 0){
       pics = this.state.profile.pictures.map(function(pic){
         return (
           <div key={pic.id} id={pic.id} className="overlay profile-pics" onClick={this.openModal}>
-            <img src={pic.url} />
+            {imgTag(pic.public_id, {scale: {width: 300, height: 300}})}
           </div>
         );
       }.bind(this));

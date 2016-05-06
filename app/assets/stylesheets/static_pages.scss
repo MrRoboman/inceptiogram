@@ -34,6 +34,10 @@ html, body, div, h1, h2, h3, button, p, span, input, img, a, ul, li {
 }
 
 .fa:hover {
+  color: $link-hover-blue;
+}
+
+.fa:hover {
   cursor: pointer;
 }
 
@@ -163,10 +167,17 @@ body {
   }
   h1:hover {
     cursor: pointer;
+    color: $link-hover-blue;
   }
   .icon {
     padding-top: 12px;
   }
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+  width: 40%;
 }
 
 .nav-buttons {
@@ -364,7 +375,22 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   // padding: 0 4px;
   .missing-content-message {
     margin: 0 auto;
+    padding: 0;
   }
+}
+
+.profile-header-right {
+  display: flex;
+  .follow-button {
+    font-size: 18px;
+    border-width: 2px;
+    padding: 21px 16px;
+  }
+}
+
+.fa.fa-cloud-upload.fa-5x {
+  padding-top: 0;
+  padding-right: 30px;
 }
 
 .profile-pics .overlay {

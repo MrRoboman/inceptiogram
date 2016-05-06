@@ -7,9 +7,11 @@ var Helper = {
   },
   imgTag: function(publicId, options){
     options = options || {};
-    var optionString = "c_scale,h_640,w_640/";
+    // var optionString = "c_scale,h_640,w_640/";
+    var optionString = "c_crop,h_640,w_640/";
     if(options.scale) {
-      optionString = "c_scale,h_"+options.scale.height+",w_"+options.scale.width+"/";
+      // optionString = "c_scale,h_"+options.scale.height+",w_"+options.scale.width+"/";
+      optionString = "c_crop,h_"+options.scale.height+",w_"+options.scale.width+"/";
     }else if(options.circle) {
       optionString = "w_"+options.circle.width+",h_"+options.circle.height+",c_fill,g_face,r_max/";
     }
