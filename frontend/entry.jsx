@@ -82,7 +82,10 @@ var App = React.createClass({
 						<i onClick={this.gotoProfiles} className="fa fa-users fa-2x"></i>
 					</div>
 					<div className="icon">
-						<i onClick={this.gotoCurrentUserProfile} className="fa fa-user fa-2x" alt="Get it? Leave!"></i>
+						<i onClick={this.gotoCurrentUserProfile} className="fa fa-user fa-2x"></i>
+					</div>
+					<div className="icon">
+						<i onClick={this.logout} className="fa fa-sign-out fa-2x"></i>
 					</div>
 				</div>
 			);

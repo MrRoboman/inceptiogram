@@ -183,7 +183,7 @@ body {
 .nav-buttons {
   display: flex;
   justify-content: space-between;
-  width: 125px;
+  width: 144px;
   // background: yellow;
 }
 
@@ -369,7 +369,6 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: auto;
   margin: 30px auto;
   // background: purple;
   // padding: 0 4px;
@@ -381,11 +380,7 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 
 .profile-header-right {
   display: flex;
-  .follow-button {
-    font-size: 18px;
-    border-width: 2px;
-    padding: 21px 16px;
-  }
+
 }
 
 .fa.fa-cloud-upload.fa-5x {
