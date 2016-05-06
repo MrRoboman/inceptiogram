@@ -129,7 +129,7 @@ module.exports = {
     var params = {picture: {url: image.url, public_id: image.public_id}};
     $.ajax ({
       type: 'PATCH',
-      url: 'api/profiles/0',
+      url: 'api/updatephoto',
       dataType: 'json',
       data: params,
       success: function(profile) {

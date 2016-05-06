@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 		resource :user, only: [:create, :show]
 		resource :session, only: [:create, :destroy]
 
-		resources :profiles, only: [:index, :show, :update]
+		patch '/updatephoto', to: 'profiles#update'
+
+		resources :profiles, only: [:index, :show]
 		resources :pictures, only: [:index, :create, :show]
 		resources :comments, only: [:create]
 		resources :likes, only: [:create]
