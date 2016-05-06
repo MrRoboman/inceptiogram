@@ -123,6 +123,22 @@ module.exports = {
         console.log(error);
       }
     });
+  },
+
+  uploadProfileImage: function(image) {
+    var params = {picture: {url: image.url, public_id: image.public_id}};
+    $.ajax ({
+      type: 'PATCH',
+      url: 'api/profiles/0',
+      dataType: 'json',
+      data: params,
+      success: function(profile) {
+        ServerActions.receiveSingleProfile(profile);
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
   }
 
 };

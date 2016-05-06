@@ -355,10 +355,25 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   display: flex;
   justify-content: space-between;
   padding: 0 0 0 100px;
+  position: relative;
   img {
     width: 180px;
     height: 180px;
   }
+  .profile-upload-button {
+    position: absolute;;
+    top: 48px;
+    left: 151px;
+  }
+}
+
+.profile-upload-button {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.profile-upload-button:hover {
+  opacity: 1;
+  color: $link-blue;
 }
 
 .profile-header-pic-username {

@@ -39,7 +39,7 @@ var ServerActions = {
     });
   },
 
-  receiveSingleProfile: function(profile) {
+  receiveSingleProfile: function(profile) { //debugger;
     Dispatcher.dispatch({
       actionType: ProfileConstants.RECEIVED_SINGLE_PROFILE,
       profile: profile

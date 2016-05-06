@@ -33,7 +33,8 @@ var ClientActions = {
     });
   },
 
-  uploadImages: ApiUtil.uploadImages
+  uploadImages: ApiUtil.uploadImages,
+  uploadProfileImage: ApiUtil.uploadProfileImage
 };
 
 window.CA = ClientActions;
