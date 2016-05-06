@@ -36,7 +36,7 @@ var Signup = React.createClass({
       this.setState({errors: errors});
       //TODO: focus on username field, select the previous name that was there
     }else if(currentUser.length > 0){
-      HashHistory.push("/");
+      HashHistory.push("profileindex");
     }
   },
 

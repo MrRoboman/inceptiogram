@@ -49,7 +49,7 @@ var App = React.createClass({
 
 	gotoPictures: function(e) {
 		e.preventDefault();
-		HashHistory.push('pictureindex');
+		HashHistory.push('/');
 	},
 
 	gotoProfiles: function(e) {
@@ -104,7 +104,6 @@ var router = (
 	<Router history={HashHistory}>
 		<Route path='/' component={App}>
 			<IndexRoute component={PictureIndex} />
-			<Route component={PictureIndex} path="pictureindex" />
 			<Route component={ProfileIndex} path="profileindex" />
 			<Route component={Profile} path="profile/:id" />
 			<Route component={SignupForm} path="signup" />
