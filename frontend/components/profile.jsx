@@ -46,16 +46,19 @@ var Profile = React.createClass({
 //Get pics at 640x640 and scale. Then just use the pic in the modal
   render: function() {
 
-    var content = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>
+    var content = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>;
 
-    if(this.state.profile.pictures){
-      var pics = this.state.profile.pictures.map(function(pic){
+    var pics = <div className="missing-content-message">{"Upload some photos!"}</div>;
+      // debugger;
+    if(this.state.profile.pictures && this.state.profile.pictures.length > 0){
+      pics = this.state.profile.pictures.map(function(pic){
         return (
           <div key={pic.id} id={pic.id} className="overlay profile-pics" onClick={this.openModal}>
             <img src={pic.url} />
           </div>
         );
       }.bind(this));
+    }
 
       content = (
         <div className="profile">
@@ -71,7 +74,6 @@ var Profile = React.createClass({
 
         </div>
       );
-    }
 
     return (
       <div>

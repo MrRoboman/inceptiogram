@@ -42,7 +42,7 @@ module.exports = React.createClass({
     // debugger;
     var pictureIndexItems = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>;
     if(this.state.fetchReceived){
-      pictureIndexItems = <div className="not-following">{"You are not following anyone"}</div>;
+      pictureIndexItems = <div className="missing-content-message">{"You are not following anyone"}</div>;
       if(this.state.pictures.length > 0){
         pictureIndexItems = this.state.pictures.map(function(pic){
           return <PictureIndexItem key={pic.id} picture={pic} />;
