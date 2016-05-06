@@ -7,9 +7,16 @@ var PictureIndexItemHeader = React.createClass({
     return {};
   },
   render: function() {
+
+    var profilePicId = this.props.owner.picture_public_id || 'falcon_hmlgcs';
+    var profilePic = "";
+    if(this.props.owner.id) {
+      profilePic = imgTag(profilePicId, {circle: {width: 60, height: 60}});
+    }
+
     return (
       <div className="header">
-        {imgTag('falcon_hmlgcs', {circle: {width: 60, height: 60}})}
+        {profilePic}
         <span>{linkToProfile(this.props.owner)}</span>
       </div>
     );
