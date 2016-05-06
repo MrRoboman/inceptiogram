@@ -116,8 +116,8 @@ module.exports = {
       url: 'api/pictures',
       dataType: 'json',
       data: params,
-      success: function(data) {
-        console.log(data);
+      success: function(profile) {
+        ServerActions.receiveSingleProfile(profile);
       },
       error: function(error) {
         console.log(error);

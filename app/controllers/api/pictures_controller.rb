@@ -10,11 +10,10 @@ class Api::PicturesController < ApplicationController
       pic = Picture.new(user_id: current_user.id, url: param[1]['url'], public_id: param[1]['public_id'])
       p_ids << [param[1]['url'], param[1]['public_id']]
       if !pic.save
-        @success = false
+        @success = false # i do nothing with this.
       end
     end
-    p p_ids
-    render json: {success: @success}
+    @profile = User.find_with_deets(current_user.id)
   end
 
   def show
