@@ -15,10 +15,16 @@ var ModalHeader = React.createClass({
   render: function() {
     // var flwBtn = this.props.flwBtn ? <FollowButton/> : "";
     var flwBtn = "";
+    var profilePicId = this.props.profile.picture_public_id || 'falcon_hmlgcs';
+    var profilePic = "";
+    if(this.props.profile.id) {
+      profilePic = imgTag(profilePicId, {circle: {width: 60, height: 60}});
+    }
+
     return (
       <div className="modal-header">
         <div className="pic-and-name">
-          {imgTag('falcon_hmlgcs', {circle: {width: 60, height: 60}})}
+          {profilePic}
           <span className="name"><a className="link" onClick={this.clickUsernameInModal}>{this.props.profile.username}</a></span>
         </div>
       </div>

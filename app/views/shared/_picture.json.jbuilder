@@ -5,6 +5,7 @@ json.liking picture.liked_by?(current_user)
 json.owner do
   json.id picture.owner.id
   json.username picture.owner.username
+  json.picture_public_id picture.owner.picture_public_id
 end
 json.likes picture.likes do |like|
   json.id like.id
