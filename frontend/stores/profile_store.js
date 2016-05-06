@@ -51,7 +51,7 @@ ProfileStore.__onDispatch = function(payload) {
       break;
     case ProfileConstants.CLEAR_SINGLE_PROFILE:
       _showProfile = {};
-      _showProfilePics = {};
+      // _showProfilePics = {};
       break;
   }
 };
