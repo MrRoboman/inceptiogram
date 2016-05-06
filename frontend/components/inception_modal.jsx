@@ -58,7 +58,7 @@ var InceptionModal = React.createClass({
             {img}
 
             <div className="modal-deets">
-              <ModalHeader profile={profile} />
+              <ModalHeader profile={profile} closeModal={this.props.closeModal}/>
               <ModalComments likes={this.state.likes} comments={this.state.comments}/>
               <ModalForm picture={pic} />
             </div>
