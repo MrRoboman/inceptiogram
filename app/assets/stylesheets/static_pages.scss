@@ -503,12 +503,12 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   flex-direction: column;
   // flex-wrap: wrap;
   // justify-content: center;
-  width: 260px;
+  width: 340px;
 }
 
 .modal-form {
   display: flex;
-  width: 340px;
+  width: 320px;
   padding-left: 20px;
   .like-button {
     width: 32px;
@@ -518,7 +518,7 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
     padding: 4px;
     padding-top: 8px;
     padding-left: 12px;
-    width: 280px;
+    width: 250px;
     border: 0;
   }
 }
@@ -542,7 +542,7 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 }
 
 .modal-comments {
-  width: 320px;
+  width: auto;
   height: 470px;
   // border-top: 1px solid $border-color;
   // border-bottom: 1px solid $border-color;
