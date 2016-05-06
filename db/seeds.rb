@@ -1,31 +1,110 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-usernames = [
-  "Rob Kayson",
-  "shrek",
-  "batman",
-  "meatboy",
-  "kermit"
-]
-password = "asdfasdf"
-
-pictures = {
-  "Rob Kayson" => [["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384432/fwifpwxd3bcdbmdqwsg9.jpg", "fwifpwxd3bcdbmdqwsg9"], ["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384434/zhmo2sfb4jgzrqsdoojt.png", "zhmo2sfb4jgzrqsdoojt"], ["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384433/yjem6pns8c0nudkpoirz.jpg", "yjem6pns8c0nudkpoirz"]],
-  "shrek" => [["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384510/uaetdpt4bk6vblqgaerv.jpg", "uaetdpt4bk6vblqgaerv"], ["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384511/lmyqeyjq8regne4ct8o7.jpg", "lmyqeyjq8regne4ct8o7"], ["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384510/y5fkmsmuzr9was2oe2ey.jpg", "y5fkmsmuzr9was2oe2ey"]],
-  "batman" => [["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384558/mxwigyidf9o4ixilmmxi.jpg", "mxwigyidf9o4ixilmmxi"], ["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384558/obu3kemftors21tu2lvp.jpg", "obu3kemftors21tu2lvp"], ["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384558/k72hfnuaxbwsrcmgifsh.jpg", "k72hfnuaxbwsrcmgifsh"]],
-  "meatboy" => [["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384608/zgotfkct0u49dr2bvdad.png", "zgotfkct0u49dr2bvdad"], ["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384616/pcjb31qw04jxr2gcdsge.png", "pcjb31qw04jxr2gcdsge"], ["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384609/x3bdyrgontt804cwlm6s.jpg", "x3bdyrgontt804cwlm6s"]],
-  "kermit" => [["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384654/pbmh4tbp5u7khavyusln.jpg", "pbmh4tbp5u7khavyusln"], ["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384653/oqofn7kzrc3wz1k5yjfn.jpg", "oqofn7kzrc3wz1k5yjfn"], ["http://res.cloudinary.com/dxhizunmp/image/upload/v1462384654/yw06bpxevnsxu8kpgacd.jpg", "yw06bpxevnsxu8kpgacd"]]
-}
-
-usernames.each do |username|
-  user = User.create!(username: username, password: password)
-  pictures[username].each do |u_p|
-    Picture.create!(user_id: user.id, url: u_p[0], public_id: u_p[1])
-  end
-end
+Comment.create!([
+  {body: "Wait! Hahaha! I get it. Bug!", user_id: 4, picture_id: 14},
+  {body: "Isn't mother nature soooo beautiful", user_id: 4, picture_id: 10},
+  {body: "Whoa. Even I haven't seen anything like this. And I'm Captain Planet. Well, I guess most of my time is spent enslaved within five power rings...", user_id: 4, picture_id: 12},
+  {body: "Spoon!", user_id: 2, picture_id: 14},
+  {body: "Spoon!", user_id: 2, picture_id: 28},
+  {body: "Sunset!", user_id: 2, picture_id: 35},
+  {body: "This cat needs a flower!", user_id: 3, picture_id: 1},
+  {body: "I'd be down for this.", user_id: 3, picture_id: 6},
+  {body: "Up up and away!!", user_id: 3, picture_id: 8},
+  {body: "Man, Rob, you are a great photographer and traveler.", user_id: 3, picture_id: 7},
+  {body: "Thanks, Vin. How's your car?", user_id: 1, picture_id: 7},
+  {body: "Which one?! haha", user_id: 3, picture_id: 7},
+  {body: "God I love living in San Francisco again. It's good to be home.", user_id: 1, picture_id: 5},
+  {body: "the City!", user_id: 2, picture_id: 5},
+  {body: "This is my Aunt Becky!", user_id: 2, picture_id: 17},
+  {body: "What big eyes you have!", user_id: 1, picture_id: 11},
+  {body: "The better to see you with!", user_id: 2, picture_id: 11},
+  {body: "Hey Capt. Who's that?", user_id: 3, picture_id: 29},
+  {body: "The tree behind that woman? That's Gertrude.", user_id: 4, picture_id: 29},
+  {body: "This looks fun, but I can already fly.", user_id: 4, picture_id: 28},
+  {body: "I love Sunshine", user_id: 4, picture_id: 32},
+  {body: "Rob! Those are so nice. ", user_id: 4, picture_id: 2},
+  {body: "Thanks. I made them.", user_id: 1, picture_id: 2},
+  {body: "What?! Really?", user_id: 4, picture_id: 2},
+  {body: "Literally.", user_id: 1, picture_id: 2},
+  {body: "Boats!", user_id: 1, picture_id: 3},
+  {body: "I did this under Mt. Fuji. This is not under Mt. Fuji, however.", user_id: 1, picture_id: 6},
+  {body: "How did I get out here?", user_id: 1, picture_id: 4},
+  {body: "Goodness, I keep finding myself in the middle of the ocean.", user_id: 1, picture_id: 9},
+  {body: "I love flowers. They're probably one of nature's finest productions.", user_id: 1, picture_id: 20}
+])
+Follow.create!([
+  {follower_id: 4, leader_id: 2},
+  {follower_id: 2, leader_id: 1},
+  {follower_id: 2, leader_id: 3},
+  {follower_id: 2, leader_id: 4},
+  {follower_id: 1, leader_id: 4},
+  {follower_id: 1, leader_id: 2},
+  {follower_id: 1, leader_id: 3}
+])
+Like.create!([
+  {user_id: 4, picture_id: 14},
+  {user_id: 4, picture_id: 12},
+  {user_id: 4, picture_id: 15},
+  {user_id: 4, picture_id: 13},
+  {user_id: 2, picture_id: 1},
+  {user_id: 2, picture_id: 6},
+  {user_id: 2, picture_id: 8},
+  {user_id: 2, picture_id: 22},
+  {user_id: 2, picture_id: 24},
+  {user_id: 2, picture_id: 19},
+  {user_id: 2, picture_id: 28},
+  {user_id: 2, picture_id: 30},
+  {user_id: 2, picture_id: 34},
+  {user_id: 2, picture_id: 36},
+  {user_id: 3, picture_id: 1},
+  {user_id: 3, picture_id: 8},
+  {user_id: 3, picture_id: 5},
+  {user_id: 2, picture_id: 5},
+  {user_id: 1, picture_id: 11},
+  {user_id: 3, picture_id: 29},
+  {user_id: 4, picture_id: 32},
+  {user_id: 4, picture_id: 2},
+  {user_id: 1, picture_id: 20}
+])
+Picture.create!([
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575646/w1jfe6brbq7oouphglmi.png", user_id: 1, public_id: "w1jfe6brbq7oouphglmi"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575644/yunr8lowhkybkspwce9b.png", user_id: 1, public_id: "yunr8lowhkybkspwce9b"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575645/ht8zfuhxcfge1oyobcuw.png", user_id: 1, public_id: "ht8zfuhxcfge1oyobcuw"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575644/c079q0cngoee12u0vqlf.png", user_id: 1, public_id: "c079q0cngoee12u0vqlf"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575645/pxllf79ifyx9kng9tvhd.png", user_id: 1, public_id: "pxllf79ifyx9kng9tvhd"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575645/fojncmhxvszvi4urirb8.png", user_id: 1, public_id: "fojncmhxvszvi4urirb8"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575646/pwwhoady7iznsm1jlvji.png", user_id: 1, public_id: "pwwhoady7iznsm1jlvji"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575646/g8yectwdaxqz9ocgtrwt.png", user_id: 1, public_id: "g8yectwdaxqz9ocgtrwt"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575646/ezywhadnqm8rfjl8ouxk.png", user_id: 1, public_id: "ezywhadnqm8rfjl8ouxk"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575909/l60k85p02x4unikt4aom.png", user_id: 2, public_id: "l60k85p02x4unikt4aom"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575910/bj3gxxfzesofwkz64shn.png", user_id: 2, public_id: "bj3gxxfzesofwkz64shn"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575910/kpoj0pixv7vvudwfvl18.png", user_id: 2, public_id: "kpoj0pixv7vvudwfvl18"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575911/b2e5weyjkgiqrdgun0aq.png", user_id: 2, public_id: "b2e5weyjkgiqrdgun0aq"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575911/gdtkrtvlsvio6c46khtr.png", user_id: 2, public_id: "gdtkrtvlsvio6c46khtr"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575911/cgyo85eb8zar1gsmnhpf.png", user_id: 2, public_id: "cgyo85eb8zar1gsmnhpf"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575911/lv4v0fetlpishtvlfxok.png", user_id: 2, public_id: "lv4v0fetlpishtvlfxok"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575911/ppvinxvmev1st47dlpfb.png", user_id: 2, public_id: "ppvinxvmev1st47dlpfb"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575912/to8bywqa2hrqu4fxzw16.png", user_id: 2, public_id: "to8bywqa2hrqu4fxzw16"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576019/c9ozkxv5p1dkk7uzua4r.png", user_id: 3, public_id: "c9ozkxv5p1dkk7uzua4r"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576019/wk3l3khjsockrodvaix6.png", user_id: 3, public_id: "wk3l3khjsockrodvaix6"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576020/ovtxfadtlomzn98f3ogo.png", user_id: 3, public_id: "ovtxfadtlomzn98f3ogo"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576019/ixph2ruqfkitsrbipecg.png", user_id: 3, public_id: "ixph2ruqfkitsrbipecg"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576019/ctmxxigl9trsoz2l7fsk.png", user_id: 3, public_id: "ctmxxigl9trsoz2l7fsk"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576019/adheeu8isw4yvf7feuwz.png", user_id: 3, public_id: "adheeu8isw4yvf7feuwz"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576020/ofyukiv0ubghjjbocxox.png", user_id: 3, public_id: "ofyukiv0ubghjjbocxox"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576020/ued2ofyjsgrn5tx63w5q.png", user_id: 3, public_id: "ued2ofyjsgrn5tx63w5q"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576021/yendednpovvjwuhtfnhb.png", user_id: 3, public_id: "yendednpovvjwuhtfnhb"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576235/w7rybr5gyuehisdbswhd.png", user_id: 4, public_id: "w7rybr5gyuehisdbswhd"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576237/ct66fbsviepmu7iu5aot.png", user_id: 4, public_id: "ct66fbsviepmu7iu5aot"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576235/pfiedrexmxqaby0cfemw.png", user_id: 4, public_id: "pfiedrexmxqaby0cfemw"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576238/dn1rucvqarwyl6mji3qf.png", user_id: 4, public_id: "dn1rucvqarwyl6mji3qf"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576238/iqbb5mouovneftpyxakz.png", user_id: 4, public_id: "iqbb5mouovneftpyxakz"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576237/ndwatz6ifcjrbzhkcim2.png", user_id: 4, public_id: "ndwatz6ifcjrbzhkcim2"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576236/ibmmeaibvtytbv9dybd5.png", user_id: 4, public_id: "ibmmeaibvtytbv9dybd5"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576239/u4naarbmqs7gz0qkeavw.png", user_id: 4, public_id: "u4naarbmqs7gz0qkeavw"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576238/bveyzou15a4t2x0g6l93.png", user_id: 4, public_id: "bveyzou15a4t2x0g6l93"}
+])
+User.create!([
+  {username: "theBug", password_digest: "$2a$10$J9NX26DUOH4JNpAtsG3wS.xGj10I78VTgA3n3grM4iGVmNDk8/xzG", session_token: "8fqQAYFsA5PUr8uTbx-IMw", picture_public_id: "ixahve5xa990lvovvwix"},
+  {username: "Mr. Flowerman", password_digest: "$2a$10$Ikx1Tkfj90CCPEA3tfL9uerKdo6/rWzQg7i7fbUMveaSkeD5D4fkK", session_token: "SUBCj_Lw1RFDU8qDha5rUQ", picture_public_id: "ze3gkgqsqx8rpfjyzlhq"},
+  {username: "Captain Planet", password_digest: "$2a$10$8E1D5Rhj4MdY4/iLc92Vvuv81s33twngJHAnXRPNaz1DDXed2o.C6", session_token: "ZB-vJlY-VBHEWkfklHDDpA", picture_public_id: "bgqzvvjuld1hhnehlygb"},
+  {username: "Rob Kayson", password_digest: "$2a$10$30MWX4LoWNKX.J7ZGEgXluukGtNGsiqCaYMdAIm1E78bUhR1THhO2", session_token: "aUYxRCH_pEa2IIsOvrAGmA", picture_public_id: "coaxuu1uoxighsg5txie"}
+])

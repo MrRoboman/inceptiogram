@@ -26,6 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'figaro'
 gem 'font-awesome-rails'
+gem 'seed_dump'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
