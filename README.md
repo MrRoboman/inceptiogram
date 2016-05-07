@@ -25,4 +25,8 @@ Similarly, when looking up profiles, the api will return profiles bundled with a
 
 The api is as simple underneath as the interface on top.
 
+### Profile Index
 ![profile index screenshot](https://github.com/mrroboman/inceptiogram/blob/master/docs/screenshots/profileindexscreenshot.png)
+
+### Profile
+![profile screenshot](https://github.com/mrroboman/inceptiogram/blob/master/docs/screenshots/profilescreenshot.png)
