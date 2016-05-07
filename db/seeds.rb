@@ -103,8 +103,8 @@ Picture.create!([
   {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462576238/bveyzou15a4t2x0g6l93.png", user_id: 4, public_id: "bveyzou15a4t2x0g6l93"}
 ])
 User.create!([
-  {username: "Rob Kayson", password_digest: "$2a$10$30MWX4LoWNKX.J7ZGEgXluukGtNGsiqCaYMdAIm1E78bUhR1THhO2", session_token: "aUYxRCH_pEa2IIsOvrAGmA", picture_public_id: "coaxuu1uoxighsg5txie"}
+  {username: "Rob Kayson", password_digest: "$2a$10$30MWX4LoWNKX.J7ZGEgXluukGtNGsiqCaYMdAIm1E78bUhR1THhO2", session_token: "aUYxRCH_pEa2IIsOvrAGmA", picture_public_id: "coaxuu1uoxighsg5txie"},
   {username: "theBug", password_digest: "$2a$10$J9NX26DUOH4JNpAtsG3wS.xGj10I78VTgA3n3grM4iGVmNDk8/xzG", session_token: "8fqQAYFsA5PUr8uTbx-IMw", picture_public_id: "ixahve5xa990lvovvwix"},
   {username: "Mr. Flowerman", password_digest: "$2a$10$Ikx1Tkfj90CCPEA3tfL9uerKdo6/rWzQg7i7fbUMveaSkeD5D4fkK", session_token: "SUBCj_Lw1RFDU8qDha5rUQ", picture_public_id: "ze3gkgqsqx8rpfjyzlhq"},
-  {username: "Captain Planet", password_digest: "$2a$10$8E1D5Rhj4MdY4/iLc92Vvuv81s33twngJHAnXRPNaz1DDXed2o.C6", session_token: "ZB-vJlY-VBHEWkfklHDDpA", picture_public_id: "bgqzvvjuld1hhnehlygb"},
+  {username: "Captain Planet", password_digest: "$2a$10$8E1D5Rhj4MdY4/iLc92Vvuv81s33twngJHAnXRPNaz1DDXed2o.C6", session_token: "ZB-vJlY-VBHEWkfklHDDpA", picture_public_id: "bgqzvvjuld1hhnehlygb"}
 ])
