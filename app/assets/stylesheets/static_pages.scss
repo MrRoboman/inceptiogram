@@ -72,6 +72,15 @@ input[type="text"], input[type="password"] {
   border: 1px solid black;
 }
 
+button:hover, input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+button:disabled, input[type="submit"]:disabled {
+  cursor: auto;
+  color: gray;
+}
+
 img {
   width: 640px;
   height: 640px;
