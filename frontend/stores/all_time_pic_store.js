@@ -11,6 +11,10 @@ AllTimePicStore.all = function() {
   return Object.assign({}, _allTimePics);
 };
 
+AllTimePicStore.empty = function() {
+  return Object.keys(_allTimePics).length === 0;
+};
+
 AllTimePicStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case PictureConstants.RECEIVED_PICTURES:

@@ -163,6 +163,7 @@ body {
   display: flex;
   justify-content: center;
   box-sizing: border-box;
+  background: white;
   height: 80px;
   border-bottom: 1px solid $border-color;
   padding-top: 20px;
@@ -211,6 +212,7 @@ body {
 // }
 
 .authform {
+  background: white;
   padding: 40px;
   left: 50px;
   margin: 100px auto;
@@ -571,4 +573,12 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   padding-top: 150px;
   text-align: center;
   font-size: 48px;
+}
+
+#canvas {
+  background: orange;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
 }

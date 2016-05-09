@@ -139,6 +139,20 @@ module.exports = {
         console.log(error);
       }
     });
+  },
+
+  fetchAllPics: function() {
+    $.ajax ({
+      type: 'GET',
+      url: 'api/allpics',
+      dataType: 'json',
+      success: function(pics) {
+        ServerActions.receiveAllPics(pics);
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
   }
 
 };

@@ -44,6 +44,13 @@ var ServerActions = {
       actionType: ProfileConstants.RECEIVED_SINGLE_PROFILE,
       profile: profile
     });
+  },
+
+  receiveAllPics: function(pics) { //debugger;
+    Dispatcher.dispatch({
+      actionType: pictureConstants.RECEIVED_ALL_PICS,
+      pics: pics
+    });
   }
   // ,
   // receiveComment: function(comment) {

@@ -19,4 +19,8 @@ class Api::PicturesController < ApplicationController
   def show
     @picture = Picture.find(params[:id])
   end
+
+  def allpics
+    @pictures = Picture.all
+  end
 end

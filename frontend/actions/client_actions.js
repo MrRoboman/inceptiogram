@@ -34,7 +34,9 @@ var ClientActions = {
   },
 
   uploadImages: ApiUtil.uploadImages,
-  uploadProfileImage: ApiUtil.uploadProfileImage
+  uploadProfileImage: ApiUtil.uploadProfileImage,
+
+  fetchAllPics: ApiUtil.fetchAllPics
 };
 
 window.CA = ClientActions;

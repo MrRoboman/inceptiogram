@@ -2,6 +2,8 @@ var React = require('react');
 var ClientActions = require('../actions/client_actions');
 var HashHistory = require('react-router').hashHistory;
 var SessionStore = require('../stores/session_store');
+var Inception = require('../utils/inception_fullscreen');
+var AllTimePicStore = require('../stores/all_time_pic_store');
 
 var Login = React.createClass({
 
@@ -22,10 +24,27 @@ var Login = React.createClass({
     else if(SessionStore.fetchReceived() && SessionStore.getCurrentUser() === ""){
       HashHistory.push('login');
     }
+
+    if(AllTimePicStore.empty()) {
+      ClientActions.fetchAllPics();
+      this.allPicStoreListener = AllTimePicStore.addListener(this.onAllTimePicStoreChange);
+    }
+    else {
+      this.loadInception();
+    }
+  },
+
+  loadInception: function() {
+    this.inception = new Inception(AllTimePicStore.all());
   },
 
   componentWillUnmount: function() {
     this.listener.remove();
+    this.allPicStoreListener.remove();
+  },
+
+  onAllTimePicStoreChange: function() {
+    this.loadInception();
   },
 
   onChange: function() {
@@ -125,6 +144,7 @@ var Login = React.createClass({
         <ul className="red">
           {errors}
         </ul>
+        <canvas id="canvas"></canvas>
       </div>
     );
   }
