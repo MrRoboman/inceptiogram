@@ -74,7 +74,7 @@ Picture.create!([
   {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575646/pwwhoady7iznsm1jlvji.png", user_id: 1, public_id: "pwwhoady7iznsm1jlvji"},
   {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575646/g8yectwdaxqz9ocgtrwt.png", user_id: 1, public_id: "g8yectwdaxqz9ocgtrwt"},
   {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575646/ezywhadnqm8rfjl8ouxk.png", user_id: 1, public_id: "ezywhadnqm8rfjl8ouxk"},
-  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575909/l60k85p02x4unikt4aom.png", user_id: 2, public_id: "l60k85p02x4unikt4aom"},
+  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462756702/Screen_Shot_2016-05-08_at_6.17.24_PM_wo3wdg.png", user_id: 2, public_id: "Screen_Shot_2016-05-08_at_6.17.24_PM_wo3wdg"},
   {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575910/bj3gxxfzesofwkz64shn.png", user_id: 2, public_id: "bj3gxxfzesofwkz64shn"},
   {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575910/kpoj0pixv7vvudwfvl18.png", user_id: 2, public_id: "kpoj0pixv7vvudwfvl18"},
   {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575911/b2e5weyjkgiqrdgun0aq.png", user_id: 2, public_id: "b2e5weyjkgiqrdgun0aq"},
