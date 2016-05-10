@@ -14,7 +14,7 @@ var Inception = function(canvas, pictureJson) {
     this.resize();
   }.bind(this);
 
-  this.zoomSeconds = 4;
+  this.zoomSeconds = 10;
   this.scale = 1;
 
   this.superAlpha = .33;
@@ -121,7 +121,7 @@ Inception.prototype = {
     var y = this.getCellY(Y);
 
     this.buildMap();
-    debugger
+    // debugger
     this.zoomIn(x, y);
     this.canClick = false;
   },
@@ -147,6 +147,7 @@ Inception.prototype = {
                  subAlpha: .33,
                  offsetX: offsetX,
                  offsetY: offsetY,
+                 ease: Power1.easeIn,
                  onComplete: this.onZoomComplete.bind(this)
                });
   },
@@ -236,7 +237,7 @@ Inception.prototype = {
     if(!(this.selectedCell >= 0)) return;
     var totalCells = this.grid.getTotalCells();
     for(var i = 0; i < totalCells; i++){
-      this.drawSubImage(this.selectedCell, i, this.subImgMap[i].img);
+      this.drawSubImage(this.selectedCell, i, this.subImgMap[i]);
     }
   },
 
@@ -358,6 +359,7 @@ Inception.prototype = {
   update: function() {
     this.drawMainFrameImage();
     this.drawAllGridImages();
+    this.drawAllSubImages();
     window.requestAnimationFrame(this.update.bind(this));
     // if(this.canvas) {
     //   console.log('DRAW');
