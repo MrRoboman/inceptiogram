@@ -246,10 +246,9 @@ Inception.prototype = {
     //   this.drawGridImage(i, this.grid.images[i]);
     //   this.ctx.globalAlpha = 1;
     // }
-    debugger;
     for(var i = 0; i < this.imgMap.length; i++){
       this.ctx.globalAlpha = this.superAlpha;
-      this.drawGridImage(i, this.imgMap[i].img);
+      this.drawGridImage(i, this.imgMap[i]);
       this.ctx.globalAlpha = 1;
     }
   },
