@@ -70,7 +70,7 @@ Inception.prototype = {
       this.imgMap = this.subImgMap;
       this.buildMap();
       console.log('LOADED');
-      this.mainFrame.image = this.pictures.array[0];
+      this.mainFrame.imageGrid = this.imgMap;
       window.requestAnimationFrame(this.update.bind(this));
       // this.click(100,100);
       this.robotChooseCell();
@@ -163,7 +163,7 @@ Inception.prototype = {
     this.offsetX = 0;
     this.offsetY = 0;
 
-    this.mainFrame.image = this.imgMap[this.selectedCell];
+    this.mainFrame.imageGrid = this.imgMap;
     // this.buildMap();
     this.imgMap = this.subImgMap;
     this.robotChooseCell();
@@ -213,11 +213,27 @@ Inception.prototype = {
   },
 
   drawMainFrameImage: function() {
+    if(!this.mainFrame.image) return;
     var x = this.getMainFrameX();
     var y = this.getMainFrameY();
     var w = this.getMainFrameW();
     var h = this.getMainFrameH();
     this.ctx.drawImage(this.mainFrame.image,x,y,w,h);
+  },
+
+  drawMainFrameImageGrid: function() {
+    // debugger;
+    if(!this.mainFrame.imageGrid) return;
+    for(var i = 0; i < this.grid.cols*this.grid.rows; i++){
+      var X = i % this.grid.cols - Math.floor(this.grid.cols/2);
+      var Y = Math.floor(i/this.grid.rows) - Math.floor(this.grid.rows/2);
+      var w = this.getMainFrameW();
+      var h = this.getMainFrameH();
+      var x = this.getMainFrameX() + w * X;
+      var y = this.getMainFrameY() + h * Y;
+      // debugger;
+      this.ctx.drawImage(this.mainFrame.imageGrid[i],x,y,w,h);
+    }
   },
 
   drawSubImage: function(idx, subIdx, img) {
@@ -238,16 +254,27 @@ Inception.prototype = {
     var totalCells = this.grid.getTotalCells();
     for(var i = 0; i < totalCells; i++){
       this.drawSubImage(this.selectedCell, i, this.subImgMap[i]);
+      this.drawSubImage(this.selectedCell-1, i, this.subImgMap[i]);
+      this.drawSubImage(this.selectedCell+1, i, this.subImgMap[i]);
+      this.drawSubImage(this.selectedCell+this.grid.rows, i, this.subImgMap[i]);
+      this.drawSubImage(this.selectedCell+this.grid.rows+1, i, this.subImgMap[i]);
+      this.drawSubImage(this.selectedCell+this.grid.rows-1, i, this.subImgMap[i]);
+      this.drawSubImage(this.selectedCell-this.grid.rows, i, this.subImgMap[i]);
+      this.drawSubImage(this.selectedCell-this.grid.rows+1, i, this.subImgMap[i]);
+      this.drawSubImage(this.selectedCell-this.grid.rows-1, i, this.subImgMap[i]);
     }
   },
 
 
-  drawGridImage: function(idx, img) {
+  drawGridImage: function(bigIdx, idx, img) {
     if(!img) return;
-    var x = this.getGridFrameX(idx);
-    var y = this.getGridFrameY(idx);
+    var X = bigIdx % 3 - 1;
+    var Y = Math.floor(bigIdx / 3) - 1;
     var w = this.getGridFrameW();
     var h = this.getGridFrameH();
+    var x = this.getGridFrameX(idx) + this.getMainFrameW() * X;
+    var y = this.getGridFrameY(idx) + this.getMainFrameH() * Y;
+    // debugger;
     this.ctx.drawImage(img,x,y,w,h);
   },
 
@@ -259,7 +286,15 @@ Inception.prototype = {
     // }
     for(var i = 0; i < this.imgMap.length; i++){
       this.ctx.globalAlpha = this.superAlpha;
-      this.drawGridImage(i, this.imgMap[i]);
+      this.drawGridImage(0, i, this.imgMap[i]);
+      this.drawGridImage(1, i, this.imgMap[i]);
+      this.drawGridImage(2, i, this.imgMap[i]);
+      this.drawGridImage(3, i, this.imgMap[i]);
+      this.drawGridImage(4, i, this.imgMap[i]);
+      this.drawGridImage(5, i, this.imgMap[i]);
+      this.drawGridImage(6, i, this.imgMap[i]);
+      this.drawGridImage(7, i, this.imgMap[i]);
+      this.drawGridImage(8, i, this.imgMap[i]);
       this.ctx.globalAlpha = 1;
     }
   },
@@ -298,12 +333,12 @@ Inception.prototype = {
   },
 
 // loading client stuff
-  loadMainFrameImage: function(url) {
-    var img = new Image();
-    img.src = url;
-    img.onload = this.onload.bind(this);
-    this.mainFrame.image = img;
-  },
+  // loadMainFrameImage: function(url) {
+  //   var img = new Image();
+  //   img.src = url;
+  //   img.onload = this.onload.bind(this);
+  //   this.mainFrame.image = img;
+  // },
 
   loadGridImages: function(url) {
     var img = new Image();
@@ -357,7 +392,7 @@ Inception.prototype = {
   },
 
   update: function() {
-    this.drawMainFrameImage();
+    this.drawMainFrameImageGrid();
     this.drawAllGridImages();
     this.drawAllSubImages();
     window.requestAnimationFrame(this.update.bind(this));
