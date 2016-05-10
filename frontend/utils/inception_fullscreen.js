@@ -14,7 +14,7 @@ var Inception = function(canvas, pictureJson) {
     this.resize();
   }.bind(this);
 
-  this.zoomSeconds = 2;
+  this.zoomSeconds = 4;
   this.scale = 1;
 
   this.superAlpha = .33;
@@ -72,6 +72,8 @@ Inception.prototype = {
       console.log('LOADED');
       this.mainFrame.image = this.pictures.array[0];
       window.requestAnimationFrame(this.update.bind(this));
+      // this.click(100,100);
+      this.robotChooseCell();
     }
   },
 
@@ -109,20 +111,28 @@ Inception.prototype = {
   },
 
   click: function(X, Y){
+    // debugger;
     if(!this.canClick || this.clickOutOfBounds(X, Y)) return;
 
-
-
     this.selectedCell = this.getIndex(X,Y);
-    ClientActions.fetchSinglePicture(this.imgMap[this.selectedCell].id);
+    // ClientActions.fetchSinglePicture(this.imgMap[this.selectedCell].id);
 
     var x = this.getCellX(X);
     var y = this.getCellY(Y);
 
     this.buildMap();
-
+    debugger
     this.zoomIn(x, y);
     this.canClick = false;
+  },
+
+  robotChooseCell: function () {
+    this.selectedCell = 210;
+    var x = this.selectedCell % this.grid.cols;
+    var y = Math.floor(this.selectedCell / this.grid.rows);
+    // debugger;
+    this.buildMap();
+    this.zoomIn(x,y);
   },
 
   zoomIn: function(x, y) {
@@ -156,7 +166,7 @@ Inception.prototype = {
     // this.buildMap();
     this.imgMap = this.subImgMap;
 
-    this.canClick = true;
+    // this.canClick = true;
   },
 
   clickOutOfBounds: function(X, Y) {
@@ -348,6 +358,7 @@ Inception.prototype = {
   update: function() {
     this.drawMainFrameImage();
     this.drawAllGridImages();
+    window.requestAnimationFrame(this.update.bind(this));
     // if(this.canvas) {
     //   console.log('DRAW');
       // this.clear();
