@@ -162,10 +162,10 @@ Inception.prototype = {
     this.offsetX = 0;
     this.offsetY = 0;
 
-    this.mainFrame.image = this.imgMap[this.selectedCell].img;
+    this.mainFrame.image = this.imgMap[this.selectedCell];
     // this.buildMap();
     this.imgMap = this.subImgMap;
-
+    this.robotChooseCell();
     // this.canClick = true;
   },
 
