@@ -39,8 +39,8 @@ Inception.prototype = {
   },
 
   grid: {
-    rows: 20,
-    cols: 20,
+    rows: 10,
+    cols: 10,
     getTotalCells: function() {
       return this.rows * this.cols;
     },
@@ -69,7 +69,6 @@ Inception.prototype = {
       this.buildMap();
       this.imgMap = this.subImgMap;
       this.buildMap();
-      console.log('LOADED');
       this.mainFrame.imageGrid = this.imgMap;
       window.requestAnimationFrame(this.update.bind(this));
       // this.click(100,100);
@@ -127,7 +126,7 @@ Inception.prototype = {
   },
 
   robotChooseCell: function () {
-    this.selectedCell = 210;
+    this.selectedCell = 55;
     var x = this.selectedCell % this.grid.cols;
     var y = Math.floor(this.selectedCell / this.grid.rows);
     // debugger;
@@ -232,7 +231,19 @@ Inception.prototype = {
       var x = this.getMainFrameX() + w * X;
       var y = this.getMainFrameY() + h * Y;
       // debugger;
-      this.ctx.drawImage(this.mainFrame.imageGrid[i],x,y,w,h);
+      if(y + h < 0) {
+        // i += this.grid.cols;
+        continue;
+      }
+      else if(x + w < 0 || x > this.canvas.width) {
+        continue;
+      }
+      else if(y > this.canvas.height) {
+        break;
+      }
+      if(this.isOnScreen(x,y,w,h)){
+        this.ctx.drawImage(this.mainFrame.imageGrid[i],x,y,w,h);
+      }
     }
   },
 
@@ -244,9 +255,12 @@ Inception.prototype = {
     var h = this.getGridFrameH() / this.grid.cols;
     var x = this.getGridFrameX(idx) + (cellX * w);
     var y = this.getGridFrameY(idx) + (cellY * h);
-    this.ctx.globalAlpha = this.subAlpha;
-    this.ctx.drawImage(img,x,y,w,h);
-    this.ctx.globalAlpha = 1;
+
+    if(this.isOnScreen(x,y,w,h)){
+      this.ctx.globalAlpha = this.subAlpha;
+      this.ctx.drawImage(img,x,y,w,h);
+      this.ctx.globalAlpha = 1;
+    }
   },
 
   drawAllSubImages: function() {
@@ -275,7 +289,9 @@ Inception.prototype = {
     var x = this.getGridFrameX(idx) + this.getMainFrameW() * X;
     var y = this.getGridFrameY(idx) + this.getMainFrameH() * Y;
     // debugger;
-    this.ctx.drawImage(img,x,y,w,h);
+    if(this.isOnScreen(x,y,w,h)){
+      this.ctx.drawImage(img,x,y,w,h);
+    }
   },
 
   drawAllGridImages: function() {
@@ -389,6 +405,10 @@ Inception.prototype = {
   //loads each image as it loads
   onload: function(e) {
     e.currentTarget.loaded = true;
+  },
+
+  isOnScreen: function(x,y,w,h) {
+    return (x+w > 0 && x < this.canvas.width && y+h > 0 && y < this.canvas.height);
   },
 
   update: function() {
