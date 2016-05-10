@@ -24,7 +24,7 @@ var Login = React.createClass({
     else if(SessionStore.fetchReceived() && SessionStore.getCurrentUser() === ""){
       HashHistory.push('login');
     }
-
+// debugger;
     if(AllTimePicStore.empty()) {
       ClientActions.fetchAllPics();
       this.allPicStoreListener = AllTimePicStore.addListener(this.onAllTimePicStoreChange);
@@ -35,7 +35,9 @@ var Login = React.createClass({
   },
 
   loadInception: function() {
-    this.inception = new Inception(AllTimePicStore.all());
+    // console.log(document.getElementById('canvas'));
+    var canvas = document.getElementById('canvas');
+    this.inception = new Inception(canvas, AllTimePicStore.all());
   },
 
   componentWillUnmount: function() {

@@ -2,11 +2,14 @@ var AllTimePicStore = require('../stores/all_time_pic_store');
 var ClientActions = require('../actions/client_actions');
 var PictureStore = require('../stores/picture_store');
 
-var Inception = function() {
-  // this.canvas = canvas;
-  // this.ctx = canvas.getContext('2d');
+var Inception = function(canvas, pictureJson) {
+  this.canvas = canvas;
+  this.ctx = canvas.getContext('2d');
 
-  // this.resize();
+  this.loadedPicCount = 0;
+  this.makePictures(pictureJson);
+
+  this.resize();
   window.onresize = function() {
     this.resize();
   }.bind(this);
@@ -22,7 +25,8 @@ var Inception = function() {
 
   this.canClick = true;
 
-  this.initPics();
+
+  // this.initPics();
 
   // window.requestAnimationFrame(this.update.bind(this));
 };
@@ -44,37 +48,62 @@ Inception.prototype = {
     subImages: []
   },
 
-  initPics: function() {
-    //do a fetch for pic index if number is fewer than ten
-    this.pics = AllTimePicStore.all();
-    var keys = Object.keys(this.pics);
+  makePictures: function(json) {
+    this.pictures = {
+      array: [],
+      object: {}
+    };
+    var keys = Object.keys(json);
     keys.forEach(function(key){
       var img = new Image();
-      img.src = this.pics[key].url;
-      this.pics[key].img = img;
+      img.src = json[key].url;
+      img.onload = this.onPictureLoad.bind(this);
+      this.pictures.array.push(img);
+      this.pictures.object[key] = img;
     }.bind(this));
-    this.buildMap();
-    this.imgMap = this.subImgMap;
-    this.buildMap(); // doing it twice to fill both imgMap and subImgMap
   },
+
+  onPictureLoad: function(e) {
+    this.loadedPicCount++;
+    if(this.loadedPicCount === this.pictures.array.length) {
+      this.buildMap();
+      this.imgMap = this.subImgMap;
+      this.buildMap();
+      console.log('LOADED');
+      this.mainFrame.image = this.pictures.array[0];
+      window.requestAnimationFrame(this.update.bind(this));
+    }
+  },
+
+  // initPics: function() {
+  //   //do a fetch for pic index if number is fewer than ten
+  //   this.pics = AllTimePicStore.all();
+  //   var keys = Object.keys(this.pics);
+  //   keys.forEach(function(key){
+  //     var img = new Image();
+  //     img.src = this.pics[key].url;
+  //     this.pics[key].img = img;
+  //   }.bind(this));
+  //   this.buildMap();
+  //   this.imgMap = this.subImgMap;
+  //   this.buildMap(); // doing it twice to fill both imgMap and subImgMap
+  // },
 
   buildMap: function(){
     this.subImgMap = [];
-    var keys = Object.keys(this.pics);
-    var len = keys.length;
+    var len = this.pictures.array.length;
     var totalCells = this.grid.getTotalCells();
     for(var i = 0; i < totalCells; i++){
       var r = Math.floor(Math.random()*len);
-      var key = keys[r];
-      this.subImgMap.push(this.pics[key]);
+      this.subImgMap.push(this.pictures.array[r]);
     }
   },
 
   resize: function() {
-    // this.screenWidth = window.innerWidth;
-    // this.screenHeight = window.innerHeight;
-    this.screenWidth = 640;
-    this.screenHeight = 640;
+    this.screenWidth = window.innerWidth;
+    this.screenHeight = window.innerHeight;
+    // this.screenWidth = 640;
+    // this.screenHeight = 640;
     this.canvas.width = this.screenWidth;
     this.canvas.height= this.screenHeight;
   },
@@ -217,6 +246,7 @@ Inception.prototype = {
     //   this.drawGridImage(i, this.grid.images[i]);
     //   this.ctx.globalAlpha = 1;
     // }
+    debugger;
     for(var i = 0; i < this.imgMap.length; i++){
       this.ctx.globalAlpha = this.superAlpha;
       this.drawGridImage(i, this.imgMap[i].img);
@@ -317,22 +347,25 @@ Inception.prototype = {
   },
 
   update: function() {
-    if(this.canvas) {
-      this.clear();
-
-      this.drawMainFrameImage();
-      this.drawAllGridImages();
-      this.drawAllSubImages();
-    }
-    else {
-      this.loadCanvas();
-    }
-
-    if(this.canvasRunning){
-      window.requestAnimationFrame(this.update.bind(this));
-    } else {
-      this.canvas = null;
-    }
+    this.drawMainFrameImage();
+    this.drawAllGridImages();
+    // if(this.canvas) {
+    //   console.log('DRAW');
+      // this.clear();
+      //
+      // this.drawMainFrameImage();
+      // this.drawAllGridImages();
+      // this.drawAllSubImages();
+    // }
+    // else {
+    //   this.loadCanvas();
+    // }
+    //
+    // if(this.canvasRunning){
+    //   window.requestAnimationFrame(this.update.bind(this));
+    // } else {
+    //   this.canvas = null;
+    // }
   }
 };
 

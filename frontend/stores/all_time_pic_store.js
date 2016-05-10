@@ -37,6 +37,12 @@ AllTimePicStore.__onDispatch = function(payload) {
         _allTimePics[pic.id] = pic;
       });
       break;
+    case PictureConstants.RECEIVED_ALL_PICS:
+      payload.pics.forEach(function(pic) {
+        _allTimePics[pic.id] = pic;
+      });
+      this.__emitChange();
+      break;
   }
 };
 
