@@ -17,7 +17,7 @@ var Inception = function(canvas, pictureJson) {
   this.zoomSeconds = 10;
   this.scale = 1;
 
-  this.superAlpha = .33;
+  this.superAlpha = .2;
   this.subAlpha = 0;
 
   this.offsetX = 0;
@@ -66,6 +66,8 @@ Inception.prototype = {
     // this.imgMap = this.subImgMap;
     // this.buildMap();
     this.mainFrame.imageGrid = this.imgMap;
+
+    
     window.requestAnimationFrame(this.update.bind(this));
   },
 
@@ -149,7 +151,7 @@ Inception.prototype = {
     TweenLite.to(this, this.zoomSeconds,
                 {scale: this.grid.rows,
                  superAlpha: 0,
-                 subAlpha: .33,
+                 subAlpha: .2,
                  offsetX: offsetX,
                  offsetY: offsetY,
                  ease: Power1.easeIn,
@@ -162,7 +164,7 @@ Inception.prototype = {
 
     this.scale = 1;
 
-    this.superAlpha = .33;
+    this.superAlpha = .2;
     this.subAlpha = 0;
 
     this.offsetX = 0;
@@ -298,7 +300,7 @@ Inception.prototype = {
     var y = this.getGridFrameY(idx) + this.getMainFrameH() * Y;
     // debugger;
     if(this.isOnScreen(x,y,w,h)){
-      this.ctx.globalAlpha = .33;
+      this.ctx.globalAlpha = .2;
       this.ctx.drawImage(img,x,y,w,h);
       // console.log('THERE');
       this.ctx.globalAlpha = 1;
