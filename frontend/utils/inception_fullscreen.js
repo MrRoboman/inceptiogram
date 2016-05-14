@@ -148,7 +148,7 @@ Inception.prototype = {
 
     TweenLite.to(this, this.zoomSeconds,
                 {scale: this.grid.rows,
-                 superAlpha: 1,
+                 superAlpha: 0,
                  subAlpha: .33,
                  offsetX: offsetX,
                  offsetY: offsetY,
@@ -217,14 +217,14 @@ Inception.prototype = {
     return this.scale * this.grid.rows;
   },
 
-  drawMainFrameImage: function() {
-    if(!this.mainFrame.image) return;
-    var x = this.getMainFrameX();
-    var y = this.getMainFrameY();
-    var w = this.getMainFrameW();
-    var h = this.getMainFrameH();
-    this.ctx.drawImage(this.mainFrame.image,x,y,w,h);
-  },
+  // drawMainFrameImage: function() {
+  //   if(!this.mainFrame.image) return;
+  //   var x = this.getMainFrameX();
+  //   var y = this.getMainFrameY();
+  //   var w = this.getMainFrameW();
+  //   var h = this.getMainFrameH();
+  //   this.ctx.drawImage(this.mainFrame.image,x,y,w,h);
+  // },
 
   drawMainFrameImageGrid: function() {
     // debugger;
@@ -248,7 +248,9 @@ Inception.prototype = {
         break;
       }
       if(this.isOnScreen(x,y,w,h)){
+        this.ctx.globalAlpha = this.superAlpha;
         this.ctx.drawImage(this.mainFrame.imageGrid[i],x,y,w,h);
+        this.ctx.globalAlpha = 1;
       }
     }
   },
@@ -296,7 +298,10 @@ Inception.prototype = {
     var y = this.getGridFrameY(idx) + this.getMainFrameH() * Y;
     // debugger;
     if(this.isOnScreen(x,y,w,h)){
+      this.ctx.globalAlpha = .33;
       this.ctx.drawImage(img,x,y,w,h);
+      // console.log('THERE');
+      this.ctx.globalAlpha = 1;
     }
   },
 
@@ -419,6 +424,9 @@ Inception.prototype = {
   },
 
   update: function() {
+    // debugger;
+    this.ctx.fillStyle = 'white';
+    this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
     this.drawMainFrameImageGrid();
     this.drawAllGridImages();
     this.drawAllSubImages();
