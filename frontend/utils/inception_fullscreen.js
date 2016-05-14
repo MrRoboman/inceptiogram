@@ -61,16 +61,22 @@ Inception.prototype = {
       this.pictures.array.push(img);
       this.pictures.object[key] = img;
     }.bind(this));
+
+    this.buildMap();
+    // this.imgMap = this.subImgMap;
+    // this.buildMap();
+    this.mainFrame.imageGrid = this.imgMap;
+    window.requestAnimationFrame(this.update.bind(this));
   },
 
   onPictureLoad: function(e) {
     this.loadedPicCount++;
     if(this.loadedPicCount === this.pictures.array.length) {
-      this.buildMap();
-      this.imgMap = this.subImgMap;
-      this.buildMap();
-      this.mainFrame.imageGrid = this.imgMap;
-      window.requestAnimationFrame(this.update.bind(this));
+      // this.buildMap();
+      // this.imgMap = this.subImgMap;
+      // this.buildMap();
+      // this.mainFrame.imageGrid = this.imgMap;
+      // window.requestAnimationFrame(this.update.bind(this));
       // this.click(100,100);
       this.robotChooseCell();
     }
@@ -300,6 +306,7 @@ Inception.prototype = {
     //   this.drawGridImage(i, this.grid.images[i]);
     //   this.ctx.globalAlpha = 1;
     // }
+    if(!this.imgMap) return;
     for(var i = 0; i < this.imgMap.length; i++){
       this.ctx.globalAlpha = this.superAlpha;
       this.drawGridImage(0, i, this.imgMap[i]);
