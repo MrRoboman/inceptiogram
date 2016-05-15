@@ -57,6 +57,7 @@ Inception.prototype = {
     keys.forEach(function(key){
       var img = new Image();
       img.src = json[key].url;
+      img.loadAlpha = 0;
       img.onload = this.onPictureLoad.bind(this);
       this.pictures.array.push(img);
       this.pictures.object[key] = img;
@@ -67,12 +68,19 @@ Inception.prototype = {
     // this.buildMap();
     this.mainFrame.imageGrid = this.imgMap;
 
-    
+    this.startTime = Date.now();
     window.requestAnimationFrame(this.update.bind(this));
+    this.robotChooseCell();
+  },
+
+  calculate: function() {
+    var elapsed = Date.now() - this.startTime;
+    // console.log(elapsed);
   },
 
   onPictureLoad: function(e) {
     this.loadedPicCount++;
+    TweenLite.to(e.currentTarget, 2, {loadAlpha: 1});
     if(this.loadedPicCount === this.pictures.array.length) {
       // this.buildMap();
       // this.imgMap = this.subImgMap;
@@ -80,7 +88,7 @@ Inception.prototype = {
       // this.mainFrame.imageGrid = this.imgMap;
       // window.requestAnimationFrame(this.update.bind(this));
       // this.click(100,100);
-      this.robotChooseCell();
+      // this.robotChooseCell();
     }
   },
 
@@ -250,7 +258,7 @@ Inception.prototype = {
         break;
       }
       if(this.isOnScreen(x,y,w,h)){
-        this.ctx.globalAlpha = this.superAlpha;
+        this.ctx.globalAlpha = this.superAlpha * this.mainFrame.imageGrid[i].loadAlpha;
         this.ctx.drawImage(this.mainFrame.imageGrid[i],x,y,w,h);
         this.ctx.globalAlpha = 1;
       }
@@ -267,7 +275,7 @@ Inception.prototype = {
     var y = this.getGridFrameY(idx) + (cellY * h);
 
     if(this.isOnScreen(x,y,w,h)){
-      this.ctx.globalAlpha = this.subAlpha;
+      this.ctx.globalAlpha = this.subAlpha * img.loadAlpha;
       this.ctx.drawImage(img,x,y,w,h);
       this.ctx.globalAlpha = 1;
     }
@@ -300,7 +308,7 @@ Inception.prototype = {
     var y = this.getGridFrameY(idx) + this.getMainFrameH() * Y;
     // debugger;
     if(this.isOnScreen(x,y,w,h)){
-      this.ctx.globalAlpha = .2;
+      this.ctx.globalAlpha = .2 * img.loadAlpha;
       this.ctx.drawImage(img,x,y,w,h);
       // console.log('THERE');
       this.ctx.globalAlpha = 1;
@@ -315,7 +323,7 @@ Inception.prototype = {
     // }
     if(!this.imgMap) return;
     for(var i = 0; i < this.imgMap.length; i++){
-      this.ctx.globalAlpha = this.superAlpha;
+      this.ctx.globalAlpha = this.superAlpha * this.imgMap[i].loadAlpha;
       this.drawGridImage(0, i, this.imgMap[i]);
       this.drawGridImage(1, i, this.imgMap[i]);
       this.drawGridImage(2, i, this.imgMap[i]);
@@ -427,6 +435,7 @@ Inception.prototype = {
 
   update: function() {
     // debugger;
+    // this.calculate();
     this.ctx.fillStyle = 'white';
     this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
     this.drawMainFrameImageGrid();
