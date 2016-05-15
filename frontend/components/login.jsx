@@ -139,7 +139,7 @@ var Login = React.createClass({
           <br/>
           <input type="submit" value="submit" disabled={this.submitDisabled()}/>
         </form>
-        <button className="bottom-margin" onClick={this.clickGuest}>Guest</button>
+        <button className="bottom-margin" onClick={this.clickGuest}>Sign in as Guest</button>
         <div className="auth-flip">
           <span>Need an account? <a onClick={this.gotoSignup}>Sign Up</a></span>
         </div>

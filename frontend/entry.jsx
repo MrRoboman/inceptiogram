@@ -11,6 +11,7 @@ var SessionStore = require('./stores/session_store');
 var PictureIndex = require('./components/picture_index');
 var LoginForm = require('./components/login');
 var SignupForm = require('./components/signup');
+var AuthPage = require('./components/auth_page');
 var ProfileIndex = require('./components/profile_index');
 var Profile = require('./components/profile');
 
@@ -74,9 +75,9 @@ var App = React.createClass({
 
 	render: function() {
 		var topleft = "Inceptiogram"; //Using this var to remember that I had {this.state.currentUser}
-		var logoutButton = "";
+		var navIcons = "";
 		if(this.state.currentUser !== "Current User: NOBODY!"){
-			logoutButton = (
+			navIcons = (
 				<div className="nav-buttons">
 					<div className="icon">
 						<i onClick={this.gotoProfiles} className="fa fa-users fa-2x"></i>
@@ -95,7 +96,7 @@ var App = React.createClass({
 				<div className="appnav">
 					<div className="appnav-inner-container">
 						<h1 onClick={this.gotoPictures}>{topleft}</h1>
-						{logoutButton}
+						{navIcons}
 					</div>
 				</div>
 				{this.props.children}
@@ -109,8 +110,7 @@ var router = (
 			<IndexRoute component={PictureIndex} />
 			<Route component={ProfileIndex} path="profileindex" />
 			<Route component={Profile} path="profile/:id" />
-			<Route component={SignupForm} path="signup" />
-			<Route component={LoginForm} path="login" />
+			<Route component={AuthPage} path="login" />
 		</Route>
 	</Router>
 );
