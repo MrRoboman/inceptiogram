@@ -37,28 +37,11 @@ var Login = React.createClass({
       HashHistory.push('login');
     }
 // debugger;
-    if(AllTimePicStore.empty()) {
-      ClientActions.fetchAllPics();
-      this.allPicStoreListener = AllTimePicStore.addListener(this.onAllTimePicStoreChange);
-    }
-    else {
-      this.loadInception();
-    }
-  },
 
-  loadInception: function() {
-    // console.log(document.getElementById('canvas'));
-    var canvas = document.getElementById('canvas');
-    this.inception = new Inception(canvas, AllTimePicStore.all());
   },
 
   componentWillUnmount: function() {
     this.listener.remove();
-    this.allPicStoreListener.remove();
-  },
-
-  onAllTimePicStoreChange: function() {
-    this.loadInception();
   },
 
   onChange: function() {
@@ -79,11 +62,14 @@ var Login = React.createClass({
     this.setState({password: e.target.value});
   },
 
-  submit: function(e) {
+  submitLogin: function(e) {
     e.preventDefault();
     ClientActions.login(this.state);
-    // this.setState({username: "", password: ""});
-    // HashHistory.push("pictureindex");
+  },
+
+  submitSignup: function(e) {
+    e.preventDefault();
+    ClientActions.createUser(this.state);
   },
 
 //TODO: set minusernamelength, minPasswordLength as object var
@@ -157,7 +143,7 @@ var Login = React.createClass({
       return (
         <div className="authform">
           <h2>Login</h2>
-          <form onSubmit={this.submit}>
+          <form onSubmit={this.submitLogin}>
             <input id="username"
                    type="text"
                    placeholder="Username"
@@ -179,7 +165,6 @@ var Login = React.createClass({
           <ul className="red">
             {errors}
           </ul>
-          <canvas id="canvas"></canvas>
         </div>
       );
     }
@@ -191,7 +176,7 @@ var Login = React.createClass({
       return (
         <div className="authform">
           <h2>Sign Up</h2>
-          <form onSubmit={this.submit}>
+          <form onSubmit={this.submitSignup}>
             <input id="username"
                    type="text"
                    placeholder="Username"

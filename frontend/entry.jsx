@@ -19,6 +19,8 @@ var ClientActions = require('./actions/client_actions');
 
 var imgTag = require('./utils/helper').imgTag;
 var Modal = require("react-modal");
+var AllTimePicStore = require('./stores/all_time_pic_store');
+var Inception = require('./utils/inception_fullscreen');
 
 var currentUser = "";
 var App = React.createClass({
@@ -30,11 +32,31 @@ var App = React.createClass({
 	componentDidMount: function() {
 		this.listener = SessionStore.addListener(this._onSessionStoreChange);
 		ClientActions.fetchCurrentUser();
+
+		//Inception
+		if(AllTimePicStore.empty()) {
+      ClientActions.fetchAllPics();
+      this.allPicStoreListener = AllTimePicStore.addListener(this.onAllTimePicStoreChange);
+    }
+    else {
+      this.loadInception();
+    }
 	},
+
+	loadInception: function() {
+    // console.log(document.getElementById('canvas'));
+    var canvas = document.getElementById('canvas');
+    this.inception = new Inception(canvas, AllTimePicStore.all());
+  },
 
 	componentWillUnmount: function() {
 		this.listener.remove();
+		this.allPicStoreListener.remove();
 	},
+
+	onAllTimePicStoreChange: function() {
+    this.loadInception();
+  },
 
 	_onSessionStoreChange: function() {
 		var username = "Current User: NOBODY!";
@@ -99,6 +121,7 @@ var App = React.createClass({
 						{navIcons}
 					</div>
 				</div>
+				<canvas id="canvas"></canvas>
 				{this.props.children}
 			</div>
 		);
