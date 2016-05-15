@@ -25,6 +25,7 @@ var Inception = function(canvas, pictureJson) {
 
   this.canClick = true;
 
+  this.playing = true;
 
   // this.initPics();
 
@@ -46,6 +47,17 @@ Inception.prototype = {
     },
     images: [],
     subImages: []
+  },
+
+  play: function() {
+    this.playing = true;
+    window.requestAnimationFrame(this.update.bind(this));
+  },
+
+  stop: function() {
+    this.playing = false;
+    this.ctx.fillStyle = 'white';
+    this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
   },
 
   makePictures: function(json) {
@@ -453,13 +465,15 @@ Inception.prototype = {
 
   update: function() {
     // debugger;
-    this.calculate();
-    this.ctx.fillStyle = 'white';
-    this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
-    this.drawMainFrameImageGrid();
-    this.drawAllGridImages();
-    this.drawAllSubImages();
-    window.requestAnimationFrame(this.update.bind(this));
+    if(this.playing) {
+      this.calculate();
+      this.ctx.fillStyle = 'white';
+      this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
+      this.drawMainFrameImageGrid();
+      this.drawAllGridImages();
+      this.drawAllSubImages();
+      window.requestAnimationFrame(this.update.bind(this));
+    }
     // if(this.canvas) {
     //   console.log('DRAW');
       // this.clear();

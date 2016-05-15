@@ -65,11 +65,13 @@ var Login = React.createClass({
   submitLogin: function(e) {
     e.preventDefault();
     ClientActions.login(this.state);
+    window.inception.stop();
   },
 
   submitSignup: function(e) {
     e.preventDefault();
     ClientActions.createUser(this.state);
+    window.inception.stop();
   },
 
 //TODO: set minusernamelength, minPasswordLength as object var
@@ -115,6 +117,7 @@ var Login = React.createClass({
         clearInterval(this.interval);
         setTimeout(function() {
           ClientActions.login(this.state);
+          window.inception.stop();
         }.bind(this), 200);
       }
     }.bind(this), 100);

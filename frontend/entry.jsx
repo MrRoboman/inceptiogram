@@ -44,9 +44,13 @@ var App = React.createClass({
 	},
 
 	loadInception: function() {
-    // console.log(document.getElementById('canvas'));
-    var canvas = document.getElementById('canvas');
-    this.inception = new Inception(canvas, AllTimePicStore.all());
+    if(!window.inception){
+	    var canvas = document.getElementById('canvas');
+	    window.inception = new Inception(canvas, AllTimePicStore.all());
+			if(SessionStore.loggedIn()){
+				window.inception.stop();
+			}
+		}
   },
 
 	componentWillUnmount: function() {
@@ -68,20 +72,24 @@ var App = React.createClass({
 	logout: function(e) {
 		e.preventDefault();
 		ClientActions.logout();
+		window.inception.play();
 	},
 
 	gotoPictures: function(e) {
 		e.preventDefault();
 		HashHistory.push('/');
+		window.inception.stop();
 	},
 
 	gotoProfiles: function(e) {
 		e.preventDefault();
 		HashHistory.push('profileindex');
+		window.inception.stop();
 	},
 
 	gotoCurrentUserProfile: function() {
 		HashHistory.push('profile/' + SessionStore.getCurrentUserId());
+		window.inception.stop();
 	},
 
 	upload: function(e) {
