@@ -212,11 +212,11 @@ body {
 // }
 
 .authform {
-  background: white;
+  // background: white;
   padding: 40px;
   left: 50px;
   margin: 100px auto;
-  border: 1px solid black;
+  // border: 1px solid $border-color;
   width: 200px;
   // width: auto;
   height: 260px;
@@ -224,38 +224,43 @@ body {
   overflow: hidden;
   border-radius: 5px;
   text-align: center;
-  -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
-  -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
-  box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
+  // -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
+  // -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
+  // box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   h2 {
-    text-align: left;
-    margin-left: -20px;
-    margin-top: -20px;
+    text-align: center;
+    // padding-left: 25px;
+    // margin-top: -20px;
     margin-bottom: 20px;
   }
   input[type="text"], input[type="password"] {
     width: 150px;
     height: 25px;
-    margin: 0;
+    margin: 4px;
     text-align: left;
     padding: 4px;
     font-size: 18px;
     border: 0;
   }
   input[type="password"] {
-    border-top: 1px solid $border-color;
+    // border-top: 1px solid $border-color;
   }
   input[type="submit"]{
     width: 160px;
-    font-size: 18px;
+    font-size: 20px;
+    padding: 8px;
     margin-top: 30px;
+    background: darkgray;
+    // border: 1px solid $border-color;
   }
   // #retype {
   //   border-top: 1px solid $border-color;
   // }
   button {
     width: 160px;
-    font-size: 18px;
+    padding: 8px;
+    font-size: 20px;
+    background: darkgray;
   }
 }
 
