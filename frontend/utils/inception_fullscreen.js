@@ -74,14 +74,29 @@ Inception.prototype = {
   },
 
   calculate: function() {
+    var msComplete = this.zoomSeconds * 1000;
     var elapsed = Date.now() - this.startTime;
+    if(elapsed >= msComplete){
+      this.startTime += elapsed;
+      this.grid.superImages = this.grid.images;
+      this.mainFrame.imageGrid = this.imgMap;
+      this.imgMap = this.subImgMap;
+    }
+    var percentComplete = elapsed / msComplete;
+    percentComplete *= percentComplete;
+    // var rateChange = percentComplete
+    this.scale = 1 + (this.grid.rows - 1) * percentComplete;
+    this.offsetX = this.destOffsetX * percentComplete;
+    this.offsetY = this.destOffsetY * percentComplete;
+    this.subAlpha = .2 * percentComplete;
+    this.superAlpha = .2 - (.2 * percentComplete);
     // console.log(elapsed);
   },
 
   onPictureLoad: function(e) {
-    this.loadedPicCount++;
+    // this.loadedPicCount++;
     TweenLite.to(e.currentTarget, 2, {loadAlpha: 1});
-    if(this.loadedPicCount === this.pictures.array.length) {
+    // if(this.loadedPicCount === this.pictures.array.length) {
       // this.buildMap();
       // this.imgMap = this.subImgMap;
       // this.buildMap();
@@ -89,7 +104,7 @@ Inception.prototype = {
       // window.requestAnimationFrame(this.update.bind(this));
       // this.click(100,100);
       // this.robotChooseCell();
-    }
+    // }
   },
 
   // initPics: function() {
@@ -156,15 +171,18 @@ Inception.prototype = {
     var offsetY = (this.grid.rows - 1) - (2 * y);
     offsetY *= (this.mainFrame.height / 2);
 
-    TweenLite.to(this, this.zoomSeconds,
-                {scale: this.grid.rows,
-                 superAlpha: 0,
-                 subAlpha: .2,
-                 offsetX: offsetX,
-                 offsetY: offsetY,
-                 ease: Power1.easeIn,
-                 onComplete: this.onZoomComplete.bind(this)
-               });
+    this.destOffsetX = offsetX;
+    this.destOffsetY = offsetY;
+
+    // TweenLite.to(this, this.zoomSeconds,
+    //             {//scale: this.grid.rows,
+    //              //superAlpha: 0,
+    //              //subAlpha: .2,
+    //              //offsetX: offsetX,
+    //              //offsetY: offsetY,
+    //              ease: Power1.easeIn,
+    //              onComplete: this.onZoomComplete.bind(this)
+    //            });
   },
 
   onZoomComplete: function() {
@@ -435,7 +453,7 @@ Inception.prototype = {
 
   update: function() {
     // debugger;
-    // this.calculate();
+    this.calculate();
     this.ctx.fillStyle = 'white';
     this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
     this.drawMainFrameImageGrid();

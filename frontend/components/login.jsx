@@ -122,8 +122,32 @@ var Login = React.createClass({
       return <li key={error}>{error}</li>;
     });
     return (
-      
-      <canvas id="canvas"></canvas>
+      <div className="authform">
+        <h2>Login</h2>
+        <form onSubmit={this.submit}>
+          <input id="username"
+                 type="text"
+                 placeholder="Username"
+                 onChange={this.usernameChange}
+                 value={this.state.username}/>
+          <br/>
+          <input id="password"
+                 type="password"
+                 placeholder="Password"
+                 onChange={this.passwordChange}
+                 value={this.state.password}/>
+          <br/>
+          <input type="submit" value="submit" disabled={this.submitDisabled()}/>
+        </form>
+        <button className="bottom-margin" onClick={this.clickGuest}>Guest</button>
+        <div className="auth-flip">
+          <span>Need an account? <a onClick={this.gotoSignup}>Sign Up</a></span>
+        </div>
+        <ul className="red">
+          {errors}
+        </ul>
+        <canvas id="canvas"></canvas>
+      </div>
     );
   }
 });
