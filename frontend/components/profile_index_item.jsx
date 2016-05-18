@@ -1,5 +1,6 @@
 var React = require('react');
 var IndexItemHeader = require('./index_item_header');
+var imgTag = require('../utils/helper').imgTag;
 
 var ProfileIndexItem = React.createClass({
 
@@ -7,9 +8,10 @@ var ProfileIndexItem = React.createClass({
     var pictures = this.props.profile.pictures;
     var pics = [];
     for(var i = 0; i < 3 && i < pictures.length; i++){
-      pics.push(<img key={pictures[i].id}
-                     className="picture-preview"
-                     src={pictures[i].url}/>);
+      pics.push(imgTag(pictures[i].public_id, {
+                          key: pictures[i].id,
+                          className: "picture-preview"
+                      }));
     }
     return (
       <div className="profile-index-item">

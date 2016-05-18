@@ -9,6 +9,8 @@ var Helper = {
     options = options || {};
     // var optionString = "c_scale,h_640,w_640/";
     var optionString = "c_crop,g_face,h_640,w_640/";
+    var className = options.className || "";
+    var key = options.key || "";
     if(options.scale) {
       // optionString = "c_scale,h_"+options.scale.height+",w_"+options.scale.width+"/";
       optionString = "c_scale,h_"+options.scale.height+",w_"+options.scale.width+"/";
@@ -21,7 +23,8 @@ var Helper = {
             + "/image/upload/"
             + optionString
             + publicId;
-    return <img src={url}/>;
+    // return <img key={key} className={className} src={url}/>;
+    return <img key={key} className={className} src="/assets/falcon.jpg"/>;
   }
 };
 
