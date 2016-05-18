@@ -7,23 +7,31 @@ var CurrentUserMixin = {
     return {currentUser: SessionStore.getCurrentUser(),
             currentUserId: SessionStore.getCurrentUserId()};
   },
+
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.onSessionChange);
-    if(!SessionStore.fetchSent()){
-      ClientActions.fetchCurrentUser();
-    }
-    else if(SessionStore.fetchReceived() && SessionStore.getCurrentUser() === ""){
-      HashHistory.push('login');
-    }
+    this.redirect();
   },
+
   componentWillUnmount: function() {
     this.sessionListener.remove();
   },
+
   onSessionChange: function() {
-    var currentUser = SessionStore.getCurrentUser();
-    this.setState({currentUser: currentUser});
-    if(currentUser === ""){
-      HashHistory.push('login');
+    this.setState({currentUser: SessionStore.getCurrentUser(),
+                   currentUserId: SessionStore.getCurrentUserId()});
+    this.redirect();
+  },
+
+  redirect: function() {
+    if(!SessionStore.currentUserFetched()) return;
+
+    var path = this.props.location.pathname;
+    if(SessionStore.loggedIn() && path === '/login') {
+      HashHistory.push('/');
+    }
+    else if(!SessionStore.loggedIn() && path !== '/login') {
+      HashHistory.push('/login');
     }
   }
 };

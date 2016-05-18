@@ -2,8 +2,11 @@ var React = require('react');
 var ClientActions = require('../actions/client_actions');
 var HashHistory = require('react-router').hashHistory;
 var SessionStore = require('../stores/session_store');
+var CurrentUserMixin = require('../mixins/current_user_mixin');
 
 var Login = React.createClass({
+
+  mixins: [CurrentUserMixin],
 
   demo: {
     username: "Rob Kayson",
@@ -15,27 +18,24 @@ var Login = React.createClass({
   },
 
   componentDidMount: function() {
-    this.listener = SessionStore.addListener(this.onChange);
-    if(!SessionStore.fetchSent()){
-      ClientActions.fetchCurrentUser();
-    }
-    else if(SessionStore.fetchReceived() && SessionStore.getCurrentUser() === ""){
-      HashHistory.push('login');
-    }
+    // this.listener = SessionStore.addListener(this.onChange);
+    // if(!SessionStore.fetchSent()){
+    //   ClientActions.fetchCurrentUser();
+    // }
   },
 
   componentWillUnmount: function() {
-    this.listener.remove();
+    // this.listener.remove();
   },
 
   onChange: function() {
-    var currentUser = SessionStore.getCurrentUser();
-    var errors = SessionStore.getErrors();
-    if(errors.length){
-      this.setState({password: "", errors: errors});
-    }else if(currentUser.length){
-      HashHistory.push('/');
-    }
+    // var currentUser = SessionStore.getCurrentUser();
+    // var errors = SessionStore.getErrors();
+    // if(errors.length){
+    //   this.setState({password: "", errors: errors});
+    // }else if(currentUser.length){
+    //   HashHistory.push('/');
+    // }
   },
 
   usernameChange: function(e) {
