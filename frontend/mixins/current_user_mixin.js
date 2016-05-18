@@ -3,10 +3,6 @@ var SessionStore = require('../stores/session_store');
 var ClientActions = require('../actions/client_actions');
 
 var CurrentUserMixin = {
-  getInitialState: function() {
-    return {currentUser: SessionStore.getCurrentUser(),
-            currentUserId: SessionStore.getCurrentUserId()};
-  },
 
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.onSessionChange);
@@ -18,8 +14,6 @@ var CurrentUserMixin = {
   },
 
   onSessionChange: function() {
-    this.setState({currentUser: SessionStore.getCurrentUser(),
-                   currentUserId: SessionStore.getCurrentUserId()});
     this.redirect();
   },
 
