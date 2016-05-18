@@ -16,12 +16,6 @@ var Login = React.createClass({
 
   componentDidMount: function() {
     this.listener = SessionStore.addListener(this.onChange);
-    if(!SessionStore.fetchSent()){
-      ClientActions.fetchCurrentUser();
-    }
-    else if(SessionStore.fetchReceived() && SessionStore.getCurrentUser() === ""){
-      HashHistory.push('login');
-    }
   },
 
   componentWillUnmount: function() {

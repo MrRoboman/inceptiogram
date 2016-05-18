@@ -17,12 +17,6 @@ var Signup = React.createClass({
     this.passwordInput = document.getElementById('password');
     this.retypeInput = document.getElementById('retype');
     this.listener = SessionStore.addListener(this._onChange);
-    if(!SessionStore.fetchSent()){
-      ClientActions.fetchCurrentUser();
-    }
-    else if(SessionStore.fetchReceived() && SessionStore.getCurrentUser() === ""){
-      HashHistory.push('login');
-    }
   },
 
   componentWillUnmount: function() {

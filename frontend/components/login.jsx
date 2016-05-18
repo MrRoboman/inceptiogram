@@ -19,9 +19,6 @@ var Login = React.createClass({
 
   componentDidMount: function() {
     // this.listener = SessionStore.addListener(this.onChange);
-    // if(!SessionStore.fetchSent()){
-    //   ClientActions.fetchCurrentUser();
-    // }
   },
 
   componentWillUnmount: function() {

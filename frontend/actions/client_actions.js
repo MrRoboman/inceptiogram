@@ -5,10 +5,7 @@ var ProfileConstants = require('../constants/profile_constants');
 var PictureConstants = require('../constants/picture_constants');
 
 var ClientActions = {
-  fetchCurrentUser: function() {
-    ApiUtil.fetchCurrentUser();
-    SessionStore.fetchSent(true);
-  },
+  fetchCurrentUser: ApiUtil.fetchCurrentUser,
   login: ApiUtil.login,
   logout: ApiUtil.logout,
   createUser: ApiUtil.createUser,

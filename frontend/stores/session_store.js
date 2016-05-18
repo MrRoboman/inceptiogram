@@ -2,28 +2,17 @@ var Store = require('flux/utils').Store;
 var dispatcher = require('../dispatcher/dispatcher');
 var SessionConstants = require('../constants/session_constants');
 
-var _fetchSent = false;
-var _fetchReceived = false;
 var _currentUser = null;
 var _currentUserId = null;
 var _authErrors = [];
 
 var SessionStore = new Store(dispatcher);
 
-SessionStore.fetchSent = function(hasBeenSent) {
-  if(hasBeenSent === 'undefined') {
-    return _fetchSent;
-  }
-  _fetchSent = hasBeenSent;
-},
-
-SessionStore.fetchReceived = function() {
-  return _fetchReceived;
-},
 
 SessionStore.loggedIn = function() {
   if(_currentUser === null) return false;
-  return _fetchReceived && _currentUser.length > 0;
+  return _currentUser.length > 0;
+
 };
 
 SessionStore.getCurrentUser = function() {
@@ -46,7 +35,6 @@ SessionStore.getErrors = function() {
 SessionStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case SessionConstants.RECEIVED_CURRENT_USER:
-      _fetchReceived = true;
       _currentUser = payload.currentUser.username;
       _currentUserId = payload.currentUser.id;
       _authErrors = [];
