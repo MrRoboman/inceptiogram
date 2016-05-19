@@ -19,6 +19,8 @@ var ClientActions = require('./actions/client_actions');
 var imgTag = require('./utils/helper').imgTag;
 var Modal = require("react-modal");
 
+var Auth = require('./components/auth');
+
 var currentUser = "";
 var App = React.createClass({
 
@@ -110,7 +112,7 @@ var router = (
 			<Route component={ProfileIndex} path="profileindex" />
 			<Route component={Profile} path="profile/:id" />
 			<Route component={SignupForm} path="signup" />
-			<Route component={LoginForm} path="login" />
+			<Route component={Auth} path="auth" />
 		</Route>
 	</Router>
 );

@@ -21,11 +21,11 @@ var CurrentUserMixin = {
     if(!SessionStore.currentUserFetched()) return;
 
     var path = this.props.location.pathname;
-    if(SessionStore.loggedIn() && path === '/login') {
+    if(SessionStore.loggedIn() && path === '/auth') {
       HashHistory.push('/');
     }
-    else if(!SessionStore.loggedIn() && path !== '/login') {
-      HashHistory.push('/login');
+    else if(!SessionStore.loggedIn() && path !== '/auth') {
+      HashHistory.push('/auth');
     }
   }
 };

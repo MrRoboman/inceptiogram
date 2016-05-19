@@ -1,7 +1,6 @@
 var React = require('react');
 var ClientActions = require('../actions/client_actions');
 var SessionStore = require('../stores/session_store');
-var HashHistory = require('react-router').hashHistory;
 
 var Signup = React.createClass({
 
@@ -13,24 +12,20 @@ var Signup = React.createClass({
   },
 
   componentDidMount: function() {
-    this.usernameInput = document.getElementById('username');
     this.passwordInput = document.getElementById('password');
     this.retypeInput = document.getElementById('retype');
-    this.listener = SessionStore.addListener(this._onChange);
+    this.listener = SessionStore.addListener(this.onChange);
   },
 
   componentWillUnmount: function() {
     this.listener.remove();
   },
 
-  _onChange: function() {
-    var currentUser = SessionStore.getCurrentUser();
+  onChange: function() {
     var errors = SessionStore.getErrors();
     if(errors.length) {
       this.setState({errors: errors});
       //TODO: focus on username field, select the previous name that was there
-    }else if(currentUser.length > 0){
-      HashHistory.push("profileindex");
     }
   },
 
@@ -49,8 +44,6 @@ var Signup = React.createClass({
   submit: function(e) {
     e.preventDefault();
     ClientActions.createUser(this.state);
-    // this.setState({password: "", retype: ""});
-    // this.usernameInput.select();
   },
 
   submitDisabled: function() {
@@ -65,7 +58,7 @@ var Signup = React.createClass({
     if(document.activeElement === this.passwordInput){
       var password = this.state.password;
       if(password.length > 0 && password.length < this.minPasswordLength){
-        return <li>Password must be at least {this.minPasswordLength} long</li>;
+        return <li>Password must be at least {this.minPasswordLength} characters</li>;
       }
     }
     else if(document.activeElement === this.retypeInput){
@@ -75,19 +68,17 @@ var Signup = React.createClass({
     }
   },
 
-  gotoLogin: function(e){
-    e.preventDefault();
-    HashHistory.push("login");
-  },
-
   render: function() {
+
     var errors = this.state.errors.map(function(error){
       return <li key={error}>{error}</li>;
     });
 
     return (
       <div className="authform">
+
         <h2>Sign Up</h2>
+
         <form onSubmit={this.submit}>
           <input id="username"
                  type="text"
@@ -107,19 +98,23 @@ var Signup = React.createClass({
                  onChange={this.retypeChange}
                  value={this.state.retype}/>
           <br/>
+
           <input type="submit" value="submit" disabled={this.submitDisabled()}/>
+
         </form>
+
         <div className="auth-flip">
-          <p>Have an account? <a onClick={this.gotoLogin}>Log In</a></p>
-
-
+          <p>Have an account? <a onClick={this.props.toggleForm}>Log In</a></p>
         </div>
+
         <ul>
           {errors}
         </ul>
+
         <ul className="red">
           {this.passwordHelper()}
         </ul>
+
       </div>
     );
   }

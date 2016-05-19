@@ -1,9 +1,13 @@
 var React = require('react');
-var HashHistory = require('react-router').hashHistory;
 var ClientActions = require('../actions/client_actions');
 var SessionStore = require('../stores/session_store');
+var CurrentUserMixin = require('../mixins/current_user_mixin');
+var Login = require('./login');
+var Signup = require('./signup');
 
-var Login = React.createClass({
+var Auth = React.createClass({
+
+  mixins: [CurrentUserMixin],
 
   demo: {
     username: "Rob Kayson",
@@ -11,24 +15,21 @@ var Login = React.createClass({
   },
 
   getInitialState: function() {
-    return {username: "", password: "", errors: [], state: "LOGIN"};
+    return {username: "", password: "", errors: [], form: "LOGIN"};
   },
 
   componentDidMount: function() {
-    this.listener = SessionStore.addListener(this.onChange);
+    this.sessionListener = SessionStore.addListener(this.onChange);
   },
 
   componentWillUnmount: function() {
-    this.listener.remove();
+    this.sessionListener.remove();
   },
 
   onChange: function() {
-    var currentUser = SessionStore.getCurrentUser();
     var errors = SessionStore.getErrors();
     if(errors.length){
       this.setState({password: "", errors: errors});
-    }else if(currentUser.length){
-      HashHistory.push('/');
     }
   },
 
@@ -40,17 +41,7 @@ var Login = React.createClass({
     this.setState({password: e.target.value});
   },
 
-  submit: function(e) {
-    e.preventDefault();
-    ClientActions.login(this.state);
-    // this.setState({username: "", password: ""});
-    // HashHistory.push("pictureindex");
-  },
-
-//TODO: set minusernamelength, minPasswordLength as object var
-//TODO: there is a possible bug: when I didnt use this disable function and submitted I would be logged in for a sec
-// then the name would change back to not logged in.
-  submitDisabled: function() {
+  isSubmitDisabled: function() {
     return (
       !(this.state.username.length > 0 &&
         this.state.password.length > 0
@@ -60,11 +51,20 @@ var Login = React.createClass({
 
   gotoSignup: function(e) {
     e.preventDefault();
-    HashHistory.push("signup");
+    this.setState({form: "SIGNUP"});
+  },
+
+  toggleForm: function() {
+    var nextForm = this.state.form === "LOGIN" ? "SIGNUP" : "LOGIN";
+    this.setState({form: nextForm});
   },
 
   clickGuest: function(e){
     e.preventDefault();
+
+    if(this.interval) {
+      clearInterval(this.interval);
+    }
 
     this.setState({username: this.demo.username.slice(0,1), password: ""});
     this.interval = setInterval(function() {
@@ -90,38 +90,27 @@ var Login = React.createClass({
     }.bind(this), 100);
   },
 
+  form: function() {
+    if(this.state.form === "LOGIN") {
+      return <Login toggleForm={this.toggleForm}/>;
+    }
+    else {
+      return <Signup toggleForm={this.toggleForm}/>;
+    }
+  },
+
   render: function() {
+
     var errors = this.state.errors.map(function(error){
       return <li key={error}>{error}</li>;
     });
+
     return (
-      <div className="authform">
-        <h2>Login</h2>
-        <form onSubmit={this.submit}>
-          <input id="username"
-                 type="text"
-                 placeholder="Username"
-                 onChange={this.usernameChange}
-                 value={this.state.username}/>
-          <br/>
-          <input id="password"
-                 type="password"
-                 placeholder="Password"
-                 onChange={this.passwordChange}
-                 value={this.state.password}/>
-          <br/>
-          <input type="submit" value="submit" disabled={this.submitDisabled()}/>
-        </form>
-        <button className="bottom-margin" onClick={this.clickGuest}>Guest</button>
-        <div className="auth-flip">
-          <span>Need an account? <a onClick={this.gotoSignup}>Sign Up</a></span>
-        </div>
-        <ul className="red">
-          {errors}
-        </ul>
+      <div>
+        {this.form()}
       </div>
     );
   }
 });
 
-module.exports = Login;
+module.exports = Auth;
