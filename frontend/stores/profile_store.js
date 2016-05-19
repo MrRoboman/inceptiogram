@@ -3,8 +3,8 @@ var dispatcher = require('../dispatcher/dispatcher');
 var ProfileConstants = require('../constants/profile_constants');
 
 var _profiles = [];
-var _showProfile = {};
-var _showProfilePics = {};
+var _singleProfile = {};
+var _singleProfilePics = {};
 
 var ProfileStore = new Store(dispatcher);
 
@@ -22,19 +22,19 @@ var updateProfile = function(profile) {
   _profiles.push(profile);
 };
 
-ProfileStore.getShowProfile = function(){
-  return _showProfile;
+ProfileStore.getSingleProfile = function(){
+  return _singleProfile;
 };
 
-var updateShowProfilePics = function() {
-  var pics = _showProfile.pictures;
+ProfileStore.getSingleProfilePic = function(id) {
+  return _singleProfilePics[id];
+};
+
+var updateShowProfilePics = function() { 
+  var pics = _singleProfile.pictures;
   for(var i = 0; i < pics.length; i++){
-    _showProfilePics[pics[i].id] = pics[i];
+    _singleProfilePics[pics[i].id] = pics[i];
   }
-};
-
-ProfileStore.getShowProfilePic = function(id) {
-  return _showProfilePics[id];
 };
 
 ProfileStore.__onDispatch = function(payload) {
@@ -45,7 +45,7 @@ ProfileStore.__onDispatch = function(payload) {
       break;
     case ProfileConstants.RECEIVED_SINGLE_PROFILE:
       updateProfile(payload.profile);
-      _showProfile = payload.profile;
+      _singleProfile = payload.profile;
       updateShowProfilePics();
       this.__emitChange();
       break;

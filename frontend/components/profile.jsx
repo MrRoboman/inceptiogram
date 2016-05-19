@@ -15,16 +15,16 @@ var Profile = React.createClass({
   },
 
   componentDidMount: function() {
-    this.listener = ProfileStore.addListener(this.onChange);
+    this.profileListener = ProfileStore.addListener(this.onChange);
     ClientActions.fetchSingleProfile(this.props.params.id);
   },
 
   componentWillUnmount: function() {
-    this.listener.remove();
+    this.profileListener.remove();
   },
 
   onChange: function() {
-    this.setState({profile: ProfileStore.getShowProfile()});
+    this.setState({profile: ProfileStore.getSingleProfile()});
   },
 
   closeModal: function() {
@@ -36,7 +36,7 @@ var Profile = React.createClass({
   },
 
   isCurrentUser: function() {
-    return SessionStore.isCurrentUserId(this.props.params.id);
+    return SessionStore.isCurrentUser(this.props.params.id);
   },
 
   render: function() {
@@ -63,7 +63,7 @@ var Profile = React.createClass({
           <ProfileHeader profile={this.state.profile}
                          showFlwBtn={true}
                          isCurrentUser={this.isCurrentUser()}/>
-                       
+
           <div className="profile-pics">
             {pics}
           </div>

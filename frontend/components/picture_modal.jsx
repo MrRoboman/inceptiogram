@@ -1,38 +1,24 @@
 var React = require('react');
 var Modal = require('react-modal');
-var imgTag = require('../utils/helper').imgTag;
+var PictureStore = require('../stores/picture_store');
 var ProfileStore = require('../stores/profile_store');
 var ModalHeader = require('./modal_header');
-var PictureIndexItemFooter = require('./picture_index_item_footer');
 var ModalComments = require('./modal_comments');
 var ModalForm = require('./modal_form');
-var PictureStore = require('../stores/picture_store');
+var PictureIndexItemFooter = require('./picture_index_item_footer');
+var imgTag = require('../utils/helper').imgTag;
 
 // var IndexItemHeader = require('./index-item-header');
 
 var PictureModal = React.createClass({
   getInitialState: function() {
-    return {modalOpen: this.props.modalOpen, picId: this.props.picId};
-  },
-
-  componentDidMount: function() {
-    this.listener = PictureStore.addListener(this.onChange);
-  },
-
-  componentWillUnmount: function() {
-    this.listener.remove();
-  },
-
-  onChange: function(){
-    var pic = PictureStore.getSinglePicture();
-    var likes = pic.likes;
-    var comments = pic.comments;
-    this.setState({likes: likes, comments: comments});
+    return {modalOpen: this.props.modalOpen,
+      picture: ProfileStore.getSingleProfilePic(this.props.picId)};
   },
 
   componentWillReceiveProps: function(nextProps) {
-    // debugger;
-    this.setState({modalOpen: nextProps.modalOpen, picId: nextProps.picId});
+    this.setState({modalOpen: nextProps.modalOpen,
+      pic: ProfileStore.getSingleProfilePic(nextProps.picId)});
   },
 
   render: function() {
@@ -42,7 +28,7 @@ var PictureModal = React.createClass({
     var profile = {};
     var liking = false;
     if(this.state.modalOpen) {
-      pic = ProfileStore.getShowProfilePic(this.state.picId);
+      pic = this.state.pic;
       img = imgTag(pic.public_id, {scale: {width: 640, height: 640}});
       profile = {id: pic.owner.id, username: pic.owner.username, picture_public_id: pic.owner.picture_public_id};
       liking = pic.liking;
@@ -59,9 +45,10 @@ var PictureModal = React.createClass({
 
             <div className="modal-deets">
               <ModalHeader profile={profile} closeModal={this.props.closeModal}/>
-              <ModalComments likes={this.state.likes} comments={this.state.comments}/>
+              <ModalComments likes={pic.likes} comments={pic.comments}/>
               <ModalForm picture={pic} />
             </div>
+
           </div>
 
         </Modal>
