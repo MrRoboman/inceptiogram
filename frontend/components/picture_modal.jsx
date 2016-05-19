@@ -2,6 +2,7 @@ var React = require('react');
 var Modal = require('react-modal');
 var PictureStore = require('../stores/picture_store');
 var ProfileStore = require('../stores/profile_store');
+var IndexItemHeader = require('./index_item_header');
 var ModalHeader = require('./modal_header');
 var ModalComments = require('./modal_comments');
 var ModalForm = require('./modal_form');
@@ -44,9 +45,8 @@ var PictureModal = React.createClass({
             {img}
 
             <div className="modal-deets">
-              <ModalHeader profile={profile} closeModal={this.props.closeModal}/>
-              <ModalComments likes={pic.likes} comments={pic.comments}/>
-              <ModalForm picture={pic} />
+              <IndexItemHeader user={profile} />
+              <PictureIndexItemFooter picture={pic} />
             </div>
 
           </div>
