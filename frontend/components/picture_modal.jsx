@@ -1,6 +1,7 @@
 var React = require('react');
 var Modal = require('react-modal');
 var ProfileStore = require('../stores/profile_store');
+var PictureStore = require('../stores/picture_store');
 var IndexItemHeader = require('./index_item_header');
 var IndexItemFooter = require('./index_item_footer');
 var imgTag = require('../utils/helper').imgTag;
@@ -10,6 +11,18 @@ var PictureModal = React.createClass({
   getInitialState: function() {
     return {modalOpen: this.props.modalOpen,
       picture: ProfileStore.getSingleProfilePic(this.props.picId)};
+  },
+
+  onPictureChange: function() {
+    this.setState({picture: PictureStore.getPicture(parseInt(this.props.picId))});
+  },
+
+  componentDidMount: function() {
+    this.pictureListener = PictureStore.addListener(this.onPictureChange);
+  },
+
+  componentWillUnmount: function() {
+    this.pictureListener.remove();
   },
 
   componentWillReceiveProps: function(nextProps) {

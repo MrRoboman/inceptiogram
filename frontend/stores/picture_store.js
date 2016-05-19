@@ -2,37 +2,23 @@ var Store = require('flux/utils').Store;
 var dispatcher = require('../dispatcher/dispatcher');
 var PictureConstants = require('../constants/picture_constants');
 
-var _pictures = [];
-var _singlePicture = {};
+var _pictures = {};
 
 var PictureStore = new Store(dispatcher);
 
-var insertPicture = function(picture) {
-  for(var i = 0; i < _pictures.length; i++){
-    if(picture.id === _pictures[i].id){
-      _pictures[i] = picture;
-      return;
-    }
-  }
-  _pictures.push(picture);
+PictureStore.getPictures = function() {
+  var picArray = [];
+  var keys = Object.keys(_pictures);
+  keys.forEach(function(key){
+    picArray.push(_pictures[key]);
+  });
+  return picArray;
 };
 
 PictureStore.getPicture = function(id){
-  for(var i = 0; i < _pictures.length; i++){
-    if(id === _pictures[i].id){
-      return _pictures[i];
-    }
-  }
-  return null;
+  return _pictures[id];
 };
 
-PictureStore.getPictures = function() {
-  return _pictures.slice();
-};
-
-PictureStore.getSinglePicture = function() {
-  return _singlePicture;
-};
 
 PictureStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
@@ -41,12 +27,8 @@ PictureStore.__onDispatch = function(payload) {
       this.__emitChange();
       break;
     case PictureConstants.RECEIVED_SINGLE_PICTURE:
-      insertPicture(payload.picture);
-      _singlePicture = payload.picture;
+      _pictures[payload.picture.id] = payload.picture;
       this.__emitChange();
-      break;
-    case PictureConstants.CLEAR_SINGLE_PICTURE:
-      _singlePicture = {};
       break;
   }
 

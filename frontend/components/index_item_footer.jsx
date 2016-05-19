@@ -9,6 +9,11 @@ var IndexItemFooter = React.createClass({
     return {formText: ""};
   },
 
+  // componentWillReceiveProps: function(nextProps) {
+  //   debugger;
+  //   this.forceUpdate();
+  // },
+
   onFormTextChange: function(e) {
     this.setState({formText: e.target.value});
   },
