@@ -6,7 +6,7 @@ var IndexItemHeader = require('./index_item_header');
 var ModalHeader = require('./modal_header');
 var ModalComments = require('./modal_comments');
 var ModalForm = require('./modal_form');
-var PictureIndexItemFooter = require('./picture_index_item_footer');
+var IndexItemFooter = require('./index_item_footer');
 var imgTag = require('../utils/helper').imgTag;
 
 // var IndexItemHeader = require('./index-item-header');
@@ -46,7 +46,7 @@ var PictureModal = React.createClass({
 
             <div className="modal-deets">
               <IndexItemHeader user={profile} />
-              <PictureIndexItemFooter picture={pic} />
+              <IndexItemFooter picture={pic} />
             </div>
 
           </div>

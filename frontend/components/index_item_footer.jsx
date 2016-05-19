@@ -3,7 +3,7 @@ var ClientActions = require('../actions/client_actions');
 var LikeButton = require('./like_button');
 var linkToProfile = require('../utils/helper').linkToProfile;
 
-var PictureIndexItemFooter = React.createClass({
+var IndexItemFooter = React.createClass({
 
   getInitialState: function() {
     return {formText: ""};
@@ -55,7 +55,7 @@ var PictureIndexItemFooter = React.createClass({
               </li>
              );
     });
-    
+
     return (
       <div className="footer">
 
@@ -80,4 +80,4 @@ var PictureIndexItemFooter = React.createClass({
   }
 });
 
-module.exports = PictureIndexItemFooter;
+module.exports = IndexItemFooter;
