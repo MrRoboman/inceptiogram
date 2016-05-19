@@ -28,6 +28,10 @@ SessionStore.getCurrentUserId = function() {
   return _currentUserId;
 };
 
+SessionStore.isCurrentUser = function(id) {
+  return _currentUserId === id;
+};
+
 SessionStore.getErrors = function() {
   return _authErrors.slice();
 };

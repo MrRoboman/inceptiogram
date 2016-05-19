@@ -1,10 +1,10 @@
 var React = require('react');
-var ProfileStore = require('../stores/profile_store');
-var PictureStore = require('../stores/picture_store');
-var ProfileHeader = require('./profile_header');
 var ClientActions = require('../actions/client_actions');
-var CurrentUserMixin = require('../mixins/current_user_mixin');
+var SessionStore = require('../stores/session_store');
+var ProfileStore = require('../stores/profile_store');
+var ProfileHeader = require('./profile_header');
 var PictureModal = require('./picture_modal');
+var CurrentUserMixin = require('../mixins/current_user_mixin');
 var imgTag = require('../utils/helper').imgTag;
 
 var Profile = React.createClass({
@@ -12,15 +12,6 @@ var Profile = React.createClass({
 
   getInitialState: function() {
     return {profile: {}, modalOpen: false};
-  },
-
-  closeModal: function() {
-    this.setState({modalOpen: false});
-  },
-
-  openModal: function(e) {
-    ClientActions.fetchSinglePicture(e.currentTarget.id);
-    this.setState({modalOpen: true, modalPicId: e.currentTarget.id});
   },
 
   componentDidMount: function() {
@@ -33,15 +24,21 @@ var Profile = React.createClass({
   },
 
   onChange: function() {
-    console.log("howmanytimes");
     this.setState({profile: ProfileStore.getShowProfile()});
   },
 
-  isCurrentUser: function() {
-    return SessionStore.getCurrentUserId() == this.props.params.id;
+  closeModal: function() {
+    this.setState({modalOpen: false});
   },
 
-//Get pics at 640x640 and scale. Then just use the pic in the modal
+  openModal: function(e) {
+    this.setState({modalOpen: true, modalPicId: e.currentTarget.id});
+  },
+
+  isCurrentUser: function() {
+    return SessionStore.isCurrentUserId(this.props.params.id);
+  },
+
   render: function() {
 
     var content = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>;
@@ -66,6 +63,7 @@ var Profile = React.createClass({
           <ProfileHeader profile={this.state.profile}
                          showFlwBtn={true}
                          isCurrentUser={this.isCurrentUser()}/>
+                       
           <div className="profile-pics">
             {pics}
           </div>
