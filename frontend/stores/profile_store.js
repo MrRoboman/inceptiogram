@@ -49,10 +49,6 @@ ProfileStore.__onDispatch = function(payload) {
       updateShowProfilePics();
       this.__emitChange();
       break;
-    case ProfileConstants.CLEAR_SINGLE_PROFILE:
-      _showProfile = {};
-      // _showProfilePics = {};
-      break;
   }
 };
 

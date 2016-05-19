@@ -33,15 +33,12 @@ var Profile = React.createClass({
   },
 
   onChange: function() {
+    console.log("howmanytimes");
     this.setState({profile: ProfileStore.getShowProfile()});
   },
 
   isCurrentUser: function() {
     return SessionStore.getCurrentUserId() == this.props.params.id;
-  },
-
-  componentWillReceiveProps: function() {
-    ClientActions.fetchSingleProfile(this.props.params.id);
   },
 
 //Get pics at 640x640 and scale. Then just use the pic in the modal

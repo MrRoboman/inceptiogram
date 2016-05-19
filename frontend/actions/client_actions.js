@@ -23,12 +23,7 @@ var ClientActions = {
   createFollow: ApiUtil.createFollow,
 
   fetchProfiles: ApiUtil.fetchProfiles,
-  fetchSingleProfile: function(id) {
-    ApiUtil.fetchSingleProfile(id);
-    Dispatcher.dispatch({
-      actionType: ProfileConstants.CLEAR_SINGLE_PROFILE
-    });
-  },
+  fetchSingleProfile: ApiUtil.fetchSingleProfile,
 
   uploadImages: ApiUtil.uploadImages,
   uploadProfileImage: ApiUtil.uploadProfileImage
