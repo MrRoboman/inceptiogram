@@ -1,7 +1,7 @@
 var React = require('react');
-var linkToProfile = require('../utils/helper').linkToProfile;
 var ClientActions = require('../actions/client_actions');
 var LikeButton = require('./like_button');
+var linkToProfile = require('../utils/helper').linkToProfile;
 
 var PictureIndexItemFooter = React.createClass({
 
@@ -36,7 +36,11 @@ var PictureIndexItemFooter = React.createClass({
     var likes = this.props.picture.likes.map(function(like, idx){
       if(idx === len - 1){
         return <span key={like.id}>{and}{linkToProfile(like.user)}</span>;
-      }else {
+      }
+      else if(idx === len - 2) {
+        return <span key={like.id}>{linkToProfile(like.user)} </span>;
+      }
+      else {
         return <span key={like.id}>{linkToProfile(like.user)}, </span>;
       }
     });
@@ -44,7 +48,6 @@ var PictureIndexItemFooter = React.createClass({
   },
 
   render: function() {
-    var liking = this.props.picture.liking ? "unlike" : "like";
     var comments = this.props.picture.comments.map(function(comment){
       return (<li key={comment.id}>
                 {linkToProfile(comment.author)}
@@ -52,6 +55,7 @@ var PictureIndexItemFooter = React.createClass({
               </li>
              );
     });
+    
     return (
       <div className="footer">
 

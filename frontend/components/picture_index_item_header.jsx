@@ -3,9 +3,7 @@ var linkToProfile = require('../utils/helper').linkToProfile;
 var imgTag = require('../utils/helper').imgTag;
 
 var PictureIndexItemHeader = React.createClass({
-  getInitialState: function() {
-    return {};
-  },
+
   render: function() {
 
     var profilePicId = this.props.owner.picture_public_id || 'falcon_hmlgcs';

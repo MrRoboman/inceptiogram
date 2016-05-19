@@ -1,12 +1,8 @@
-//Picture Index
-var CurrentUserMixin = require('../mixins/current_user_mixin');
-var ClientActions = require('../actions/client_actions');
-var SessionStore = require('../stores/session_store');
-var HashHistory = require('react-router').hashHistory;
-var PictureIndexItem = require('./picture_index_item');
-var PictureStore = require('../stores/picture_store');
-
 var React = require('react');
+var ClientActions = require('../actions/client_actions');
+var PictureStore = require('../stores/picture_store');
+var CurrentUserMixin = require('../mixins/current_user_mixin');
+var PictureIndexItem = require('./picture_index_item');
 
 module.exports = React.createClass({
 
@@ -17,29 +13,19 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    // this.sessionListener = SessionStore.addListener(this.onChange);
     this.pictureListener = PictureStore.addListener(this.onChange);
-    // ClientActions.fetchCurrentUser();
     ClientActions.fetchPictures();
-    // debugger;
   },
 
   componentWillUnmount: function() {
-    // this.sessionListener.remove();
     this.pictureListener.remove();
   },
 
   onChange: function() {
-    // if(SessionStore.getCurrentUser() === ""){
-    //   HashHistory.push("login");
-    // } else{
-      this.setState({pictures: PictureStore.getPictures(), fetchReceived: true});
-      // debugger;
-    // }
+    this.setState({pictures: PictureStore.getPictures(), fetchReceived: true});
   },
 
   render: function() {
-    // debugger;
     var pictureIndexItems = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>;
     if(this.state.fetchReceived){
       pictureIndexItems = <div className="missing-content-message">{"You are not following anyone"}</div>;
