@@ -13,9 +13,10 @@ var ProfileIndexItem = React.createClass({
                           className: "picture-preview"
                       }));
     }
+    
     return (
       <div className="profile-index-item">
-        <IndexItemHeader profile={this.props.profile} showFlwBtn={true}/>
+        <IndexItemHeader user={this.props.profile} showFlwBtn={true}/>
           <ul className="profile-index-item-pics">
             {pics}
           </ul>
