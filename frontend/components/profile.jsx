@@ -4,7 +4,7 @@ var PictureStore = require('../stores/picture_store');
 var ProfileHeader = require('./profile_header');
 var ClientActions = require('../actions/client_actions');
 var CurrentUserMixin = require('../mixins/current_user_mixin');
-var InceptionModal = require('./inception_modal');
+var PictureModal = require('./picture_modal');
 var imgTag = require('../utils/helper').imgTag;
 
 var Profile = React.createClass({
@@ -61,7 +61,7 @@ var Profile = React.createClass({
       content = (
         <div className="profile">
 
-          <InceptionModal modalOpen={this.state.modalOpen} picId={this.state.modalPicId} closeModal={this.closeModal}/>
+          <PictureModal modalOpen={this.state.modalOpen} picId={this.state.modalPicId} closeModal={this.closeModal}/>
 
           <ProfileHeader profile={this.state.profile}
                          showFlwBtn={true}

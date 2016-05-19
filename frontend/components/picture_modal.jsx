@@ -10,7 +10,7 @@ var PictureStore = require('../stores/picture_store');
 
 // var IndexItemHeader = require('./index-item-header');
 
-var InceptionModal = React.createClass({
+var PictureModal = React.createClass({
   getInitialState: function() {
     return {modalOpen: this.props.modalOpen, picId: this.props.picId};
   },
@@ -82,6 +82,6 @@ var InceptionModal = React.createClass({
   }
 });
 
-module.exports = InceptionModal;
+module.exports = PictureModal;
 
 // {imgTag('qdoiqtyte3olcbv4sutm')}
