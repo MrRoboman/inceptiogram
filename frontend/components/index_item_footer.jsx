@@ -59,11 +59,13 @@ var IndexItemFooter = React.createClass({
     return (
       <div className="footer">
 
-        <span>{this.likeString()}</span>
+        <div className="likes-comments">
+          <span>{this.likeString()}</span>
 
-        <ul className="comments">
-          {comments}
-        </ul>
+          <ul className="comments">
+            {comments}
+          </ul>
+        </div>
 
           <div className="comment-form">
             <LikeButton picture={this.props.picture}/>

@@ -1,15 +1,10 @@
 var React = require('react');
 var Modal = require('react-modal');
-var PictureStore = require('../stores/picture_store');
 var ProfileStore = require('../stores/profile_store');
 var IndexItemHeader = require('./index_item_header');
-var ModalHeader = require('./modal_header');
-var ModalComments = require('./modal_comments');
-var ModalForm = require('./modal_form');
 var IndexItemFooter = require('./index_item_footer');
 var imgTag = require('../utils/helper').imgTag;
 
-// var IndexItemHeader = require('./index-item-header');
 
 var PictureModal = React.createClass({
   getInitialState: function() {
