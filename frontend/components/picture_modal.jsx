@@ -10,7 +10,7 @@ var imgTag = require('../utils/helper').imgTag;
 var PictureModal = React.createClass({
   getInitialState: function() {
     return {modalOpen: this.props.modalOpen,
-      picture: ProfileStore.getSingleProfilePic(this.props.picId)};
+      picture: PictureStore.getPicture(this.props.picId)};
   },
 
   onPictureChange: function() {
@@ -26,8 +26,9 @@ var PictureModal = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
+    // debugger;
     this.setState({modalOpen: nextProps.modalOpen,
-      pic: ProfileStore.getSingleProfilePic(nextProps.picId)});
+      picture: PictureStore.getPicture(nextProps.picId)});
   },
 
   render: function() {
