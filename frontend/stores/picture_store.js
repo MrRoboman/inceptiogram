@@ -1,6 +1,8 @@
 var Store = require('flux/utils').Store;
 var dispatcher = require('../dispatcher/dispatcher');
 var PictureConstants = require('../constants/picture_constants');
+var arrayToObject = require('../utils/array_to_object');
+var objectToArray = require('../utils/object_to_array');
 
 var _pictures = {};
 
@@ -29,22 +31,6 @@ PictureStore.__onDispatch = function(payload) {
 
 };
 
-var arrayToObject = function(arr){
-  var obj = {};
-  arr.forEach(function(item){
-    obj[item.id] = item;
-  });
-  return obj;
-};
-
-var objectToArray = function(obj){
-  var arr = [];
-  var keys = Object.keys(obj);
-  keys.forEach(function(key){
-    arr.push(obj[key]);
-  });
-  return arr;
-};
 
 // for testing (remove for production)
 window.PictureStore = PictureStore;
