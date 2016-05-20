@@ -14,7 +14,7 @@ var PictureModal = React.createClass({
   },
 
   onPictureChange: function() {
-    this.setState({picture: PictureStore.getPicture(parseInt(this.props.picId))});
+    this.setState({picture: PictureStore.getPicture(this.props.picId)});
   },
 
   componentDidMount: function() {
@@ -37,7 +37,7 @@ var PictureModal = React.createClass({
     var profile = {};
     var liking = false;
     if(this.state.modalOpen) {
-      pic = this.state.pic;
+      pic = this.state.picture;
       img = imgTag(pic.public_id, {scale: {width: 640, height: 640}});
       profile = {id: pic.owner.id, username: pic.owner.username, picture_public_id: pic.owner.picture_public_id};
       liking = pic.liking;

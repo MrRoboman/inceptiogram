@@ -27,6 +27,7 @@ var ServerActions = {
   },
 
   receiveSinglePicture: function(picture) {
+    // debugger;
     Dispatcher.dispatch({
       actionType: PictureConstants.RECEIVED_SINGLE_PICTURE,
       picture: picture

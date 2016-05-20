@@ -7,12 +7,7 @@ var _pictures = {};
 var PictureStore = new Store(dispatcher);
 
 PictureStore.getPictures = function() {
-  var picArray = [];
-  var keys = Object.keys(_pictures);
-  keys.forEach(function(key){
-    picArray.push(_pictures[key]);
-  });
-  return picArray;
+  return objectToArray(_pictures);
 };
 
 PictureStore.getPicture = function(id){
@@ -23,7 +18,7 @@ PictureStore.getPicture = function(id){
 PictureStore.__onDispatch = function(payload) {
   switch(payload.actionType) {
     case PictureConstants.RECEIVED_PICTURES:
-      _pictures = payload.pictures;
+      _pictures = arrayToObject(payload.pictures);
       this.__emitChange();
       break;
     case PictureConstants.RECEIVED_SINGLE_PICTURE:
@@ -32,6 +27,23 @@ PictureStore.__onDispatch = function(payload) {
       break;
   }
 
+};
+
+var arrayToObject = function(arr){
+  var obj = {};
+  arr.forEach(function(item){
+    obj[item.id] = item;
+  });
+  return obj;
+};
+
+var objectToArray = function(obj){
+  var arr = [];
+  var keys = Object.keys(obj);
+  keys.forEach(function(key){
+    arr.push(obj[key]);
+  });
+  return arr;
 };
 
 // for testing (remove for production)
