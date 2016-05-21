@@ -23,7 +23,7 @@ var Profile = React.createClass({
     this.profileListener.remove();
   },
 
-  onChange: function() {
+  onChange: function() { 
     this.setState({profile: ProfileStore.getSingleProfile()});
   },
 
@@ -35,11 +35,12 @@ var Profile = React.createClass({
     this.setState({modalOpen: true, modalPicId: e.currentTarget.id});
   },
 
-  isCurrentUser: function() { 
+  isCurrentUser: function() {
     return SessionStore.isCurrentUser(this.props.params.id);
   },
 
   render: function() {
+    // debugger;
 
     var content = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>;
 

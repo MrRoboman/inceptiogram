@@ -13,7 +13,8 @@ var CurrentUserMixin = {
     this.sessionListener.remove();
   },
 
-  onSessionChange: function() {
+  onSessionChange: function() { 
+    this.forceUpdate();
     this.redirect();
   },
 

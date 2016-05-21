@@ -29,7 +29,7 @@ SessionStore.getCurrentUserId = function() {
 };
 
 SessionStore.isCurrentUser = function(id) {
-  return _currentUserId === id;
+  return _currentUserId == id;
 };
 
 SessionStore.getErrors = function() {
