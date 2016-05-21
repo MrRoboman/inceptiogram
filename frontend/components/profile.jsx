@@ -35,7 +35,7 @@ var Profile = React.createClass({
     this.setState({modalOpen: true, modalPicId: e.currentTarget.id});
   },
 
-  isCurrentUser: function() {
+  isCurrentUser: function() { 
     return SessionStore.isCurrentUser(this.props.params.id);
   },
 

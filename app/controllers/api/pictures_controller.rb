@@ -1,6 +1,10 @@
 class Api::PicturesController < ApplicationController
   def index
-    @pictures = Picture.all_with_deets(current_user)
+    if current_user
+      @pictures = Picture.all_with_deets(current_user)
+    else
+      @pictures = []
+    end
   end
 
   def create

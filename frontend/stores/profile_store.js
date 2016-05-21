@@ -1,6 +1,8 @@
 var Store = require('flux/utils').Store;
 var dispatcher = require('../dispatcher/dispatcher');
 var ProfileConstants = require('../constants/profile_constants');
+var arrayToObject = require('../utils/array_to_object');
+var objectToArray = require('../utils/object_to_array');
 
 var _profiles = [];
 var _singleProfile = {};
@@ -30,7 +32,7 @@ ProfileStore.getSingleProfilePic = function(id) {
   return _singleProfilePics[id];
 };
 
-var updateShowProfilePics = function() { 
+var updateShowProfilePics = function() {
   var pics = _singleProfile.pictures;
   for(var i = 0; i < pics.length; i++){
     _singleProfilePics[pics[i].id] = pics[i];
