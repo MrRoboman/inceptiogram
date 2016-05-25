@@ -68,14 +68,13 @@ Mosaic.prototype = {
   onClickCanvas: function(e) {
     if(this.playing) return;
 
-    var x = e.clientX + document.body.scrollLeft + this.canvas.scrollLeft - this.canvas.offsetLeft;
-    var y = e.clientY + document.body.scrollTop + this.canvas.scrollTop - this.canvas.offsetTop;
+    var x = e.clientX + document.body.scrollLeft + this.canvas.scrollLeft - this.canvas.parentNode.offsetLeft;
+    var y = e.clientY + document.body.scrollTop + this.canvas.scrollTop - this.canvas.parentNode.offsetTop;
     var cellX = Math.floor(x / (this.width / this.cols));
     var cellY = Math.floor(y / (this.height / this.rows));
     this.selectedIdx = this.getIndex(cellX, cellY);
     this.selectedCell = {x: cellX, y: cellY};
     this.middleGrid.smallImages = this.getRandomImages();
-    debugger;
     this.play();
   },
 
