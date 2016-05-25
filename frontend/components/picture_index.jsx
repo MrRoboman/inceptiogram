@@ -30,9 +30,10 @@ module.exports = React.createClass({
     if(this.state.fetchReceived){
       pictureIndexItems = <div className="missing-content-message">{"You are not following anyone"}</div>;
       if(this.state.pictures.length > 0){
-        pictureIndexItems = this.state.pictures.map(function(pic){
-          return <PictureIndexItem key={pic.id} picture={pic} />;
-        });
+        pictureIndexItems = <PictureIndexItem picture={this.state.pictures[0]} />;
+        // pictureIndexItems = this.state.pictures.map(function(pic){
+        //   return <PictureIndexItem key={pic.id} picture={pic} />;
+        // });
       }
     }
     return (
