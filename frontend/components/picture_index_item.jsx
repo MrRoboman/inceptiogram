@@ -1,17 +1,31 @@
 var React = require('react');
+var PictureStore = require('../stores/picture_store');
 var IndexItemHeader = require('./index_item_header');
 var IndexItemFooter = require('./index_item_footer');
 var imgTag = require('../utils/helper').imgTag;
-var PictureStore = require('../stores/picture_store');
+var ClientActions = require('../actions/client_actions');
 
 var PictureIndexItem = React.createClass({
 
+  getInitialState: function() {
+    return {picture: null};
+  },
+
   componentDidMount: function() {
+    this.pictureListener = PictureStore.addListener(this.onChange);
+    ClientActions.fetchPictures();
+  },
+
+  componentWillUnmount: function() {
+    this.pictureListener.remove();
+  },
+
+  onChange: function() {
     this.makeMosaic();
+    this.setState({picture: PictureStore.getPictures()[0]});
   },
 
   makeMosaic: function() {
-
     var imageUrls = PictureStore.getPictures().map(function(imgDeets){
       return imgDeets.url;
     });
@@ -33,16 +47,24 @@ var PictureIndexItem = React.createClass({
 
 
   render: function() {
+    var iih, iif;
+    if(this.state.picture){
+      iih = <IndexItemHeader user={this.state.picture.owner} />;
+      iif = <IndexItemFooter picture={this.state.picture} />;
+    }else {
+      iih = "";
+      iif = "";
+    }
     return (
       <div className="item">
 
-        <IndexItemHeader user={this.props.picture.owner} />
+        {iih}
 
         <div className="pic-index-pic">
           <canvas id="canvas"></canvas>
         </div>
 
-        <IndexItemFooter picture={this.props.picture} />
+        {iif}
 
       </div>
     );

@@ -12,30 +12,31 @@ module.exports = React.createClass({
     return {pictures: [], fetchReceived: false};
   },
 
-  componentDidMount: function() {
-    this.pictureListener = PictureStore.addListener(this.onChange);
-    ClientActions.fetchPictures();
-  },
-
-  componentWillUnmount: function() {
-    this.pictureListener.remove();
-  },
-
-  onChange: function() {
-    this.setState({pictures: PictureStore.getPictures(), fetchReceived: true});
-  },
+  // componentDidMount: function() {
+  //   this.pictureListener = PictureStore.addListener(this.onChange);
+  //   ClientActions.fetchPictures();
+  // },
+  //
+  // componentWillUnmount: function() {
+  //   this.pictureListener.remove();
+  // },
+  //
+  // onChange: function() {
+  //   this.setState({pictures: PictureStore.getPictures(), fetchReceived: true});
+  // },
 
   render: function() {
-    var pictureIndexItems = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>;
-    if(this.state.fetchReceived){
-      pictureIndexItems = <div className="missing-content-message">{"You are not following anyone"}</div>;
-      if(this.state.pictures.length > 0){
-        pictureIndexItems = <PictureIndexItem picture={this.state.pictures[0]} />;
+    var pictureIndexItems = <PictureIndexItem picture={[]}/>;
+    // var pictureIndexItems = <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i>;
+    // if(this.state.fetchReceived){
+    //   pictureIndexItems = <div className="missing-content-message">{"You are not following anyone"}</div>;
+    //   if(this.state.pictures.length > 0){
+    //     pictureIndexItems = <PictureIndexItem pictures={this.state.pictures} />;
         // pictureIndexItems = this.state.pictures.map(function(pic){
         //   return <PictureIndexItem key={pic.id} picture={pic} />;
         // });
-      }
-    }
+      // }
+    // }
     return (
       <div>
         {pictureIndexItems}
