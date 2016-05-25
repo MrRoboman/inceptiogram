@@ -8,7 +8,7 @@ var ClientActions = require('../actions/client_actions');
 var PictureIndexItem = React.createClass({
 
   getInitialState: function() {
-    return {pictureId: null};
+    return {pictureId: null, loading: true};
   },
 
   componentDidMount: function() {
@@ -53,11 +53,14 @@ var PictureIndexItem = React.createClass({
   },
 
   changePicture: function(id) {
-    this.setState({pictureId: id});
+    this.setState({pictureId: id, loading: false});
+    this.mosaic.start();
   },
 
 
+
   render: function() {
+    var loading = this.state.loading ? <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i> : "";
     var picture = PictureStore.getPicture(this.state.pictureId);
     var iih, iif;
     if(picture){
@@ -73,6 +76,7 @@ var PictureIndexItem = React.createClass({
         {iih}
 
         <div className="pic-index-pic">
+          {loading}
           <canvas id="canvas"></canvas>
         </div>
 

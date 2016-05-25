@@ -11,6 +11,7 @@ var Mosaic = function(options) {
   this.selectedCell = {x: 0, y: 0};
   this.scale = 1;
   this.playing = false;
+  this.loadedImageCount = 0;
 
   this.initCanvas();
   this.initImages();
@@ -57,7 +58,11 @@ Mosaic.prototype = {
 
   onImageLoad: function(e) {
     e.currentTarget.loadAlpha = 1;
-    this.middleGrid.draw();
+    // this.middleGrid.draw();
+    this.loadedImageCount++;
+    if(this.loadedImageCount == this.images.length) {
+      this.callback(this.images[0].id);
+    }
   },
 
   onClickCanvas: function(e) {
@@ -105,6 +110,10 @@ Mosaic.prototype = {
       this.canvas.width = this.width;
       this.canvas.height = this.height;
     }
+  },
+
+  start: function() {
+    this.middleGrid.draw();
   },
 
   update: function() {
