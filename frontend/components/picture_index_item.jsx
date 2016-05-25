@@ -8,7 +8,7 @@ var ClientActions = require('../actions/client_actions');
 var PictureIndexItem = React.createClass({
 
   getInitialState: function() {
-    return {picture: null};
+    return {pictureId: null};
   },
 
   componentDidMount: function() {
@@ -23,7 +23,12 @@ var PictureIndexItem = React.createClass({
 
   onChange: function() {
     this.makeMosaic();
-    this.setState({picture: PictureStore.getPictures()[19]});
+    if(this.state.pictureId){
+      this.setState({pictureId: this.state.pictureId});
+    }else {
+      this.setState({pictureId: PictureStore.getPictures()[0].id});
+    }
+
   },
 
   makeMosaic: function() {
@@ -48,15 +53,16 @@ var PictureIndexItem = React.createClass({
   },
 
   changePicture: function(id) {
-    this.setState({picture: PictureStore.getPicture(id)});
+    this.setState({pictureId: id});
   },
 
 
   render: function() {
+    var picture = PictureStore.getPicture(this.state.pictureId);
     var iih, iif;
-    if(this.state.picture){
-      iih = <IndexItemHeader user={this.state.picture.owner} />;
-      iif = <IndexItemFooter picture={this.state.picture} />;
+    if(picture){
+      iih = <IndexItemHeader user={picture.owner} />;
+      iif = <IndexItemFooter picture={picture} />;
     }else {
       iih = "";
       iif = "";
