@@ -18,16 +18,17 @@ var PictureIndexItem = React.createClass({
 
   componentWillUnmount: function() {
     this.pictureListener.remove();
+    this.mosaic.dismount();
   },
 
   onChange: function() {
     this.makeMosaic();
-    this.setState({picture: PictureStore.getPictures()[0]});
+    this.setState({picture: PictureStore.getPictures()[19]});
   },
 
   makeMosaic: function() {
     var imageUrls = PictureStore.getPictures().map(function(imgDeets){
-      return imgDeets.url;
+      return {id: imgDeets.id, url: imgDeets.url};
     });
 
     if(this.mosaic) {
@@ -40,9 +41,14 @@ var PictureIndexItem = React.createClass({
                   height: 640,
                   rows: 20,
                   cols: 20,
-                  zoomMs: 2000
+                  zoomMs: 2000,
+                  callback: this.changePicture
                 });
     }
+  },
+
+  changePicture: function(id) {
+    this.setState({picture: PictureStore.getPicture(id)});
   },
 
 

@@ -6,6 +6,7 @@ var Mosaic = function(options) {
   this.height = options.height || 640;
   this.setRowsCols(options.rows, options.cols);
   this.zoomMs = options.zoomMs || 3000;
+  this.callback = options.callback;
   this.selectedIdx = null;
   this.selectedCell = {x: 0, y: 0};
   this.scale = 1;
@@ -44,11 +45,12 @@ Mosaic.prototype = {
 
   initImages: function() {
     this.images = [];
-    this.imageUrls.forEach(function(imgUrl){
+    this.imageUrls.forEach(function(imgDeets){
       var img = new Image();
       img.loadAlpha = 0;
       img.onload = this.onImageLoad.bind(this);
-      img.src = imgUrl;
+      img.id = imgDeets.id;
+      img.src = imgDeets.url;
       this.images.push(img);
     }.bind(this));
   },
@@ -114,6 +116,7 @@ Mosaic.prototype = {
       this.scale = (this.cols-1) * progress + 1;
       if(this.scale >= this.cols){
         this.middleGrid.swapImages(this.selectedCell);
+        this.callback(this.middleGrid.mainImage.id);
         this.scale = 1;
         this.stop();
       }
