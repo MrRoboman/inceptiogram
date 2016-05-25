@@ -17,7 +17,7 @@ var Mosaic = function(options) {
 
   // this.middleGrid = this.getRandomImages();
   // this.smallGrid = new SmallGrid(this, this.getRandomImages(), 0, .5);
-  this.middleGrid = new MiddleGrid(this, this.getRandomImages(), this.getRandomImages(), .33, 1);
+  this.middleGrid = new MiddleGrid(this, this.images[0], this.getRandomImages(), this.getRandomImages(), .33, 1);
 
   // this.play();
 };

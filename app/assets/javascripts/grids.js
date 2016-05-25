@@ -3,11 +3,11 @@
 * Middle Grid *
 **************/
 
-var MiddleGrid = function(mosaic, smallImages, images, startAlpha, endAlpha) {
+var MiddleGrid = function(mosaic, mainImage, smallImages, images, startAlpha, endAlpha) {
   this.mosaic = mosaic;
   this.smallImages = smallImages;
   this.images = images;
-  this.mainImage = images[0][0];
+  this.mainImage = mainImage;
   this.startAlpha = startAlpha;
   this.endAlpha = endAlpha;
 };
