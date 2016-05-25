@@ -596,6 +596,12 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 .pic-index-pic {
   width: 640px;
   height: 640px;
+  position: relative;
+  .fa {
+    position: absolute;
+    top: 320;
+    left: 320;
+  }
 }
 
 .missing-content-message {
