@@ -75,6 +75,7 @@ Mosaic.prototype = {
     this.selectedIdx = this.getIndex(cellX, cellY);
     this.selectedCell = {x: cellX, y: cellY};
     this.middleGrid.smallImages = this.getRandomImages();
+    debugger;
     this.play();
   },
 
