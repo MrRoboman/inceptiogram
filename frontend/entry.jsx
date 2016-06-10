@@ -21,27 +21,10 @@ var Modal = require("react-modal");
 
 var Auth = require('./components/auth');
 
-var currentUser = "";
 var App = React.createClass({
 
 	getInitialState: function() {
 		return {currentUser: ""};
-	},
-
-	componentDidMount: function() {
-		this.listener = SessionStore.addListener(this._onSessionStoreChange);
-		ClientActions.fetchCurrentUser();
-	},
-
-	componentWillUnmount: function() {
-		this.listener.remove();
-	},
-
-	_onSessionStoreChange: function() {
-		var username = "Current User: NOBODY!";
-		if(SessionStore.getCurrentUser()) username = SessionStore.getCurrentUser();
-		this.setState({currentUser: username});
-		currentUser = username;
 	},
 
 	logout: function(e) {

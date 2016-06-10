@@ -6,7 +6,7 @@ var CurrentUserMixin = {
 
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.onSessionChange);
-    this.redirect();
+    ClientActions.fetchCurrentUser();
   },
 
   componentWillUnmount: function() {
@@ -14,13 +14,10 @@ var CurrentUserMixin = {
   },
 
   onSessionChange: function() {
-    // this.forceUpdate();
     this.redirect();
   },
 
   redirect: function() {
-    if(!SessionStore.currentUserFetched()) return;
-
     var path = this.props.location.pathname;
     if(SessionStore.loggedIn() && path === '/auth') {
       HashHistory.push('/');
