@@ -24,7 +24,19 @@ var Auth = require('./components/auth');
 var App = React.createClass({
 
 	getInitialState: function() {
-		return {currentUser: ""};
+		return {loggedIn: false};
+	},
+
+	componentDidMount: function() {
+		this.listener = SessionStore.addListener(this.onSessionChange);
+	},
+
+	componentWillUnmount: function() {
+		this.listener.remove();
+	},
+
+	onSessionChange: function() {
+		this.setState({loggedIn: SessionStore.loggedIn()});
 	},
 
 	logout: function(e) {
@@ -59,9 +71,9 @@ var App = React.createClass({
 
 	render: function() {
 		var topleft = "Inceptiogram"; //Using this var to remember that I had {this.state.currentUser}
-		var logoutButton = "";
-		if(this.state.currentUser !== "Current User: NOBODY!"){
-			logoutButton = (
+		var icons = "";
+		if(this.state.loggedIn) {
+			icons = (
 				<div className="nav-buttons">
 					<div className="icon">
 						<i onClick={this.gotoProfiles} className="fa fa-users fa-2x"></i>
@@ -80,7 +92,7 @@ var App = React.createClass({
 				<div className="appnav">
 					<div className="appnav-inner-container">
 						<h1 onClick={this.gotoPictures}>{topleft}</h1>
-						{logoutButton}
+						{icons}
 					</div>
 				</div>
 				{this.props.children}
