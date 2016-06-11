@@ -18,11 +18,11 @@ var CurrentUserMixin = {
   },
 
   redirect: function() {
-    var path = this.props.location.pathname;
-    if(SessionStore.loggedIn() && path === '/auth') {
+    var onAuth = window.location.hash.indexOf('auth') > -1;
+    if(SessionStore.loggedIn() && onAuth) {
       HashHistory.push('/');
     }
-    else if(!SessionStore.loggedIn() && path !== '/auth') {
+    else if(!SessionStore.loggedIn() && !onAuth) {
       HashHistory.push('/auth');
     }
   }
