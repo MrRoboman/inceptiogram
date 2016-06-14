@@ -65,7 +65,7 @@ Like.create!([
   {user_id: 1, picture_id: 20}
 ])
 Picture.create!([
-  {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575646/w1jfe6brbq7oouphglmi.png", user_id: 1, public_id: "w1jfe6brbq7oouphglmi"},
+  {url: "http://imgur.com/sOa69ST", user_id: 1, public_id: "w1jfe6brbq7oouphglmi"},
   {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575644/yunr8lowhkybkspwce9b.png", user_id: 1, public_id: "yunr8lowhkybkspwce9b"},
   {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575645/ht8zfuhxcfge1oyobcuw.png", user_id: 1, public_id: "ht8zfuhxcfge1oyobcuw"},
   {url: "http://res.cloudinary.com/dxhizunmp/image/upload/v1462575644/c079q0cngoee12u0vqlf.png", user_id: 1, public_id: "c079q0cngoee12u0vqlf"},

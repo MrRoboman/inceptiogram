@@ -37,16 +37,18 @@ MiddleGrid.prototype = {
         this.mosaic.draw(img, x, y, w, h, a);
 
         //Small
-        var smBounds = this.getSmallDrawBounds(c, r);
-        for(var smC = smBounds.left; smC < smBounds.right; smC++){
-          for(var smR = smBounds.top; smR < smBounds.bottom; smR++){
-            img = this.smallImages[smC][smR];
-            x = this.getSmallX(c, smC);
-            y = this.getSmallY(r, smR);
-            w = this.getSmallW();
-            h = this.getSmallH();
-            a = this.getAlpha(0, this.startAlpha) * img.loadAlpha;
-            this.mosaic.draw(img, x, y, w, h, a);
+        if(c === this.mosaic.selectedCell.x && r === this.mosaic.selectedCell.y){
+          var smBounds = this.getSmallDrawBounds(c, r);
+          for(var smC = smBounds.left; smC < smBounds.right; smC++){
+            for(var smR = smBounds.top; smR < smBounds.bottom; smR++){
+              img = this.smallImages[smC][smR];
+              x = this.getSmallX(c, smC);
+              y = this.getSmallY(r, smR);
+              w = this.getSmallW();
+              h = this.getSmallH();
+              a = this.getAlpha(0, this.startAlpha) * img.loadAlpha;
+              this.mosaic.draw(img, x, y, w, h, a);
+            }
           }
         }
       }
@@ -94,14 +96,6 @@ MiddleGrid.prototype = {
 
     return bounds;
   },
-
-  // offsetX: function(cellX) {
-  //   return -this.mosaic.width * cellX * this.mosaic.getScaleProgress();
-  // },
-  //
-  // offsetY: function(cellY) {
-  //   return -this.mosaic.height * cellY * this.mosaic.getScaleProgress();
-  // },
 
   getSmallX: function(cellX, smallCellX) {
     var middleCellX = this.mosaic.width / this.mosaic.cols * cellX * this.mosaic.scale + this.offsetX(this.mosaic.selectedCell.x);
