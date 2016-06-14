@@ -10,19 +10,22 @@ var MiddleGrid = function(mosaic, mainImage, smallImages, images, startAlpha, en
   this.mainImage = mainImage;
   this.startAlpha = startAlpha;
   this.endAlpha = endAlpha;
+  this.loading = true;
 };
 
 MiddleGrid.prototype = {
   draw: function() {
 
     //Big
-    var img = this.mainImage;
-    var x = this.getX(0);
-    var y = this.getY(0);
-    var w = this.mosaic.width * this.mosaic.scale;
-    var h = this.mosaic.height * this.mosaic.scale;
-    var a = this.getAlpha(1,0) * img.loadAlpha;
-    this.mosaic.draw(img, x, y, w, h, a);
+    if(!this.loading){
+      var img = this.mainImage;
+      var x = this.getX(0);
+      var y = this.getY(0);
+      var w = this.mosaic.width * this.mosaic.scale;
+      var h = this.mosaic.height * this.mosaic.scale;
+      var a = this.getAlpha(1,0) * img.loadAlpha;
+      this.mosaic.draw(img, x, y, w, h, a);
+    }
 
     // Middle
     var bounds = this.getDrawBounds();
@@ -34,6 +37,9 @@ MiddleGrid.prototype = {
         w = this.getW(img);
         h = this.getH(img);
         a = this.getAlpha(this.startAlpha, this.endAlpha) * img.loadAlpha;
+        if(this.loading && img.loaded){
+          this.mosaic.drawChunk(this.mainImage, this.getX(c), this.getY(r), this.getW(), this.getH(), x, y, w, h, 1);
+        }
         this.mosaic.draw(img, x, y, w, h, a);
 
         //Small

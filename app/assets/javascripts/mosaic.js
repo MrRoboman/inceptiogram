@@ -46,6 +46,7 @@ Mosaic.prototype = {
     this.images = [];
     this.imageUrls.forEach(function(imgDeets){
       var img = new Image();
+      img.loaded = false;
       img.loadAlpha = 0;
       img.loadScale = 1;
       img.loadX = 1;
@@ -58,12 +59,17 @@ Mosaic.prototype = {
   },
 
   onImageLoad: function(e) {
+    // if(this.loadedImageCount > 1) return;
+    e.currentTarget.loaded = true;
     e.currentTarget.loadAlpha = 1;
     this.loadedImageCount++;
+    if(this.loadedImageCount === 1){
+      this.middleGrid.mainImage = e.currentTarget;
+    }
     // TODO: loadX and loadY are hard coded
-    TweenLite.from(e.currentTarget, 1, {loadScale: 0, loadX: 0, loadY: 0});
+    TweenLite.from(e.currentTarget, 1, {loadScale: 0, loadX: 0, loadY: 0, delay: this.loadedImageCount * .05, ease: Back.easeOut.config(1)});
     if(this.loadedImageCount == this.images.length) {
-      this.callback(this.images[0].id);
+      this.callback(this.middleGrid.mainImage.id);
     }
   },
 
@@ -149,6 +155,14 @@ Mosaic.prototype = {
     }
   },
 
+  drawChunk: function(img, srcX, srcY, srcW, srcH, destX, destY, destW, destH, alpha){
+    if(this.isInCanvasBounds(destX, destY, destW, destH)) {
+      this.ctx.globalAlpha = alpha;
+      this.ctx.drawImage(img, srcX, srcY, srcW, srcH, destX, destY, destW, destH);
+      this.ctx.globalAlpha = 1;
+    }
+  },
+
   isInCanvasBounds: function(x, y, w, h) {
     return x < this.width && x + w > 0 && y < this.width && y + h > 0;
   },
@@ -176,7 +190,7 @@ Mosaic.prototype = {
 
   update: function() {
     if(this.playing) {
-
+      this.clear();
       this.middleGrid.draw();
 
       window.requestAnimationFrame(this.update.bind(this));
