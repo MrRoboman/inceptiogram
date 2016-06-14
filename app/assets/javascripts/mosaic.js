@@ -81,7 +81,6 @@ Mosaic.prototype = {
                     loadScale: 0,
                     loadX: 0,
                     loadY: 0,
-                    delay: this.loadedImageCount * .05,
                     ease: Back.easeOut.config(1),
                     onComplete: loadComplete});
   },
