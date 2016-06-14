@@ -8,7 +8,7 @@ var ClientActions = require('../actions/client_actions');
 var PictureIndexItem = React.createClass({
 
   getInitialState: function() {
-    return {pictureId: null, loading: true};
+    return {pictureId: null, loading: false};
   },
 
   componentDidMount: function() {

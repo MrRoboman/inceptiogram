@@ -63,14 +63,27 @@ Mosaic.prototype = {
     e.currentTarget.loaded = true;
     e.currentTarget.loadAlpha = 1;
     this.loadedImageCount++;
+    var loadComplete = null;
+
     if(this.loadedImageCount === 1){
       this.middleGrid.mainImage = e.currentTarget;
     }
-    // TODO: loadX and loadY are hard coded
-    TweenLite.from(e.currentTarget, 1, {loadScale: 0, loadX: 0, loadY: 0, delay: this.loadedImageCount * .05, ease: Back.easeOut.config(1)});
-    if(this.loadedImageCount == this.images.length) {
+    else if(this.loadedImageCount === this.images.length) {
+      loadComplete = function() {
+        this.middleGrid.loading = false;
+        this.stop();
+      }.bind(this);
       this.callback(this.middleGrid.mainImage.id);
     }
+
+    // TODO: loadX and loadY are hard coded
+    TweenLite.from(e.currentTarget, 1, {
+                    loadScale: 0,
+                    loadX: 0,
+                    loadY: 0,
+                    delay: this.loadedImageCount * .05,
+                    ease: Back.easeOut.config(1),
+                    onComplete: loadComplete});
   },
 
 
@@ -95,7 +108,10 @@ Mosaic.prototype = {
 
   play: function() {
     this.playing = true;
-    TweenLite.to(this, 2, {scale: this.cols, ease: Back.easeOut.config(2), onComplete: this.onTweenComplete.bind(this)});
+    TweenLite.to(this, 2, {
+                  scale: this.cols,
+                  ease: Back.easeOut,
+                  onComplete: this.onTweenComplete.bind(this)});
     window.requestAnimationFrame(this.update.bind(this));
   },
 
@@ -115,6 +131,7 @@ Mosaic.prototype = {
     this.scale = 1;
     this.middleGrid.draw();
     this.stop();
+    this.callback(this.middleGrid.mainImage.id);
   },
 
 
