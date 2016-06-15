@@ -290,6 +290,7 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
     border-top: 0;
     padding: 20px;
     border-radius: 2px;
+    height: 100%;
     .comments {
       padding-top: 16px;
     }
@@ -312,14 +313,18 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 }
 
 .modal-deets {
+  // border: 2px gray solid;
+  // border-left: 0;
   .footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 520px;
+    // height: 520px;
+    height: 100%;
 
     .likes-comments {
       padding-left: 20px;
+      padding-right: 20px;
     }
     .comments {
       padding-top: 16px;
@@ -368,7 +373,8 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 .index-item-header {
   display: flex;
   justify-content: space-between;
-  padding: 20px 20px 20px 35px;
+  padding: 20px 20px 10px 35px;
+  height: 80px;
   // background-color: orange;
   .pic-and-name {
     display: flex;
@@ -530,18 +536,45 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 // }
 
 .picture-index {
-  // text-align: center;
+  // position: relative;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
+  // height: calc(100% - 80px);
+  overflow: visible;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
 }
 
 .modal-components{
+  // position: absolute;
+  // left: 50%;
+  // top: 50%;
+  // transform: translate(-50%, -55%);
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
+  -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
+  -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
+  box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
+
   // width: 1040px;
-  margin: 0 auto;
-  float: left;
+  // margin: 0 auto;
+  // float: left;
   // img{
   //   width: 640px;
   //   height: 640px;
@@ -551,8 +584,8 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 .modal-deets {
   display: flex;
   flex-direction: column;
-  // max-width: 640px;
-  width: 640px;
+  width: 400px;
+  // width: 640px;
   // flex-wrap: wrap;
   // justify-content: center;
   // width: 340px;
@@ -595,7 +628,7 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 
 .modal-comments {
   width: auto;
-  height: 470px;
+  // height: 470px;
   // border-top: 1px solid $border-color;
   // border-bottom: 1px solid $border-color;
   padding: 20px;
@@ -606,8 +639,10 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 }
 
 .pic-index-pic {
-  width: 640px;
-  height: 640px;
+  height: 100%;
+
+  max-width: 640px;
+  max-height: 640px;
   position: relative;
   .fa {
     position: absolute;

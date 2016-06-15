@@ -42,11 +42,15 @@ var PictureIndexItem = React.createClass({
     else {
       var width;
       var height;
-      if(window.innerHeight < window.innerWidth){
-        width = height = window.innerHeight < 640 ? window.innerHeight : 640;
+      var appNavHeight = 86;
+      var windowHeight = window.innerHeight - appNavHeight;
+      var windowWidth = window.innerWidth;
+
+      if(windowHeight < window.innerWidth){
+        width = height = windowHeight < 640 ? windowHeight : 640;
       }
       else {
-        width = height = window.innerWidth < 640 ? window.innerWidth : 640;
+        width = height = windowWidth < 640 ? windowWidth : 640;
       }
     this.mosaic = new Mosaic({canvasId: "canvas",
                   imageUrls: imageUrls,
