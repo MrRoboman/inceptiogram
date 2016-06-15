@@ -62,25 +62,32 @@ var PictureIndexItem = React.createClass({
   render: function() {
     var loading = this.state.loading ? <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i> : "";
     var picture = PictureStore.getPicture(this.state.pictureId);
-    var iih, iif;
-    if(picture){
-      iih = <IndexItemHeader user={picture.owner} />;
-      iif = <IndexItemFooter picture={picture} />;
-    }else {
-      iih = "";
-      iif = "";
+    var deets = null;
+    if(picture) {
+      deets = (
+        <div className="modal-deets">
+          <IndexItemHeader user={picture.owner} />
+          <IndexItemFooter picture={picture} />
+        </div>
+      );
     }
+    // var iih, iif;
+    // if(picture){
+    //   iih = <IndexItemHeader user={picture.owner} />;
+    //   iif = <IndexItemFooter picture={picture} />;
+    // }else {
+    //   iih = "";
+    //   iif = "";
+    // }
     return (
       <div className="item">
-
-        {iih}
 
         <div className="pic-index-pic">
           {loading}
           <canvas id="canvas"></canvas>
         </div>
 
-        {iif}
+        {deets}
 
       </div>
     );
