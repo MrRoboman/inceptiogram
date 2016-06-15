@@ -544,6 +544,17 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   overflow: visible;
 }
 
+@media only screen and (max-width: 1040px) {
+    .picture-index {
+      width: 100%;
+      max-width: 640px;
+      margin: 20px auto;
+    }
+    .index-item-header {
+      height: 100px;
+    }
+}
+
 html {
   height: 100%;
 }
