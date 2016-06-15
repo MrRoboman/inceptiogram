@@ -40,10 +40,18 @@ var PictureIndexItem = React.createClass({
       this.mosaic.imageUrls = imageUrls;
     }
     else {
+      var width;
+      var height;
+      if(window.innerHeight < window.innerWidth){
+        width = height = window.innerHeight < 640 ? window.innerHeight : 640;
+      }
+      else {
+        width = height = window.innerWidth < 640 ? window.innerWidth : 640;
+      }
     this.mosaic = new Mosaic({canvasId: "canvas",
                   imageUrls: imageUrls,
-                  width: 640,
-                  height: 640,
+                  width: width,
+                  height: height,
                   rows: 20,
                   cols: 20,
                   zoomMs: 2000,
@@ -69,7 +77,7 @@ var PictureIndexItem = React.createClass({
           <IndexItemHeader user={picture.owner} />
           <IndexItemFooter picture={picture} />
         </div>
-      );
+      ); //deets = null;
     }
     // var iih, iif;
     // if(picture){
@@ -80,13 +88,12 @@ var PictureIndexItem = React.createClass({
     //   iif = "";
     // }
     return (
-      <div className="item">
+      <div className="modal-components">
 
         <div className="pic-index-pic">
           {loading}
           <canvas id="canvas"></canvas>
         </div>
-
         {deets}
 
       </div>

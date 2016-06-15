@@ -532,18 +532,22 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 .modal-components{
   display: flex;
   flex-wrap: wrap;
-  img{
-    width: 640px;
-    height: 640px;
-  }
+  overflow: hidden;
+  width: 1040px;
+  margin: 0 auto;
+  // img{
+  //   width: 640px;
+  //   height: 640px;
+  // }
 }
 
 .modal-deets {
   display: flex;
   flex-direction: column;
+  width: 400px;
   // flex-wrap: wrap;
   // justify-content: center;
-  width: 340px;
+  // width: 340px;
 }
 
 .modal-form {
