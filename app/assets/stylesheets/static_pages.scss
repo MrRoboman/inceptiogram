@@ -164,11 +164,11 @@ body {
   justify-content: center;
   box-sizing: border-box;
   height: 80px;
-  border-bottom: 1px solid $border-color;
+  // border-bottom: 1px solid $border-color;
   padding-top: 20px;
-  -webkit-box-shadow: 0px -1px 27px 1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px -1px 27px 1px rgba(0,0,0,0.75);
-  box-shadow: 0px -1px 27px 1px rgba(0,0,0,0.75);
+  // -webkit-box-shadow: 0px -1px 27px 1px rgba(0,0,0,0.75);
+  // -moz-box-shadow: 0px -1px 27px 1px rgba(0,0,0,0.75);
+  // box-shadow: 0px -1px 27px 1px rgba(0,0,0,0.75);
 }
 
 .appnav-inner-container {
@@ -529,12 +529,19 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 //   overflow: hidden;
 // }
 
+.picture-index {
+  // text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
 .modal-components{
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  width: 1040px;
+  // width: 1040px;
   margin: 0 auto;
+  float: left;
   // img{
   //   width: 640px;
   //   height: 640px;
@@ -544,7 +551,8 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
 .modal-deets {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  // max-width: 640px;
+  width: 640px;
   // flex-wrap: wrap;
   // justify-content: center;
   // width: 340px;

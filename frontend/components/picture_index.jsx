@@ -15,7 +15,7 @@ module.exports = React.createClass({
   render: function() {
     var pictureIndexItems = <PictureIndexItem picture={[]}/>;
     return (
-      <div>
+      <div className="picture-index">
         {pictureIndexItems}
       </div>
     );
