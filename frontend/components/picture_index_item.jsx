@@ -21,7 +21,7 @@ var PictureIndexItem = React.createClass({
   componentWillUnmount: function() {
     this.sessionListener.remove();
     this.pictureListener.remove();
-    this.mosaic.dismount();
+    if(this.mosaic) this.mosaic.dismount();
   },
 
   onChange: function() {

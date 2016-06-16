@@ -70,7 +70,7 @@ var App = React.createClass({
 	},
 
 	gotoCurrentUserProfile: function() {
-
+		HashHistory.push('profile/' + SessionStore.getCurrentUserId());
 	},
 
 	// <div className="icon">
