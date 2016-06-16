@@ -18,13 +18,13 @@ var CurrentUserMixin = {
   },
 
   redirect: function() {
-    var onAuth = window.location.hash.indexOf('auth') > -1;
-    if(SessionStore.loggedIn() && onAuth) {
-      HashHistory.push('/');
-    }
-    else if(!SessionStore.loggedIn() && !onAuth) {
-      HashHistory.push('/auth');
-    }
+    // var onAuth = window.location.hash.indexOf('auth') > -1;
+    // if(SessionStore.loggedIn() && onAuth) {
+    //   HashHistory.push('/');
+    // }
+    // else if(!SessionStore.loggedIn() && !onAuth) {
+    //   HashHistory.push('/auth');
+    // }
   }
 };
 

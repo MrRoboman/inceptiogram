@@ -1,4 +1,5 @@
 var React = require('react');
+var SessionStore = require('../stores/session_store');
 var PictureStore = require('../stores/picture_store');
 var IndexItemHeader = require('./index_item_header');
 var IndexItemFooter = require('./index_item_footer');
@@ -12,27 +13,28 @@ var PictureIndexItem = React.createClass({
   },
 
   componentDidMount: function() {
+    this.sessionListener = SessionStore.addListener(this.onChange);
     this.pictureListener = PictureStore.addListener(this.onChange);
     ClientActions.fetchPictures();
   },
 
   componentWillUnmount: function() {
+    this.sessionListener.remove();
     this.pictureListener.remove();
     this.mosaic.dismount();
   },
 
   onChange: function() {
-    this.makeMosaic();
-    if(this.state.pictureId){
-      this.setState({pictureId: this.state.pictureId});
-    }else {
-      if(PictureStore.getPictures()[0]){
-        this.setState({pictureId: PictureStore.getPictures()[0].id});
-      } else {
-        
+    if(SessionStore.loggedIn() && PictureStore.getPictures().length > 0){
+      this.makeMosaic();
+      if(this.state.pictureId){
+        // this.setState({pictureId: this.state.pictureId});
+      }else {
+        if(PictureStore.getPictures()[0]){
+          // this.setState({pictureId: PictureStore.getPictures()[0].id});
+        }
       }
     }
-
   },
 
   makeMosaic: function() {

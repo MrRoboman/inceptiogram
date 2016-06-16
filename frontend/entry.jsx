@@ -29,6 +29,7 @@ var App = React.createClass({
 
 	componentDidMount: function() {
 		this.listener = SessionStore.addListener(this.onSessionChange);
+		ClientActions.login({username: "Rob Kayson", password: "asdfasdf"});
 	},
 
 	componentWillUnmount: function() {
@@ -36,6 +37,9 @@ var App = React.createClass({
 	},
 
 	onSessionChange: function() {
+		if(SessionStore.loggedIn()){
+			ClientActions.fetchPictures();
+		}
 		this.setState({loggedIn: SessionStore.loggedIn()});
 	},
 
@@ -54,10 +58,6 @@ var App = React.createClass({
 		HashHistory.push('profileindex');
 	},
 
-	gotoCurrentUserProfile: function() {
-		HashHistory.push('profile/' + SessionStore.getCurrentUserId());
-	},
-
 	upload: function(e) {
 		e.preventDefault();
 		cloudinary.openUploadWidget(
@@ -68,6 +68,14 @@ var App = React.createClass({
 				}
 		});
 	},
+
+	gotoCurrentUserProfile: function() {
+
+	},
+
+	// <div className="icon">
+	// 	<i onClick={this.logout} className="fa fa-sign-out fa-2x"></i>
+	// </div>
 
 	render: function() {
 		var topleft = "Inceptiogram"; //Using this var to remember that I had {this.state.currentUser}
@@ -80,9 +88,6 @@ var App = React.createClass({
 					</div>
 					<div className="icon">
 						<i onClick={this.gotoCurrentUserProfile} className="fa fa-user fa-2x"></i>
-					</div>
-					<div className="icon">
-						<i onClick={this.logout} className="fa fa-sign-out fa-2x"></i>
 					</div>
 				</div>
 			);

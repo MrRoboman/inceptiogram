@@ -73,6 +73,7 @@ Mosaic.prototype = {
 
     if(this.loadedImageCount === 1){
       this.middleGrid.mainImage = e.currentTarget;
+      this.callback(this.middleGrid.mainImage.id);
     }
     else if(this.loadedImageCount === this.images.length) {
       loadComplete = function() {
