@@ -35,13 +35,15 @@ var ProfileHeader = React.createClass({
       profilePic = imgTag(profilePicId, {circle: {width: 180, height: 180}});
     }
 
-    var button = <FollowButton display={this.props.showFlwBtn}
-      profile={this.props.profile}/>;
-
-    if(this.props.isCurrentUser) {
-      button = <i className="fa fa-camera-retro fa-5x" onClick={this.openUploadWidget}></i>;
-      profileUploadButton = <i className="fa fa-camera-retro fa-5x profile-upload-button" onClick={this.openProfileImageUpload}></i>;
+    if(!this.props.isCurrentUser) {
+        var button = <FollowButton display={this.props.showFlwBtn}
+                                   profile={this.props.profile}/>;
     }
+
+    // if(this.props.isCurrentUser) {
+    //   button = <i className="fa fa-camera-retro fa-5x" onClick={this.openUploadWidget}></i>;
+    //   profileUploadButton = <i className="fa fa-camera-retro fa-5x profile-upload-button" onClick={this.openProfileImageUpload}></i>;
+    // }
 
     return (
       <div className="profile-header">

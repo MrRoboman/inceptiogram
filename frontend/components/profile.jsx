@@ -23,7 +23,11 @@ var Profile = React.createClass({
     this.profileListener.remove();
   },
 
-  onChange: function() { 
+  componentWillReceiveProps: function(newProps) {
+    ClientActions.fetchSingleProfile(newProps.params.id);
+  },
+
+  onChange: function() {
     this.setState({profile: ProfileStore.getSingleProfile()});
   },
 
@@ -39,6 +43,10 @@ var Profile = React.createClass({
     return SessionStore.isCurrentUser(this.props.params.id);
   },
 
+  gotoInception: function(e) {
+    console.log(e.currentTarget.id);
+  },
+
   render: function() {
     // debugger;
 
@@ -49,7 +57,7 @@ var Profile = React.createClass({
     if(this.state.profile.pictures && this.state.profile.pictures.length > 0){
       pics = this.state.profile.pictures.map(function(pic){
         return (
-          <div key={pic.id} id={pic.id} className="overlay profile-pics" onClick={this.openModal}>
+          <div key={pic.id} id={pic.id} className="overlay profile-pics" onClick={this.gotoInception}>
             {imgTag(pic.public_id, {scale: {width: 300, height: 300}})}
           </div>
         );

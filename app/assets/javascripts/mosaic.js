@@ -12,13 +12,19 @@ var Mosaic = function(options) {
   this.scale = 1;
   this.playing = false;
   this.loadedImageCount = 0;
+  this.lastLoadTime = null;
 
   this.initCanvas();
   this.initImages();
 
   this.middleGrid = new MiddleGrid(this, this.images[0], this.getRandomImages(), this.getRandomImages(), .33, 1);
 
-  this.playLoading();
+  if(this.imageUrls.length > 0){
+    this.playLoading();
+  } else {
+    this.ctx.font = "30px Arial";
+    this.ctx.fillText("Click the people icon, find people to follow",45,200);
+  }
 };
 
 Mosaic.prototype = {
@@ -76,12 +82,21 @@ Mosaic.prototype = {
       this.callback(this.middleGrid.mainImage.id);
     }
 
+    var delay = 0;
+    if(!this.lastLoadTime){
+      this.lastLoadTime = Date.now();
+    } else if(Date.now() - this.lastLoadTime < .1){
+      delay = .1;
+    }
+
     // TODO: loadX and loadY are hard coded
+
     TweenLite.from(e.currentTarget, 1, {
                     loadScale: 0,
                     loadX: 0,
                     loadY: 0,
                     ease: Back.easeOut.config(1),
+                    delay: delay,
                     onComplete: loadComplete});
   },
 

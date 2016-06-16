@@ -26,7 +26,11 @@ var PictureIndexItem = React.createClass({
     if(this.state.pictureId){
       this.setState({pictureId: this.state.pictureId});
     }else {
-      this.setState({pictureId: PictureStore.getPictures()[0].id});
+      if(PictureStore.getPictures()[0]){
+        this.setState({pictureId: PictureStore.getPictures()[0].id});
+      } else {
+        
+      }
     }
 
   },

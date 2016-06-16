@@ -89,7 +89,6 @@ var App = React.createClass({
 		}
 		return (
 			<div className="app">
-
 				<div className="appnav">
 					<div className="appnav-inner-container">
 						<h1 onClick={this.gotoPictures}>{topleft}</h1>
@@ -101,7 +100,6 @@ var App = React.createClass({
 		);
 	}
 });
-// Removed from return statement
 var router = (
 	<Router history={HashHistory}>
 		<Route path='/' component={App}>

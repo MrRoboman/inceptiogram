@@ -87,9 +87,6 @@ var Login = React.createClass({
 
         <button className="bottom-margin" onClick={this.clickGuest}>Guest</button>
 
-        <div className="auth-flip">
-          <span>Need an account? <a onClick={this.props.toggleForm}>Sign Up</a></span>
-        </div>
 
         <ul className="red">
           {errors}
@@ -99,5 +96,9 @@ var Login = React.createClass({
     );
   }
 });
+
+// <div className="auth-flip">
+//   <span>Need an account? <a onClick={this.props.toggleForm}>Sign Up</a></span>
+// </div>
 
 module.exports = Login;
