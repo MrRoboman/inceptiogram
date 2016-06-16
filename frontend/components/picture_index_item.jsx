@@ -80,6 +80,10 @@ var PictureIndexItem = React.createClass({
   render: function() {
     var loading = this.state.loading ? <i className="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom center"></i> : "";
     var picture = PictureStore.getPicture(this.state.pictureId);
+    var prompt = "";
+    if(this.mosaic && !this.mosaic.clicked){
+      prompt = <div><div className="click-canvas-prompt">Click the Pic!</div><div className="arrow-down"></div></div>
+    }
     var deets = null;
     if(picture) {
       deets = (
@@ -103,6 +107,7 @@ var PictureIndexItem = React.createClass({
         <div className="pic-index-pic">
           {loading}
           <canvas id="canvas"></canvas>
+          {prompt}
         </div>
         {deets}
 

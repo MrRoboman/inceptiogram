@@ -13,6 +13,7 @@ var Mosaic = function(options) {
   this.playing = false;
   this.loadedImageCount = 0;
   this.lastLoadTime = null;
+  this.clicked = false;
 
   this.initCanvas();
   this.initImages();
@@ -104,6 +105,7 @@ Mosaic.prototype = {
 
   onClickCanvas: function(e) {
     if(this.playing) return;
+    this.clicked = true;
 
     var x = e.clientX + document.body.scrollLeft + this.canvas.scrollLeft - this.canvas.parentNode.offsetLeft;
     var y = e.clientY + document.body.scrollTop + this.canvas.scrollTop - this.canvas.parentNode.offsetTop;
@@ -225,7 +227,7 @@ Mosaic.prototype = {
       this.clear();
       this.middleGrid.draw();
 
-      window.requestAnimationFrame(this.update.bind(this));
     }
+    window.requestAnimationFrame(this.update.bind(this));
   }
 };
