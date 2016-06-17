@@ -677,7 +677,7 @@ canvas {
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  background: gray;
+  background: orange;
   padding: 10px;
   border-radius: 3px;
   z-index: 3;
@@ -694,5 +694,5 @@ canvas {
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
 
-  border-top: 20px solid gray;
+  border-top: 20px solid orange;
 }
