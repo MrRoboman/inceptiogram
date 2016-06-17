@@ -222,11 +222,11 @@ Mosaic.prototype = {
     return cellY * this.cols + cellX;
   },
 
-  update: function() {
+  update: function() { 
     if(this.playing) {
       this.clear();
       this.middleGrid.draw();
-
+      console.log(this.middleGrid.mainImage.width, this.middleGrid.mainImage.height);
     }
     window.requestAnimationFrame(this.update.bind(this));
   }
