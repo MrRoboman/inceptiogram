@@ -7,6 +7,11 @@ class Api::PicturesController < ApplicationController
     end
   end
 
+  def allpictures
+    @pictures = Picture.all
+    render :index
+  end
+
   def create
     @success = true
     p_ids = []

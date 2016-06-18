@@ -14,6 +14,7 @@ class Picture < ActiveRecord::Base
   end
 
   def liked_by?(user)
+    return false if user.nil?
     likes.find_by_user_id(user.id) ? true : false
   end
 end

@@ -39,10 +39,16 @@ module.exports = {
   },
 
 
+  fetchAllPictures: function() {
+    $.ajax({
+      type: 'GET'
+    });
+  },
+
   fetchPictures: function() {
     $.ajax({
       type: 'GET',
-      url: 'api/pictures',
+      url: 'api/allpictures',
       dataType: 'json',
       success: ServerActions.receivePictures
     });

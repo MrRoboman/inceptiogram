@@ -10,6 +10,7 @@ var ClientActions = {
   logout: ApiUtil.logout,
   createUser: ApiUtil.createUser,
 
+  fetchAllPictures: ApiUtil.fetchAllPictures,
   fetchPictures: ApiUtil.fetchPictures,
   fetchSinglePicture: function(id) {
     ApiUtil.fetchSinglePicture(id);
