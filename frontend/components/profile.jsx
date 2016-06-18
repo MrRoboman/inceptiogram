@@ -23,7 +23,11 @@ var Profile = React.createClass({
     this.profileListener.remove();
   },
 
-  onChange: function() { 
+  componentWillReceiveProps: function(newProps) {
+    ClientActions.fetchSingleProfile(newProps.params.id);
+  },
+
+  onChange: function() {
     this.setState({profile: ProfileStore.getSingleProfile()});
   },
 

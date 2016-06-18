@@ -39,8 +39,9 @@ var ProfileHeader = React.createClass({
       profile={this.props.profile}/>;
 
     if(this.props.isCurrentUser) {
-      button = <i className="fa fa-camera-retro fa-5x" onClick={this.openUploadWidget}></i>;
-      profileUploadButton = <i className="fa fa-camera-retro fa-5x profile-upload-button" onClick={this.openProfileImageUpload}></i>;
+      button = "";
+    //   button = <i className="fa fa-camera-retro fa-5x" onClick={this.openUploadWidget}></i>;
+    //   profileUploadButton = <i className="fa fa-camera-retro fa-5x profile-upload-button" onClick={this.openProfileImageUpload}></i>;
     }
 
     return (

@@ -23,8 +23,8 @@ var Helper = {
             + "/image/upload/"
             + optionString
             + publicId;
-    // return <img key={key} className={className} src={url}/>;
-    return <img key={key} className={className} src="/assets/falcon.jpg"/>;
+    return <img key={key} className={className} src={url}/>;
+    // return <img key={key} className={className} src="/assets/falcon.jpg"/>;
   }
 };
 
