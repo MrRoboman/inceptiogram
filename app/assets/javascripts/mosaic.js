@@ -61,12 +61,29 @@ Mosaic.prototype = {
       var img = new Image();
       img.loaded = false;
       img.loadAlpha = 0;
-      img.loadScale = 0;
+      img.loadScale = 1;
+      img.loadX = 1;
+      img.loadY = 1;
       img.onload = this.onImageLoad.bind(this);
       img.src = imgUrl;
       this.images.push(img);
     }.bind(this));
   },
+
+//old
+  // initImages: function() {
+  //   this.images = [];
+  //   this.imageUrls.forEach(function(imgDeets){
+  //     var img = new Image();
+  //     img.loaded = false;
+  //     img.loadAlpha = 0;
+  //     img.loadScale = 1;
+  //     img.onload = this.onImageLoad.bind(this);
+  //     img.id = imgDeets.id;
+  //     img.src = imgDeets.url;
+  //     this.images.push(img);
+  //   }.bind(this));
+  // },
 
   // onImageLoad: function(e) {
   //   e.currentTarget.loadAlpha = 1;
