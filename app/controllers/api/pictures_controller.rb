@@ -8,7 +8,7 @@ class Api::PicturesController < ApplicationController
   end
 
   def allpictures
-    @pictures = Picture.all
+    @pictures = Picture.all_with_deets(User.find(1))
     render :index
   end
 
