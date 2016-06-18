@@ -603,3 +603,13 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   text-align: center;
   font-size: 48px;
 }
+
+#auth-canvas {
+  background: orange;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+}

@@ -20,6 +20,10 @@ var Auth = React.createClass({
 
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.onChange);
+    console.log(new Mosaic({
+                            canvasId: 'auth-canvas',
+                            fullscreen: true
+                          }));
   },
 
   componentWillUnmount: function() {
@@ -107,6 +111,7 @@ var Auth = React.createClass({
 
     return (
       <div>
+        <canvas id="auth-canvas"></canvas>
         {this.form()}
       </div>
     );
