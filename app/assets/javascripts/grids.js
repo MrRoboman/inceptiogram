@@ -179,20 +179,36 @@ MiddleGrid.prototype = {
     return -this.mosaic.height * cellY * this.mosaic.getScaleProgress();
   },
 
-  getX: function(cellX) {
-    return this.mosaic.width / this.mosaic.cols * cellX * this.mosaic.scale + this.offsetX(this.mosaic.selectedCell.x);
+  getX: function(cellX, img) {
+    var loadX = 1;
+    if(img){
+      loadX = img.loadX;
+    }
+    var middle = this.mosaic.width / 2;
+    var destX = this.mosaic.width / this.mosaic.cols * cellX * this.mosaic.scale + this.offsetX(this.mosaic.selectedCell.x);
+    var midDiff = destX - middle;
+    return middle + (midDiff * loadX);
   },
 
-  getY: function(cellY) {
-    return this.mosaic.height / this.mosaic.rows * cellY * this.mosaic.scale + this.offsetY(this.mosaic.selectedCell.y);
+  getY: function(cellY, img) {
+    var loadY = 1;
+    if(img){
+      loadY = img.loadY;
+    }
+    var middle = this.mosaic.height / 2;
+    var destY = this.mosaic.height / this.mosaic.rows * cellY * this.mosaic.scale + this.offsetY(this.mosaic.selectedCell.y);
+    var midDiff = destY - middle;
+    return middle + (midDiff * loadY);
   },
 
-  getW: function() {
-    return this.mosaic.width / this.mosaic.cols * this.mosaic.scale;
+  getW: function(img) {
+    var loadScale = img ? img.loadScale : 1;
+    return this.mosaic.width / this.mosaic.cols * this.mosaic.scale * loadScale;
   },
 
-  getH: function() {
-    return this.mosaic.height / this.mosaic.rows * this.mosaic.scale;
+  getH: function(img) {
+    var loadScale = img ? img.loadScale : 1;
+    return this.mosaic.height / this.mosaic.rows * this.mosaic.scale * loadScale;
   },
 
   swapImages: function(selectedCell) {
