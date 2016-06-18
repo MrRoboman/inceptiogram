@@ -80,7 +80,7 @@ Mosaic.prototype = {
   //
   //   }
   // },
-
+//b4e20ef9425259ed3698b0b4e8a7f64579c0a56b
   onImageLoad: function(e) {
     // if(this.loadedImageCount > 1) return;
     e.currentTarget.loaded = true;
