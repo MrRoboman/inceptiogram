@@ -1,6 +1,7 @@
 var React = require('react');
 var ClientActions = require('../actions/client_actions');
 var SessionStore = require('../stores/session_store');
+var PictureStore = require('../stores/picture_store');
 var CurrentUserMixin = require('../mixins/current_user_mixin');
 var Login = require('./login');
 var Signup = require('./signup');
@@ -20,14 +21,14 @@ var Auth = React.createClass({
 
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.onChange);
-    console.log(new Mosaic({
-                            canvasId: 'auth-canvas',
-                            fullscreen: true
-                          }));
+    this.pictureListener = PictureStore.addListener(this.onPictureChange);
+    ClientActions.fetchAllPictures();
   },
 
   componentWillUnmount: function() {
     this.sessionListener.remove();
+    this.pictureListener.remove();
+    if(this.mosaic) this.mosaic.dismount();
   },
 
   onChange: function() {
@@ -35,6 +36,18 @@ var Auth = React.createClass({
     if(errors.length){
       this.setState({password: "", errors: errors});
     }
+  },
+
+  onPictureChange: function() {
+    var imageUrls = PictureStore.getPictures().map(function(pic) {
+      return pic.url;
+    });
+    console.log(imageUrls);
+    this.mosaic = new Mosaic({
+                              canvasId: 'auth-canvas',
+                              imageUrls: imageUrls,
+                              fullscreen: true
+                            });
   },
 
   usernameChange: function(e) {

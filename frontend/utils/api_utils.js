@@ -41,7 +41,10 @@ module.exports = {
 
   fetchAllPictures: function() {
     $.ajax({
-      type: 'GET'
+      type: 'GET',
+      url: 'api/allpictures',
+      dataType: 'json',
+      success: ServerActions.receivePictures
     });
   },
 
