@@ -46,7 +46,9 @@ var Auth = React.createClass({
     this.mosaic = new Mosaic({
                               canvasId: 'auth-canvas',
                               imageUrls: imageUrls,
-                              fullscreen: true
+                              fullscreen: true,
+                              cols: 40,
+                              rows: 40
                             });
   },
 

@@ -46,7 +46,9 @@ Mosaic.prototype = {
     this.ctx = this.canvas.getContext('2d');
     this.resize();
 
-    this.canvas.addEventListener('click', this.onClickCanvas.bind(this));
+    if(!this.fullscreen){
+      this.canvas.addEventListener('click', this.onClickCanvas.bind(this));
+    }
   },
 
   initImages: function() {
@@ -68,10 +70,15 @@ Mosaic.prototype = {
   onClickCanvas: function(e) {
     if(this.playing) return;
 
-    var x = e.clientX + document.body.scrollLeft + this.canvas.scrollLeft - this.canvas.offsetLeft;
-    var y = e.clientY + document.body.scrollTop + this.canvas.scrollTop - this.canvas.offsetTop;
+    var x = e.clientX;
+    var y = e.clientY;
+    if(!this.fullscreen){
+      x += document.body.scrollLeft + this.canvas.scrollLeft - this.canvas.offsetLeft;
+      y += document.body.scrollTop + this.canvas.scrollTop - this.canvas.offsetTop;
+    }
     var cellX = Math.floor(x / (this.width / this.cols));
     var cellY = Math.floor(y / (this.height / this.rows));
+    debugger;
     this.selectedIdx = this.getIndex(cellX, cellY);
     this.selectedCell = {x: cellX, y: cellY};
     this.middleGrid.smallImages = this.getRandomImages();
