@@ -21,6 +21,8 @@ var Mosaic = function(options) {
   this.initImages();
 
   this.middleGrid = new MiddleGrid(this, this.getRandomImages(), this.getRandomImages(), .33, 1);
+
+  this.load();
 };
 
 Mosaic.prototype = {
@@ -52,10 +54,12 @@ Mosaic.prototype = {
   },
 
   initImages: function() {
+    this.loadedImages = 0;
     this.images = [];
     this.imageUrls.forEach(function(imgUrl){
       var img = new Image();
       img.loadAlpha = 0;
+      img.loadScale = 0;
       img.onload = this.onImageLoad.bind(this);
       img.src = imgUrl;
       this.images.push(img);
@@ -64,7 +68,15 @@ Mosaic.prototype = {
 
   onImageLoad: function(e) {
     e.currentTarget.loadAlpha = 1;
-    this.middleGrid.draw();
+
+    this.loadedImages++;
+    if(this.loadedImages === 1){
+      this.middleGrid.mainImage = e.currentTarget;
+      // this.stop();
+    }
+    else if(this.loadedImages === this.images.length) {
+
+    }
   },
 
   onClickCanvas: function(e) {
@@ -83,6 +95,11 @@ Mosaic.prototype = {
     this.selectedCell = {x: cellX, y: cellY};
     this.middleGrid.smallImages = this.getRandomImages();
     this.play();
+  },
+
+  load: function() {
+    this.playing = true;
+    window.requestAnimationFrame(this.update.bind(this));
   },
 
   play: function() {
@@ -126,16 +143,6 @@ Mosaic.prototype = {
     }
   },
 
-  update: function() {
-    if(this.playing) {
-
-      // this.clear();
-      this.middleGrid.draw();
-
-      window.requestAnimationFrame(this.update.bind(this));
-    }
-  },
-
   clear: function() {
     this.ctx.clearRect(0, 0, this.width, this.height);
   },
@@ -171,5 +178,14 @@ Mosaic.prototype = {
 
   getIndex: function(cellX, cellY){
     return cellY * this.cols + cellX;
+  },
+
+  update: function() {
+    if(this.playing) {
+
+      // this.clear();
+      this.middleGrid.draw();
+      window.requestAnimationFrame(this.update.bind(this));
+    }
   }
 };
