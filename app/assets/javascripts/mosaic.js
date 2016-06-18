@@ -15,6 +15,7 @@ var Mosaic = function(options) {
   this.selectedIdx = null;
   this.selectedCell = {x: 0, y: 0};
   this.scale = 1;
+  this.loadedImageCount = 0;
   this.playing = false;
 
   this.initCanvas();
@@ -58,6 +59,7 @@ Mosaic.prototype = {
     this.images = [];
     this.imageUrls.forEach(function(imgUrl){
       var img = new Image();
+      img.loaded = false;
       img.loadAlpha = 0;
       img.loadScale = 0;
       img.onload = this.onImageLoad.bind(this);
@@ -66,17 +68,54 @@ Mosaic.prototype = {
     }.bind(this));
   },
 
+  // onImageLoad: function(e) {
+  //   e.currentTarget.loadAlpha = 1;
+  //
+  //   this.loadedImages++;
+  //   if(this.loadedImages === 1){
+  //     this.middleGrid.mainImage = e.currentTarget;
+  //     // this.stop();
+  //   }
+  //   else if(this.loadedImages === this.images.length) {
+  //
+  //   }
+  // },
+
   onImageLoad: function(e) {
+    // if(this.loadedImageCount > 1) return;
+    e.currentTarget.loaded = true;
     e.currentTarget.loadAlpha = 1;
+    this.loadedImageCount++;
+    var loadComplete = null;
 
-    this.loadedImages++;
-    if(this.loadedImages === 1){
+    if(this.loadedImageCount === 1){
       this.middleGrid.mainImage = e.currentTarget;
-      // this.stop();
+      // this.callback(this.middleGrid.mainImage.id);
     }
-    else if(this.loadedImages === this.images.length) {
+    else if(this.loadedImageCount === this.images.length) {
+      loadComplete = function() {
+        this.middleGrid.loading = false;
+        this.stop();
+      }.bind(this);
+      // this.callback(this.middleGrid.mainImage.id);
+    }
 
-    }
+    var delay = 0;
+    // if(!this.lastLoadTime){
+    //   this.lastLoadTime = Date.now();
+    // } else if(Date.now() - this.lastLoadTime < .1){
+    //   delay = .1;
+    // }
+
+    // TODO: loadX and loadY are hard coded
+
+    TweenLite.from(e.currentTarget, 1, {
+                    loadScale: 0,
+                    loadX: 0,
+                    loadY: 0,
+                    ease: Back.easeOut.config(1),
+                    delay: delay,
+                    onComplete: loadComplete });
   },
 
   onClickCanvas: function(e) {
