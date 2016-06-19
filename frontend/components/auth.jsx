@@ -127,7 +127,6 @@ var Auth = React.createClass({
     return (
       <div>
         <canvas id="auth-canvas"></canvas>
-        {this.form()}
       </div>
     );
   }
