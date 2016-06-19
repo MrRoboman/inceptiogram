@@ -161,7 +161,6 @@ body {
 
 .appnav {
   background: white;
-  opacity: 0.85;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
@@ -189,6 +188,13 @@ body {
   .icon {
     padding-top: 12px;
   }
+  button {
+    font-size: 22px;
+    color: $instagram-blue;
+    background: white;
+    border: 3px solid $instagram-blue;
+    border-radius: 5px;
+  }
 }
 
 .center {
@@ -201,7 +207,20 @@ body {
   display: flex;
   justify-content: space-between;
   width: 144px;
-  // background: yellow;
+}
+
+.nav-login {
+  // display: flex;
+  // justify-content: space-between;
+  input {
+    // height: 50%;
+    font-size: 1.2em;
+    border: 0;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    padding: 4px;
+    border-radius: 3px;
+  }
 }
 
 .icon:hover {

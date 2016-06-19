@@ -2,14 +2,8 @@ var Mosaic = function(options) {
   this.canvasId = options.canvasId;
   this.imageUrls = options.imageUrls || [];
   this.fullscreen = options.fullscreen || false;
-  if(this.fullscreen){
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-    window.onresize = this.onresize.bind(this);
-  } else {
-    this.width = options.width || 640;
-    this.height = options.height || 640;
-  }
+  this.width = options.width || 640;
+  this.height = options.height || 640;
   this.setRowsCols(options.rows, options.cols);
   this.zoomMs = options.zoomMs || 3000;
   this.selectedIdx = null;
@@ -32,11 +26,6 @@ var Mosaic = function(options) {
 
 Mosaic.prototype = {
 
-  onresize: function() {
-    this.canvas.width  = this.width  = window.innerWidth;
-    this.canvas.height = this.height = window.innerHeight;
-  },
-
   dismount: function() {
     this.stop();
     this.canvas.removeEventListener('click', this.onClickCanvas.bind(this));
@@ -53,6 +42,7 @@ Mosaic.prototype = {
     this.ctx = this.canvas.getContext('2d');
     this.resize();
 
+    window.onresize = this.resize.bind(this);
     this.canvas.addEventListener('click', this.onClickCanvas.bind(this));
   },
 
@@ -97,7 +87,7 @@ Mosaic.prototype = {
 
     // TODO: loadX and loadY are hard coded
 
-    TweenLite.from(e.currentTarget, 4, {
+    TweenLite.from(e.currentTarget, 3, {
                     loadScale: 0,
                     loadX: 0,
                     loadY: 0,
@@ -174,8 +164,17 @@ Mosaic.prototype = {
 
   resize: function() {
     if(this.canvas) {
+      if(this.fullscreen){
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+      }
       this.canvas.width = this.width;
       this.canvas.height = this.height;
+
+      if(this.middleGrid){
+        this.clear();
+        this.middleGrid.draw();
+      }
     }
   },
 

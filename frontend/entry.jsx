@@ -74,6 +74,13 @@ var App = React.createClass({
 		});
 	},
 
+	guestLogin: function() {
+		ClientActions.login({
+			username: "Rob Kayson",
+			password: "asdfasdf"
+		});
+	},
+
 	render: function() {
 		var topleft = "Inceptiogram"; //Using this var to remember that I had {this.state.currentUser}
 		var logoutButton = "";
@@ -90,6 +97,11 @@ var App = React.createClass({
 						<i onClick={this.logout} className="fa fa-sign-out fa-2x"></i>
 					</div>
 				</div>
+			);
+		}
+		else {
+			logoutButton = (
+				<button onClick={this.guestLogin}>Login as Guest</button>
 			);
 		}
 		return (
