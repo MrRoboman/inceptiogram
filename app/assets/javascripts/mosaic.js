@@ -16,6 +16,7 @@ var Mosaic = function(options) {
   this.selectedCell = {x: 0, y: 0};
   this.scale = 1;
   this.loadedImageCount = 0;
+  this.loadCompleteCount = 0;
   this.playing = false;
 
   this.initCanvas();
@@ -23,13 +24,6 @@ var Mosaic = function(options) {
 
   var smallImages = this.getRandomImages();
   var images = this.getRandomImages();
-  // this.imageHash = {};
-  // for(var i = 0; i < images.length; i++) {
-  //   var row = images[i];
-  //   for (var j = 0; j < row.length; j++){
-  //     debugger;
-  //   }
-  // }
 
   this.middleGrid = new MiddleGrid(this, smallImages, images, .33, 1);
 
@@ -59,9 +53,7 @@ Mosaic.prototype = {
     this.ctx = this.canvas.getContext('2d');
     this.resize();
 
-    if(this.fullscreen){
-      this.canvas.addEventListener('click', this.onClickCanvas.bind(this));
-    }
+    this.canvas.addEventListener('click', this.onClickCanvas.bind(this));
   },
 
   initImages: function() {
@@ -80,59 +72,28 @@ Mosaic.prototype = {
     }.bind(this));
   },
 
-//old
-  // initImages: function() {
-  //   this.images = [];
-  //   this.imageUrls.forEach(function(imgDeets){
-  //     var img = new Image();
-  //     img.loaded = false;
-  //     img.loadAlpha = 0;
-  //     img.loadScale = 1;
-  //     img.onload = this.onImageLoad.bind(this);
-  //     img.id = imgDeets.id;
-  //     img.src = imgDeets.url;
-  //     this.images.push(img);
-  //   }.bind(this));
-  // },
-
-  // onImageLoad: function(e) {
-  //   e.currentTarget.loadAlpha = 1;
-  //
-  //   this.loadedImages++;
-  //   if(this.loadedImages === 1){
-  //     this.middleGrid.mainImage = e.currentTarget;
-  //     // this.stop();
-  //   }
-  //   else if(this.loadedImages === this.images.length) {
-  //
-  //   }
-  // },
-//b4e20ef9425259ed3698b0b4e8a7f64579c0a56b
   onImageLoad: function(e) {
-    // if(this.loadedImageCount > 1) return;
     e.currentTarget.loaded = true;
     e.currentTarget.loadAlpha = 1;
     this.loadedImageCount++;
-    var loadComplete = null;
 
     if(this.loadedImageCount === 1){
       this.middleGrid.mainImage = e.currentTarget;
-      // this.callback(this.middleGrid.mainImage.id);
-    }
-    else if(this.loadedImageCount === this.images.length) {
-      loadComplete = function() {
-        this.middleGrid.loading = false;
-        this.stop();
-      }.bind(this);
-      // this.callback(this.middleGrid.mainImage.id);
     }
 
-    var delay = 0;
-    // if(!this.lastLoadTime){
-    //   this.lastLoadTime = Date.now();
-    // } else if(Date.now() - this.lastLoadTime < .1){
-    //   delay = .1;
-    // }
+    if(!this.lastLoadTime){
+      this.lastLoadTime = Date.now();
+      this.consecutiveLoads = 0;
+    }
+
+    var elapsed = Date.now() - this.lastLoadTime;
+    if(elapsed < 100) {
+      this.consecutiveLoads++;
+    } else {
+      this.lastLoadTime = Date.now();
+      this.consecutiveLoads = 0;
+    }
+    var delay = .1 * this.consecutiveLoads;
 
     // TODO: loadX and loadY are hard coded
 
@@ -142,7 +103,7 @@ Mosaic.prototype = {
                     loadY: 0,
                     ease: Back.easeOut.config(1),
                     delay: delay,
-                    onComplete: loadComplete });
+                    onComplete: this.onLoadComplete.bind(this) });
   },
 
   onClickCanvas: function(e) {
@@ -160,6 +121,14 @@ Mosaic.prototype = {
     this.selectedCell = {x: cellX, y: cellY};
     this.middleGrid.smallImages = this.getRandomImages();
     this.play();
+  },
+
+  onLoadComplete: function() {
+    this.loadCompleteCount++;
+    if(this.loadCompleteCount === this.images.length){
+      this.middleGrid.loading = false;
+      this.stop();
+    }
   },
 
   load: function() {

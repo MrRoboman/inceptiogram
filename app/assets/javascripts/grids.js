@@ -109,14 +109,6 @@ MiddleGrid.prototype = {
     return bounds;
   },
 
-  // offsetX: function(cellX) {
-  //   return -this.mosaic.width * cellX * this.mosaic.getScaleProgress();
-  // },
-  //
-  // offsetY: function(cellY) {
-  //   return -this.mosaic.height * cellY * this.mosaic.getScaleProgress();
-  // },
-
   getSmallX: function(cellX, smallCellX) {
     var middleCellX = this.mosaic.width / this.mosaic.cols * cellX * this.mosaic.scale + this.offsetX(this.mosaic.selectedCell.x);
     return middleCellX + this.getSmallW() * smallCellX;
