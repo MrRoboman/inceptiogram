@@ -247,7 +247,7 @@ Mosaic.prototype = {
   update: function() {
     if(this.playing) {
 
-      // this.clear();
+      this.clear();
       this.middleGrid.draw();
       window.requestAnimationFrame(this.update.bind(this));
     }

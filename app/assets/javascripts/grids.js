@@ -32,10 +32,10 @@ MiddleGrid.prototype = {
     for(var c = bounds.left; c < bounds.right; c++){
       for(var r = bounds.top; r < bounds.bottom; r++) {
         img = this.images[c][r];
-        x = this.getX(c);
-        y = this.getY(r);
-        w = this.getW();
-        h = this.getH();
+        x = this.getX(c, img);
+        y = this.getY(r, img);
+        w = this.getW(img);
+        h = this.getH(img);
         a = this.getAlpha(this.startAlpha, this.endAlpha) * img.loadAlpha;
         if(this.loading && img.loaded){
           this.mosaic.drawChunk(this.mainImage, this.getX(c), this.getY(r), this.getW(), this.getH(), x, y, w, h, 1);
