@@ -37,6 +37,7 @@ MiddleGrid.prototype = {
         w = this.getW();
         h = this.getH();
         a = this.getAlpha(this.startAlpha, this.endAlpha) * img.loadAlpha;
+        
         this.mosaic.draw(img, x, y, w, h, a);
 
         //Small
