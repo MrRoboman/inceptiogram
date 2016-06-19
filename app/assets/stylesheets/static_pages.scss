@@ -160,6 +160,7 @@ body {
 }
 
 .appnav {
+  background: white;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
@@ -609,6 +610,7 @@ box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.44);
   position: absolute;
   top: 0;
   z-index: -1;
+  cursor: pointer;
   // position: fixed;
   // top: 0;
   // left: 0;
