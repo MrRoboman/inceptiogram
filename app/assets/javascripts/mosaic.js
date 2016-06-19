@@ -211,6 +211,14 @@ Mosaic.prototype = {
     }
   },
 
+  drawChunk: function(img, srcX, srcY, srcW, srcH, destX, destY, destW, destH, alpha){
+    if(this.isInCanvasBounds(destX, destY, destW, destH)) {
+      this.ctx.globalAlpha = alpha;
+      this.ctx.drawImage(img, srcX, srcY, srcW, srcH, destX, destY, destW, destH);
+      this.ctx.globalAlpha = 1;
+    }
+  },
+
   isInCanvasBounds: function(x, y, w, h) {
     return x < this.width && x + w > 0 && y < this.width && y + h > 0;
   },
