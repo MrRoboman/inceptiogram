@@ -21,7 +21,17 @@ var Mosaic = function(options) {
   this.initCanvas();
   this.initImages();
 
-  this.middleGrid = new MiddleGrid(this, this.getRandomImages(), this.getRandomImages(), .33, 1);
+  var smallImages = this.getRandomImages();
+  var images = this.getRandomImages();
+  // this.imageHash = {};
+  // for(var i = 0; i < images.length; i++) {
+  //   var row = images[i];
+  //   for (var j = 0; j < row.length; j++){
+  //     debugger;
+  //   }
+  // }
+
+  this.middleGrid = new MiddleGrid(this, smallImages, images, .33, 1);
 
   this.load();
 };
@@ -126,7 +136,7 @@ Mosaic.prototype = {
 
     // TODO: loadX and loadY are hard coded
 
-    TweenLite.from(e.currentTarget, 1, {
+    TweenLite.from(e.currentTarget, 4, {
                     loadScale: 0,
                     loadX: 0,
                     loadY: 0,
@@ -166,6 +176,8 @@ Mosaic.prototype = {
 
   stop: function() {
     this.playing = false;
+    this.clear();
+    this.middleGrid.draw();
   },
 
   onTweenComplete: function() {
